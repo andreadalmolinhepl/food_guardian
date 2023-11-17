@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/widgets/arrow_back.dart';
 
@@ -28,8 +29,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Future<void> _submit() async {
     /*final FirebaseAuth auth = FirebaseAuth.instance;
     UserCredential result = await auth.createUserWithEmailAndPassword(
-        email: "andrea@gmail.com", password: "patate");*/
-    //final User user = result.user!;
+        email: "andrea@gmail.com", password: "patate");
+    final User user = result.user!;*/
   }
 
   @override
