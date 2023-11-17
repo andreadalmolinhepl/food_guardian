@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/widgets/arrow_back.dart';
 
@@ -23,111 +24,135 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool _isPasswordVisible = false;
 
-  void _submit() {
+  Future<void> _submit() async {
     if (_loginFormKey.currentState!.validate()) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Connecting')),
-      );
+      try {
+        await FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+                email: _emailController.text,
+                password: _passwordController.text)
+            .then((value) => {Navigator.pushNamed(context, "/home")});
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          debugPrint('No user found for that email.');
+        } else if (e.code == 'wrong-password') {
+          debugPrint('Wrong password provided for that user.');
+        }
+      }
     }
-}
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(
-              minHeight: MediaQuery.of(context).size.height,
-            ),
-            child: IntrinsicHeight(
-              child: Container(
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("assets/img/back1.png"),
-                        fit: BoxFit.cover)),
-                child: SafeArea(
-                  child: Column(
-                    children: <Widget>[
-                      const Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: ArrowBack()
-                      ),
-                      const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Image(
-                            image: AssetImage("assets/img/food.png"),
-                            height: kProfileSize,
-                            fit: BoxFit.cover,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: kVerticalPaddingXL),
-                      const Text("Welcome back", style: kSectionTitle,),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-                        child: Form(
-                          key: _loginFormKey,
-                          child: Column(
-                            children: <Widget>[
-                              TextInput(
-                                  controller: _emailController,
-                                  // Add this line
-                                  prefixIcon: Icons.email_outlined,
-                                  hintText: "andrea@gmail.com",
-                                  labelText: "Adresse mail",
-                                  validator: validateEmail),
-                              TextInput(
-                                controller: _passwordController,
-                                // Add this line
-                                prefixIcon: Icons.password,
-                                hintText: "*********",
-                                labelText: "Mot de passe",
-                                validator: validatePassword,
-                                obscureText: !_isPasswordVisible,
-                                suffixIcon: GestureDetector(
-                                  child: _isPasswordVisible
-                                      ? const Icon(Icons.visibility_off)
-                                      : const Icon(Icons.visibility),
-                                  onTap: () {
-                                    setState(() {
-                                      _isPasswordVisible = !_isPasswordVisible;
-                                    });
-                                  },
-                                ),
-                              ),
-                              GestureDetector(
-                                onTap: () => Navigator.pushNamed(context, "/"),
-                                child: const Text("Mot de passe oublié ?", style: kHintStyle),
-                              ),
-                              const SizedBox(height: kVerticalPadding),
-                              Align(
-                                  alignment: Alignment.centerRight,
-                                  child: MainButton(
-                                      label: "Je me connecte", onTap: _submit)),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: kVerticalPadding,),
-                      Center(
-                        child: Column(
-                          children: [
-                            const Text("Je n'ai pas encore de compte.", style: kItalicText,),
-                            const SizedBox(height: kVerticalPaddingXS,),
-                            GestureDetector(
-                              onTap: () => Navigator.pushNamed(context, "/register"),
-                              child: const Text("Créer mon compte !", style: kButtonTextStyle,),
-                            )
-                          ],
-                        ),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+          minHeight: MediaQuery.of(context).size.height,
+        ),
+        child: IntrinsicHeight(
+          child: Container(
+            decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/img/back1.png"),
+                    fit: BoxFit.cover)),
+            child: SafeArea(
+              child: Column(
+                children: <Widget>[
+                  const Padding(
+                      padding: EdgeInsets.all(8.0), child: ArrowBack()),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image(
+                        image: AssetImage("assets/img/food.png"),
+                        height: kProfileSize,
+                        fit: BoxFit.cover,
                       ),
                     ],
                   ),
-                ),
+                  const SizedBox(height: kVerticalPaddingXL),
+                  const Text(
+                    "Welcome back",
+                    style: kSectionTitle,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: kHorizontalPadding),
+                    child: Form(
+                      key: _loginFormKey,
+                      child: Column(
+                        children: <Widget>[
+                          TextInput(
+                              controller: _emailController,
+                              // Add this line
+                              prefixIcon: Icons.email_outlined,
+                              hintText: "andrea@gmail.com",
+                              labelText: "Adresse mail",
+                              validator: validateEmail),
+                          TextInput(
+                            controller: _passwordController,
+                            // Add this line
+                            prefixIcon: Icons.password,
+                            hintText: "*********",
+                            labelText: "Mot de passe",
+                            validator: validatePassword,
+                            obscureText: !_isPasswordVisible,
+                            suffixIcon: GestureDetector(
+                              child: _isPasswordVisible
+                                  ? const Icon(Icons.visibility_off)
+                                  : const Icon(Icons.visibility),
+                              onTap: () {
+                                setState(() {
+                                  _isPasswordVisible = !_isPasswordVisible;
+                                });
+                              },
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () => Navigator.pushNamed(context, "/"),
+                            child: const Text("Mot de passe oublié ?",
+                                style: kHintStyle),
+                          ),
+                          const SizedBox(height: kVerticalPadding),
+                          Align(
+                              alignment: Alignment.centerRight,
+                              child: MainButton(
+                                  label: "Je me connecte", onTap: _submit)),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: kVerticalPadding,
+                  ),
+                  Center(
+                    child: Column(
+                      children: [
+                        const Text(
+                          "Je n'ai pas encore de compte.",
+                          style: kItalicText,
+                        ),
+                        const SizedBox(
+                          height: kVerticalPaddingXS,
+                        ),
+                        GestureDetector(
+                          onTap: () =>
+                              Navigator.pushNamed(context, "/register"),
+                          child: const Text(
+                            "Créer mon compte !",
+                            style: kButtonTextStyle,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-        ));
+        ),
+      ),
+    ));
   }
 }

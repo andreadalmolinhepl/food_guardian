@@ -27,10 +27,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> _submit() async {
-    /*final FirebaseAuth auth = FirebaseAuth.instance;
+    final FirebaseAuth auth = FirebaseAuth.instance;
     UserCredential result = await auth.createUserWithEmailAndPassword(
-        email: "andrea@gmail.com", password: "patate");
-    final User user = result.user!;*/
+        email: _emailController.text, password: _passwordController.text);
+    //final User user = result.user!;
   }
 
   @override
