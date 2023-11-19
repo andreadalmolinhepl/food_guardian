@@ -1,20 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:food_guardian/styles/font.dart';
+import 'package:food_guardian/styles/spacings.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final ThemeData theme = Theme.of(context);
-
-    return Card(
-      shadowColor: Colors.transparent,
-      margin: const EdgeInsets.all(8.0),
-      child: SizedBox.expand(
-        child: Center(
-          child: Text(
-            'Home test',
-            style: theme.textTheme.titleLarge,
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
+              child: Column(
+                children: [
+                  const Row(
+                    children: [
+                      Text("Hi Andrea", style: kTitleHome,)
+                    ],
+                  ),
+                  const SizedBox(height: kVerticalPaddingXL,),
+                  Container(
+                    color: Colors.yellow,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle
+                          ),
+                          child: const Icon(Icons.add_circle_rounded, size: 150, color: Colors.grey,),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Scan a new item")
+                    ],
+                  ),
+                  Container()
+                ],
+              ),
+            ),
           ),
         ),
       ),

@@ -89,3 +89,8 @@ const kLogoSize = 44.0;
 const kMainLogoSize = 140.0;
 const kProfileSize = 108.0;
 const kProfileSizeSmall = kProfileSize * .8;
+
+const kPlusStyle = TextStyle(
+  fontSize: 50,
+  fontWeight: FontWeight.w500,
+);
