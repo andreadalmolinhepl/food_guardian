@@ -20,14 +20,14 @@ class AllergenBox extends StatelessWidget {
         children: [
           Container(
             decoration: BoxDecoration(
-              color: Colors.grey,
+              color: Colors.grey.shade300,
               borderRadius: BorderRadius.circular(10)
             ),
             child: const ClipOval(
               child: Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
                 child: Image(
-                    image: AssetImage("assets/img/dog.png"), fit: BoxFit.cover),
+                    image: AssetImage("assets/icons/gluten.png"), fit: BoxFit.cover),
               ),
             ),
           ),

@@ -46,81 +46,79 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     minHeight: MediaQuery.of(context).size.height,
                   ),
                   child: IntrinsicHeight(
-                    child: Container(
-                      child: Column(
-                        children: <Widget>[
-                          const SizedBox(height: kVerticalPaddingXL),
-                          const Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image(
-                                image: AssetImage("assets/img/food.png"),
-                                height: kProfileSize,
-                                fit: BoxFit.cover,
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: kVerticalPaddingXL),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: kHorizontalPadding),
-                            child: Form(
-                              key: _registerFormKey,
-                              child: Column(
-                                children: <Widget>[
-                                  TextInput(
-                                      controller: _firstnameController,
-                                      // Add this line
-                                      prefixIcon: Icons.person,
-                                      hintText: "Andrea",
-                                      labelText: "Prénom",
-                                      validator: validateName),
-                                  TextInput(
-                                      controller: _lastnameController,
-                                      // Add this line
-                                      prefixIcon: Icons.person,
-                                      hintText: "Dal Molin",
-                                      labelText: "Nom",
-                                      validator: validateName),
-                                  TextInput(
-                                      controller: _emailController,
-                                      // Add this line
-                                      prefixIcon: Icons.email,
-                                      hintText: "andrea@gmail.com",
-                                      labelText: "Adresse Mail",
-                                      validator: validateEmail),
-                                  TextInput(
-                                    controller: _passwordController,
+                    child: Column(
+                      children: <Widget>[
+                        const SizedBox(height: kVerticalPaddingXL),
+                        const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image(
+                              image: AssetImage("assets/img/food.png"),
+                              height: kProfileSize,
+                              fit: BoxFit.cover,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: kVerticalPaddingXL),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: kHorizontalPadding),
+                          child: Form(
+                            key: _registerFormKey,
+                            child: Column(
+                              children: <Widget>[
+                                TextInput(
+                                    controller: _firstnameController,
                                     // Add this line
-                                    prefixIcon: Icons.password,
-                                    hintText: "*********",
-                                    labelText: "Password",
-                                    validator: validatePassword,
-                                    obscureText: !_isPasswordVisible,
-                                    suffixIcon: GestureDetector(
-                                      child: _isPasswordVisible
-                                          ? const Icon(Icons.visibility_off)
-                                          : const Icon(Icons.visibility),
-                                      onTap: () {
-                                        setState(() {
-                                          _isPasswordVisible = !_isPasswordVisible;
-                                        });
-                                      },
-                                    ),
+                                    prefixIcon: Icons.person,
+                                    hintText: "Andrea",
+                                    labelText: "Prénom",
+                                    validator: validateName),
+                                TextInput(
+                                    controller: _lastnameController,
+                                    // Add this line
+                                    prefixIcon: Icons.person,
+                                    hintText: "Dal Molin",
+                                    labelText: "Nom",
+                                    validator: validateName),
+                                TextInput(
+                                    controller: _emailController,
+                                    // Add this line
+                                    prefixIcon: Icons.email,
+                                    hintText: "andrea@gmail.com",
+                                    labelText: "Adresse Mail",
+                                    validator: validateEmail),
+                                TextInput(
+                                  controller: _passwordController,
+                                  // Add this line
+                                  prefixIcon: Icons.password,
+                                  hintText: "*********",
+                                  labelText: "Password",
+                                  validator: validatePassword,
+                                  obscureText: !_isPasswordVisible,
+                                  suffixIcon: GestureDetector(
+                                    child: _isPasswordVisible
+                                        ? const Icon(Icons.visibility_off)
+                                        : const Icon(Icons.visibility),
+                                    onTap: () {
+                                      setState(() {
+                                        _isPasswordVisible = !_isPasswordVisible;
+                                      });
+                                    },
                                   ),
-                                  const SizedBox(height: kVerticalPaddingL),
-                                  Align(
-                                      alignment: Alignment.centerRight,
-                                      child: MainButton(
-                                          label: "Créer mon compte",
-                                          onTap: _submit)),
-                                ],
-                              ),
+                                ),
+                                const SizedBox(height: kVerticalPaddingL),
+                                Align(
+                                    alignment: Alignment.centerRight,
+                                    child: MainButton(
+                                        label: "Créer mon compte",
+                                        onTap: _submit)),
+                              ],
                             ),
                           ),
-                          const SizedBox(height: kVerticalPaddingXL),
-                        ],
-                      ),
+                        ),
+                        const SizedBox(height: kVerticalPaddingXL),
+                      ],
                     ),
                   ),
                 ),

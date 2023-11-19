@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_guardian/styles/spacings.dart';
-import 'package:food_guardian/widgets/allergen_box.dart';
 import 'package:food_guardian/widgets/food_restrictions.dart';
 import 'package:food_guardian/widgets/line.dart';
-import 'package:food_guardian/widgets/text_divider.dart';
 
 import '../styles/font.dart';
 
@@ -13,59 +11,70 @@ class AccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    return const Card(
-      shadowColor: Colors.transparent,
-      margin: EdgeInsets.all(8.0),
-      child: Padding(
-        padding: EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Andrea Dal Molin", style: kTitleBigStat,),
-                ClipOval(
-                  child: Image(
-                      image: AssetImage("assets/img/dog.png"),
-                      height: kProfileSize,
-                      fit: BoxFit.cover),
-                ),
-              ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height,
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
+              child: Column(
+                children: [
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Andrea Dal Molin", style: kTitleBigStat,),
+                      ClipOval(
+                        child: Image(
+                            image: AssetImage("assets/img/dog.png"),
+                            height: kProfileSize,
+                            fit: BoxFit.cover),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: kVerticalPaddingL,),
+                  const FoodRestrictions(label: "Your allergies",),
+                  const SizedBox(height: kVerticalPaddingS,),
+                  const FoodRestrictions(label: "Your intolerances",),
+                  const SizedBox(height: kVerticalPaddingS,),
+                  const FoodRestrictions(label: "Your sensitivities",),
+                  const SizedBox(height: kVerticalPadding,),
+                  const Line(),
+                  const SizedBox(height: kVerticalPadding,),
+                  GestureDetector(
+                    onTap: () { Navigator.pushNamed(context, "/settings"); },
+                    child: const Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Icon(Icons.settings),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text("Settings"),
+                        )
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {  },
+                    child: const Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Icon(Icons.logout),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 20),
+                          child: Text("Logout"),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
-            SizedBox(height: kVerticalPaddingL,),
-            FoodRestrictions(label: "Your allergies",),
-            SizedBox(height: kVerticalPaddingS,),
-            FoodRestrictions(label: "Your intolerances",),
-            SizedBox(height: kVerticalPaddingS,),
-            FoodRestrictions(label: "Your sensitivities",),
-            SizedBox(height: kVerticalPadding,),
-            Line(),
-            SizedBox(height: kVerticalPadding,),
-            Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Icon(Icons.settings),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Text("Settings"),
-                )
-              ],
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.all(10.0),
-                  child: Icon(Icons.logout),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: Text("Logout"),
-                )
-              ],
-            ),
-          ],
+          ),
         ),
       ),
     );
