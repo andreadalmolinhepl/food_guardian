@@ -13,10 +13,6 @@ class WelcomeScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/img/back1.png"),
-                  fit: BoxFit.cover)),
           height: MediaQuery.of(context).size.height,
           child: SafeArea(
             child: Padding(

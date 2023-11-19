@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1051909783598",
+    "project_id": "food-guardian-a9458",
+    "storage_bucket": "food-guardian-a9458.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1051909783598:android:ffaff703aa73050e6ddfbf",
+        "android_client_info": {
+          "package_name": "be.masi.food_guardian"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-vP7I9S_Grv-r5w_uEkmBUX3LRnGKVbE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

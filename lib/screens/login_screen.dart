@@ -25,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isPasswordVisible = false;
 
   Future<void> _submit() async {
-    if (_loginFormKey.currentState!.validate()) {
+    /*if (_loginFormKey.currentState!.validate()) {
       try {
         await FirebaseAuth.instance
             .signInWithEmailAndPassword(
@@ -39,7 +39,8 @@ class _LoginScreenState extends State<LoginScreen> {
           debugPrint('Wrong password provided for that user.');
         }
       }
-    }
+    }*/
+    Navigator.pushNamed(context, "/home");
   }
 
   @override
@@ -52,10 +53,6 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         child: IntrinsicHeight(
           child: Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage("assets/img/back1.png"),
-                    fit: BoxFit.cover)),
             child: SafeArea(
               child: Column(
                 children: <Widget>[
