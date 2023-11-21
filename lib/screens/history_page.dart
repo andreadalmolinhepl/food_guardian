@@ -25,7 +25,6 @@ class HistoryPage extends StatelessWidget {
                             child: Text("History"),
                           ),
                           HistoryElement(),
-                          HistoryElement(),
                         ],
                       ),
                     ),
