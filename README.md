@@ -26,6 +26,7 @@ Avec Food Guardian, faire ses courses devient une aventure sécurisée, pleine d
 ### Applications Concurrentes
 
 #### Yuka
+Yuka est une application mobile qui scanne les produits alimentaires pour obtenir des informations claires sur l'impact sanitaire des produits que vous consommez.
 - **Points Forts**:
   - Expérience intuitive
   - Système de score et recommandations
