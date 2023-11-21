@@ -1,30 +1,43 @@
 # Food Guardian
 
-Description brève de l'application et de son objectif global.
+Food Guardian révolutionne votre expérience d'achat alimentaire en scannant, sécurisant et informant instantanément sur chaque produit pour des courses sans stress ni danger.
 
 ## Structure du dépôt
 
-- `/maquettes`: Contient les maquettes visuelles de l'application.
-- `/lib`: Dossiers organisés selon des critères spécifiques (expliquer ici).
+<!-- - `/maquettes`: Contient les maquettes visuelles de l'application. -->
+- `/lib`: Ce dossier est l'endroit où vous définissez les fonctionnalités de base de votre application. Il contient les fichiers **main.dart**, **routes.dart**, et le fichier automatiquement généré **firebase_options.dart**. En outre il contient une série de dossiers:
+  - `/screens`: Contient les différents écrans de l'application
+  - `/styles`: Contient les fichiers définissant les font, couleurs, dimensions et autres styles utilisés dans l'application
+  - `/utils`: Contient des fichiers présentant une série d'utilités comme la validation des forms
+  - `/widgets`: Contient les différents widgets utilisés à travers, la plupart du temps, dans plusieurs écrans de l'application
+- `/assets`: 
+- `/android`:
 
 ## Présentation de l'application
 
-L'application vise à répondre à [décrire le besoin ou le problème qu'elle résout]. Évitez le jargon technique dans cette section pour la rendre accessible à tous.
+Bienvenue dans l'univers de Food Guardian, votre guide incontournable pour des achats alimentaires en toute sérénité ! Imaginez-vous avec un super scanner de code-barres qui vous dévoile instantanément les secrets de chaque produit que vous touchez. Pour ceux qui jonglent avec des intolérances ou des allergies, c'est une aubaine. D'un simple scan, notre appli se met en quête des allergènes et des ingrédients qui pourraient vous jouer des tours. Mais ce n'est pas tout : en créant votre profil personnalisé, vous dites adieu aux indésirables dans votre assiette. Vous recevez des alertes sur-le-champ dès qu'un produit pointé du doigt contient ce que vous voulez éviter.
+
+Cerise sur le gâteau, Food Guardian ne se contente pas de vous dire ce qu'il y a dans vos courses, il vous donne aussi un maximum d'infos sur chaque produit, des avis de ceux qui l'ont testé et des recommandations sur mesure. Fini les prises de tête dans les rayons, même à l'étranger ! Notre appli traduit les étiquettes pour vous, pour que vous fassiez vos emplettes l'esprit léger. Et si jamais un produit refuse de se dévoiler dans la base de données, pas de panique : prenez une photo des ingrédients et Food Guardian prend la relève pour vous assurer que rien de dangereux ne se cache dans votre panier.
+
+Avec Food Guardian, faire ses courses devient une aventure sécurisée, pleine de découvertes et sans mauvaise surprise.
 
 ## Étude de l'existant
 
 ### Applications Concurrentes
 
-#### [Nom de l'Application Concurrente 1]
+#### Yuka
 - **Points Forts**:
-  - Avantage 1.
-  - Avantage 2.
+  - Expérience intuitive
+  - Système de score et recommandations
+  - Fonctionne également pour les produits cosmétiques
+  - Projet indépendant
 - **Points Faibles**:
-  - Inconvénient 1.
-  - Inconvénient 2.
-![Capture d'écran de l'Application Concurrente 1](lien_vers_capture_ecran_1)
+  - Interface améliorable
+  - Dépendant d'une base de données
 
-#### [Nom de l'Application Concurrente 2]
+![Capture d'écran de l'Application Concurrente 1](/assets/screenshots/yuka.jpg)
+
+#### Ingredio
 - **Points Forts**:
   - Avantage 1.
   - Avantage 2.
@@ -35,7 +48,7 @@ L'application vise à répondre à [décrire le besoin ou le problème qu'elle r
 
 ## Public Cible
 
-Décrivez le public cible de l'application et comment l'application répond à ses besoins spécifiques.
+Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur santé et de leur bien-être. Cette application est un incontournable pour les personnes aux prises avec des allergies et des intolérances alimentaires, offrant une tranquillité d'esprit lors des courses. Les familles préoccupées par la qualité des aliments qu'elles consomment trouveront en Food Guardian un allié précieux pour veiller à la sécurité et à la santé de leurs proches. Les voyageurs, soucieux de décoder les étiquettes à l'étranger, apprécieront la facilité avec laquelle l'application traduit les ingrédients. En somme, Food Guardian s'adresse à toute personne désireuse de consommer de manière éclairée, informée et sécurisée.
 
 ## Récits Utilisateurs
 
