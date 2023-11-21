@@ -35,7 +35,7 @@ Avec Food Guardian, faire ses courses devient une aventure sécurisée, pleine d
   - Interface améliorable
   - Dépendant d'une base de données
 
-![Capture d'écran de l'Application Concurrente 1](/assets/screenshots/yuka.jpg)
+<img src="/assets/screenshots/yuka.jpg" alt="Capture d'écran de l'Application Concurrente 1" width="605" height="1280">
 
 #### Ingredio
 - **Points Forts**:
