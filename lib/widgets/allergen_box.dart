@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_guardian/styles/font.dart';
 import 'package:food_guardian/styles/spacings.dart';
 
 @immutable
