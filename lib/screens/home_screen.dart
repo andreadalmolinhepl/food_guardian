@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_guardian/screens/account_page.dart';
 import 'package:food_guardian/screens/home_page.dart';
 
+import 'history_page.dart';
+
 class HomeScreen extends StatefulWidget {
   static const String routeName = "/home";
 
@@ -120,18 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
 
         /// History page
-        Card(
-          shadowColor: Colors.transparent,
-          margin: const EdgeInsets.all(8.0),
-          child: SizedBox.expand(
-            child: Center(
-              child: Text(
-                'History',
-                style: theme.textTheme.titleLarge,
-              ),
-            ),
-          ),
-        ),
+        const HistoryPage(),
 
         /// Account page
         const AccountPage(),
