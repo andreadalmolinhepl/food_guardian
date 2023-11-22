@@ -13,7 +13,7 @@ class HistoryPage extends StatelessWidget {
         body: SingleChildScrollView(
             child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  minHeight: MediaQuery.of(context).size.height,
+                  minHeight: MediaQuery.of(context).size.height - kNavigationBarHeight,
                 ),
                 child: const IntrinsicHeight(
                   child: SafeArea(
@@ -26,6 +26,8 @@ class HistoryPage extends StatelessWidget {
                             padding: EdgeInsets.symmetric(vertical: kVerticalPadding),
                             child: Text("History", style: kTitleHome),
                           ),
+                          HistoryElement(),
+                          HistoryElement(),
                           HistoryElement(),
                           HistoryElement(),
                           HistoryElement(),

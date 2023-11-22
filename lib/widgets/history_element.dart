@@ -12,58 +12,55 @@ class HistoryElement extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: kVerticalPaddingXS),
       child: Container(
         width: MediaQuery.of(context).size.width,
-        height: 100,
-        color: Colors.orange,
-        child: Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                color: Colors.red,
-                child: const Padding(
+        height: 125,
+        decoration: BoxDecoration(
+          color: Colors.tealAccent,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.16),
+              spreadRadius: 1,
+              blurRadius: 1,
+              offset: const Offset(0, 1),
+            ),
+          ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              const Expanded(
+                flex: 2,
+                child: Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Image(
-                      image: AssetImage("assets/img/dog.png"),
+                      image: AssetImage("assets/img/pandistelle.png"),
                       height: kProfileSize,
-                      fit: BoxFit.cover),
+                      fit: BoxFit.contain),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Container(
-                color: Colors.yellow,
+              Expanded(
+                flex: 5,
                 child: Column(
                   children: [
                     Expanded(
                       flex : 4,
-                      child: Container(
+                      child: SizedBox(
                         width: MediaQuery.of(context).size.width,
-                        color: Colors.blue,
                         child: Row(
                           children: [
                             Expanded(
                               flex: 2,
-                              child: Container(
+                              child: SizedBox(
                                 height: MediaQuery.of(context).size.height,
-                                color: Colors.yellow,
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: kHorizontalPaddingS, vertical: kVerticalPaddingS),
+                                child: const Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingS, vertical: kVerticalPaddingS),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Container(
-                                        color: Colors.lightBlue,
-                                        child: const Text("Title"),
-                                      ),
-                                      Container(
-                                        color: Colors.green,
-                                        child: const Text("Subtitle"),
-                                      ),
-                                      Container(
-                                        color: Colors.pink,
-                                        child: const Text("Days ago"),
-                                      ),
+                                      Text("Pan di Stelle"),
+                                      Text("Barilla"),
+                                      Text("4 Days ago"),
                                     ],
                                   ),
                                 ),
@@ -71,11 +68,16 @@ class HistoryElement extends StatelessWidget {
                             ),
                             Expanded(
                               flex: 1,
-                              child: Container(
+                              child: SizedBox(
                                 height: MediaQuery.of(context).size.height,
-                                color: Colors.orange,
-                                child: const Center(
-                                    child: Text("nutriscore")
+                                child: const Padding(
+                                  padding: EdgeInsets.all(8.0),
+                                  child: Center(
+                                      child: Image(
+                                          image: AssetImage("assets/img/nutriscoreA.png"),
+                                          height: kProfileSize,
+                                          fit: BoxFit.contain)
+                                  ),
                                 ),
                               ),
                             ),
@@ -85,17 +87,19 @@ class HistoryElement extends StatelessWidget {
                     ),
                     Expanded(
                       flex: 1,
-                      child: Container(
+                      child: SizedBox(
                         width: MediaQuery.of(context).size.width,
-                        color: Colors.blueGrey,
-                        child: const Text("⚠️ 1 intolerance encountered"),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                          child: Text("⚠️ 1 intolerance encountered"),
+                        ),
                       ),
                     ),
                   ],
-                )
-              ),
-            )
-          ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
