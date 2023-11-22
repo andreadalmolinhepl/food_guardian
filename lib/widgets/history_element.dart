@@ -14,7 +14,7 @@ class HistoryElement extends StatelessWidget {
         width: MediaQuery.of(context).size.width,
         height: 125,
         decoration: BoxDecoration(
-          color: Colors.tealAccent,
+          color: Colors.lightBlue.shade50,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
