@@ -10,7 +10,7 @@ class FavoriteElement extends StatelessWidget {
     return const Card(
       child: ListTile(
         leading: Image(
-          image: AssetImage("assets/img/food.png"),
+          image: AssetImage("assets/img/pandistelle.png"),
           height: kProfileSize,
           fit: BoxFit.cover,
         ),

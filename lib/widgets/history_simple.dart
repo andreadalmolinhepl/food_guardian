@@ -8,66 +8,17 @@ class HistorySimple extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: kVerticalPadding),
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.black
-          ),
-          borderRadius: BorderRadius.circular(5),
-          color: Colors.blue.shade200
+    return const Card(
+      child: ListTile(
+        leading: Image(
+          image: AssetImage("assets/img/pandistelle.png"),
+          height: kProfileSize,
+          fit: BoxFit.cover,
         ),
-        child: Container(
-          height: 75,
-          color: Colors.orange,
-            child: Row(
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    color: Colors.red,
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Image(
-                          image: AssetImage("assets/img/dog.png"),
-                          height: kProfileSize,
-                          fit: BoxFit.cover),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: Container(
-                    color: Colors.yellow,
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingS, vertical: kVerticalPaddingS),
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Text("Skimmed milk ")
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Text("Delhaize")
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    color: Colors.blue,
-                  ),
-                ),
-              ],
-            )
+        title: Text('Canned corn'),
+        subtitle: Text('I fucking hate corn'),
+        trailing: Icon(
+          Icons.arrow_forward_rounded,
         ),
       ),
     );

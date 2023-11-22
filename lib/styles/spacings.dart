@@ -12,3 +12,5 @@ const kVerticalPaddingL = kVerticalPadding * 2;
 
 const kHorizontalPaddingXL = kHorizontalPaddingL * 2;
 const kVerticalPaddingXL = kVerticalPaddingL * 2;
+
+const kNavigationBarHeight = 80.0;

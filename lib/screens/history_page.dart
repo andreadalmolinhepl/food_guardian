@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_guardian/styles/spacings.dart';
 import 'package:food_guardian/widgets/history_element.dart';
 
+import '../styles/font.dart';
+
 class HistoryPage extends StatelessWidget {
   const HistoryPage({super.key});
 
@@ -22,7 +24,7 @@ class HistoryPage extends StatelessWidget {
                         children: [
                           Padding(
                             padding: EdgeInsets.symmetric(vertical: kVerticalPadding),
-                            child: Text("History"),
+                            child: Text("History", style: kTitleHome),
                           ),
                           HistoryElement(),
                           HistoryElement(),

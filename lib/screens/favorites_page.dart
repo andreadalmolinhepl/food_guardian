@@ -13,7 +13,7 @@ class FavoritesPage extends StatelessWidget {
         body: SingleChildScrollView(
             child: ConstrainedBox(
                 constraints: BoxConstraints(
-                  minHeight: MediaQuery.of(context).size.height,
+                  minHeight: MediaQuery.of(context).size.height - kNavigationBarHeight,
                 ),
                 child: const IntrinsicHeight(
                     child: SafeArea(
@@ -24,7 +24,7 @@ class FavoritesPage extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: EdgeInsets.symmetric(vertical: kVerticalPadding),
-                                child: Text("Favorites"),
+                                child: Text("Favorites", style: kTitleHome),
                               ),
                               FavoriteElement(),
                               FavoriteElement(),

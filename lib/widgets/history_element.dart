@@ -9,7 +9,7 @@ class HistoryElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: kVerticalPaddingS),
+      padding: const EdgeInsets.symmetric(vertical: kVerticalPaddingXS),
       child: Container(
         width: MediaQuery.of(context).size.width,
         height: 100,
@@ -48,7 +48,7 @@ class HistoryElement extends StatelessWidget {
                                 height: MediaQuery.of(context).size.height,
                                 color: Colors.yellow,
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: kHorizontalPaddingS),
+                                  padding: const EdgeInsets.symmetric(horizontal: kHorizontalPaddingS, vertical: kVerticalPaddingS),
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
