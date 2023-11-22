@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_guardian/screens/account_page.dart';
 import 'package:food_guardian/screens/home_page.dart';
 
+import 'favorites_page.dart';
 import 'history_page.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -56,8 +57,9 @@ class _HomeScreenState extends State<HomeScreen> {
         /// Home page
         const HomePage(),
 
-        /// Notifications page
-        const Padding(
+        /// Favorites page
+        const FavoritesPage(),
+        /*const Padding(
           padding: EdgeInsets.all(8.0),
           child: Column(
             children: <Widget>[
@@ -77,9 +79,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-        ),
+        ),*/
 
-        /// Messages page
+        /// Scan page
         ListView.builder(
           reverse: true,
           itemCount: 2,

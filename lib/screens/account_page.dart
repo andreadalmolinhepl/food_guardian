@@ -32,6 +32,8 @@ class AccountPage extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const SizedBox(height: kVerticalPadding,),
+                  const Line(),
                   const SizedBox(height: kVerticalPaddingL,),
                   const FoodRestrictions(label: "Your allergies",),
                   const SizedBox(height: kVerticalPaddingS,),
@@ -41,6 +43,7 @@ class AccountPage extends StatelessWidget {
                   const SizedBox(height: kVerticalPadding,),
                   const Line(),
                   const SizedBox(height: kVerticalPadding,),
+
                   GestureDetector(
                     onTap: () { Navigator.pushNamed(context, "/settings"); },
                     child: const Row(
