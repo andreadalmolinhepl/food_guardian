@@ -55,7 +55,7 @@ Yuka est une application mobile qui scanne les produits alimentaires pour obteni
   - Interface améliorable
   - Dépendant d'une base de données
 
-<div style="display: flex;">
+<div style="display: flex; justify-content: center;">
     <img src="/assets/screenshots/yuka1.jpg" alt="Capture d'écran de l'application Yuka" height="500" style="margin-right: 10px;">
     <img src="/assets/screenshots/yuka2.jpg" alt="Capture d'écran de l'application Yuka" height="500">
 </div>
@@ -66,7 +66,11 @@ Yuka est une application mobile qui scanne les produits alimentaires pour obteni
 - **Points Faibles**:
   - Interface améliorable
   - Pauvre en fonctionnalités
-![Capture d'écran de l'Application Concurrente 2](lien_vers_capture_ecran_2)
+
+<div style="display: flex; justify-content: center;">
+    <img src="/assets/screenshots/ingredio1.jpg" alt="Capture d'écran de l'application Yuka" height="500" style="margin-right: 10px;">
+    <img src="/assets/screenshots/ingredio2.jpg" alt="Capture d'écran de l'application Yuka" height="500">
+</div>
 
 ## Public Cible
 
