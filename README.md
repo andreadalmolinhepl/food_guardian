@@ -2,7 +2,7 @@
 
 Food Guardian révolutionne votre expérience d'achat alimentaire en scannant, sécurisant et informant instantanément sur chaque produit pour des courses sans stress ni danger.
 
-## Structure du dépôt
+## Structure du dépôt 🛠️
 
 ~~~text
 food_guardian/
@@ -40,9 +40,9 @@ Cerise sur le gâteau, Food Guardian ne se contente pas de vous dire ce qu'il y 
 
 Avec Food Guardian, faire ses courses devient une aventure sécurisée, pleine de découvertes et sans mauvaise surprise.
 
-## Étude de l'existant
+## Étude de l'existant 🛒
 
-### Applications Concurrentes
+### Applications Concurrentes 
 
 #### Yuka
 Yuka est une application mobile qui scanne les produits alimentaires pour obtenir des informations claires sur l'impact sanitaire des produits que vous consommez.
@@ -63,6 +63,7 @@ Yuka est une application mobile qui scanne les produits alimentaires pour obteni
 #### Ingredio
 - **Points Forts**:
   - Focalisée sur les ingrédients
+  - Scan des ingrédients via OCR
 - **Points Faibles**:
   - Interface améliorable
   - Pauvre en fonctionnalités
@@ -72,21 +73,82 @@ Yuka est une application mobile qui scanne les produits alimentaires pour obteni
     <img src="/assets/screenshots/ingredio2.jpg" alt="Capture d'écran de l'application Yuka" height="500">
 </div>
 
-## Public Cible
+## Public Cible 📢
 
 Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur santé et de leur bien-être. Cette application est un incontournable pour les personnes aux prises avec des allergies et des intolérances alimentaires, offrant une tranquillité d'esprit lors des courses. Les familles préoccupées par la qualité des aliments qu'elles consomment trouveront en Food Guardian un allié précieux pour veiller à la sécurité et à la santé de leurs proches. Les voyageurs, soucieux de décoder les étiquettes à l'étranger, apprécieront la facilité avec laquelle l'application traduit les ingrédients. En somme, Food Guardian s'adresse à toute personne désireuse de consommer de manière éclairée, informée et sécurisée.
 
-## Récits Utilisateurs
+## Récits Utilisateurs 🧑🏽
 
-### [Nom du Persona 1]
-- En tant que [rôle/statut], je veux [fonctionnalité] afin de [justification].
-![Maquette de la Fonctionnalité](lien_vers_maquette)
+### Déscription des Personas
 
-### [Nom du Persona 2]
-- En tant que [rôle/statut], je veux [fonctionnalité] afin de [justification].
-![Maquette de la Fonctionnalité](lien_vers_maquette)
+- **Marc (utilisateur non identifié)** :
+  Marc est un jeune homme dynamique et curieux, passionné par la découverte de nouvelles technologies. Utilisateur occasionnel, il cherche avant tout une expérience utilisateur fluide et intuitive. Soucieux de sa santé, il souhaite obtenir rapidement des informations claires sur les produits alimentaires pour faire des choix éclairés, mais il n'est pas encore engagé dans une utilisation régulière de l'application.
 
-## État d'Avancement
+- **Maria (utilisateur identifié)** :
+  Maria est une professionnelle active et préoccupée par sa santé et son bien-être. Utilisatrice régulière de l'application, elle est consciente de ses allergies et intolérances alimentaires. Maria cherche à adapter au mieux les fonctionnalités de l'application à ses besoins spécifiques pour faciliter ses choix alimentaires au quotidien. Elle accorde de l'importance à une expérience personnalisée et à des informations précises pour prendre des décisions en toute confiance.
+
+
+### Enregistrement et profils des utilisateurs :
+
+- [ ] En tant que nouvel utilisateur, je souhaite créer un compte avec mon adresse électronique et mon mot de passe, afin de pouvoir personnaliser mes préférences en matière d'allergènes.
+- [ ] En tant qu'utilisateur, je souhaite modifier mon profil pour préciser mes allergies, intolérances et préférences alimentaires.
+- [ ] En tant qu'utilisateur, je souhaite réinitialiser mon mot de passe en cas d'oubli.
+
+### Lecteur de codes-barres :
+
+- [ ] En tant qu'utilisateur, je veux scanner le code-barres d'un produit alimentaire pour obtenir des informations détaillées.
+- [ ] En tant qu'utilisateur, je veux que le scanner fonctionne rapidement et avec précision, afin d'obtenir des résultats instantanés.
+- [ ] En tant qu'utilisateur, je veux que l'application reconnaisse et gère différents formats de codes-barres.
+
+### Détection des allergènes :
+
+- [ ] En tant qu'utilisateur allergique aux arachides, je veux que l'application m'alerte lorsqu'un produit scanné contient des arachides ou des ingrédients dérivés des arachides.
+- [ ] En tant qu'utilisateur souffrant d'une intolérance au lactose, je veux que l'application m'informe de la présence d'ingrédients contenant du lactose dans les produits scannés.
+- [ ] En tant qu'utilisateur ayant des préférences alimentaires spécifiques, je souhaite que l'application me permette de personnaliser les ingrédients que je considère comme des allergènes.
+
+### Détails du produit :
+
+- [ ] En tant qu'utilisateur, je veux voir la liste complète des ingrédients d'un produit scanné.
+- [ ] En tant qu'utilisateur, je veux voir les valeurs nutritionnelles d'un produit scanné.
+- [ ] En tant qu'utilisateur, je veux lire les commentaires et les évaluations des utilisateurs sur les produits afin de prendre des décisions éclairées.
+
+### Alertes utilisateur :
+
+- [ ] En tant qu'utilisateur, je veux recevoir des alertes immédiates lorsqu'un produit scanné contient des allergènes que je dois éviter.
+- [ ] En tant qu'utilisateur, je veux pouvoir supprimer les alertes après les avoir lues.
+- [ ] En tant qu'utilisateur, je veux avoir accès à l'historique des alertes passées.
+
+### Recherche et filtrage de produits :
+
+- [ ] En tant qu'utilisateur, je veux rechercher des produits par nom ou par marque.
+- [ ] En tant qu'utilisateur, je veux appliquer des filtres pour trouver des produits qui correspondent à mes préférences alimentaires.
+- [ ] En tant qu'utilisateur, je souhaite trier les résultats de la recherche en fonction de la pertinence, du prix ou des évaluations des utilisateurs.
+
+### Avis et évaluations des utilisateurs :
+
+- [ ] En tant qu'utilisateur, je veux laisser mon propre avis et ma propre évaluation sur un produit.
+- [ ] En tant qu'utilisateur, je veux lire ce que d'autres ont dit sur les produits qui m'intéressent.
+- [ ] En tant qu'utilisateur, je veux avoir la possibilité de signaler les avis inappropriés ou inexacts. 
+
+### Produits enregistrés :
+
+- [ ] En tant qu'utilisateur, je souhaite enregistrer des produits dans mon profil pour pouvoir m'y référer ultérieurement.
+- [ ] En tant qu'utilisateur, je veux pouvoir accéder facilement à ma liste de produits enregistrés.
+- [ ] En tant qu'utilisateur, je veux pouvoir supprimer des produits de ma liste lorsque je n'en ai plus besoin.
+
+### Recommandations :
+
+- [ ] En tant qu'utilisateur, je veux que l'application me suggère des produits qui correspondent à mes préférences en matière d'allergènes et à mes restrictions alimentaires.
+- [ ] En tant qu'utilisateur, je veux savoir pourquoi un produit spécifique m'est recommandé.
+
+### Paramètres :
+
+- [ ] En tant qu'utilisateur, je veux personnaliser les paramètres de l'application, tels que les notifications et les préférences linguistiques.
+- [ ] En tant qu'utilisateur, je veux gérer les informations de mon compte et les paramètres de confidentialité.
+- [ ] En tant qu'utilisateur, je veux contrôler les options d'accessibilité de l'application pour les adapter à mes besoins.
+
+<!--![Maquette de la Fonctionnalité](lien_vers_maquette)-->
+
 
 ### Fonctionnalité 1
 ![GIF Illustrant la Fonctionnalité 1](lien_vers_gif)
