@@ -1,8 +1,27 @@
-# Food Guardian
+# Food Guardian 😋
 
 Food Guardian révolutionne votre expérience d'achat alimentaire en scannant, sécurisant et informant instantanément sur chaque produit pour des courses sans stress ni danger.
 
 ## Structure du dépôt
+
+~~~text
+food_guardian/
+│
+├── lib/
+│   ├── screens/
+│   ├── styles/
+│   ├── utils/
+│   ├── widgets/
+│   │
+│   └── main.dart
+│
+├── assets/
+│   ├── icons/
+│   ├── images/
+│   ├── ...
+│
+└── android/
+~~~
 
 <!-- - `/maquettes`: Contient les maquettes visuelles de l'application. -->
 - `/lib`: Ce dossier est l'endroit où vous définissez les fonctionnalités de base de votre application. Il contient les fichiers **main.dart**, **routes.dart**, et le fichier automatiquement généré **firebase_options.dart**. En outre il contient une série de dossiers:
@@ -36,15 +55,17 @@ Yuka est une application mobile qui scanne les produits alimentaires pour obteni
   - Interface améliorable
   - Dépendant d'une base de données
 
-<img src="/assets/screenshots/yuka.jpg" alt="Capture d'écran de l'Application Concurrente 1" width="300" height="200">
+<div style="display: flex;">
+    <img src="/assets/screenshots/yuka1.jpg" alt="Capture d'écran de l'application Yuka" height="500" style="margin-right: 10px;">
+    <img src="/assets/screenshots/yuka2.jpg" alt="Capture d'écran de l'application Yuka" height="500">
+</div>
 
 #### Ingredio
 - **Points Forts**:
-  - Avantage 1.
-  - Avantage 2.
+  - Focalisée sur les ingrédients
 - **Points Faibles**:
-  - Inconvénient 1.
-  - Inconvénient 2.
+  - Interface améliorable
+  - Pauvre en fonctionnalités
 ![Capture d'écran de l'Application Concurrente 2](lien_vers_capture_ecran_2)
 
 ## Public Cible
@@ -71,5 +92,4 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 
 ## Documentation pour les Développeurs
 
-Expliquez brièvement comment compiler l'application et ses dépendances.
-
+[WIP]
