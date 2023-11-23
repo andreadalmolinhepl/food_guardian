@@ -2,6 +2,27 @@
 
 Food Guardian révolutionne votre expérience d'achat alimentaire en scannant, sécurisant et informant instantanément sur chaque produit pour des courses sans stress ni danger.
 
+# Table des matières 📖
+
+1. [Food Guardian](#food-guardian-)
+2. [Structure du dépôt](#structure-du-dépôt-)
+3. [Présentation de l'application](#présentation-de-lapplication)
+4. [Étude de l'existant](#étude-de-lexistant-)
+   - [Applications Concurrentes](#applications-concurrentes)
+5. [Public Cible](#public-cible-)
+6. [Récits Utilisateurs](#récits-utilisateurs-)
+   - [Déscription des Personas](#déscription-des-personas)
+   - [Enregistrement et profils des utilisateurs](#enregistrement-et-profils-des-utilisateurs-)
+   - [Lecteur de codes-barres](#lecteur-de-codes-barres-)
+   - [Détection des allergènes](#détection-des-allergènes-)
+   - [Détails du produit](#détails-du-produit-)
+   - [Alertes utilisateur](#alertes-utilisateur-)
+   - [Recherche et filtrage de produits](#recherche-et-filtrage-de-produits-)
+   - [Avis et évaluations des utilisateurs](#avis-et-évaluations-des-utilisateurs-)
+   - [Produits enregistrés](#produits-enregistrés-)
+   - [Recommandations](#recommandations-)
+   - [Paramètres](#paramètres-)
+
 ## Structure du dépôt 🛠️
 
 ~~~text
