@@ -176,6 +176,8 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 
 ## 📈 État d'Avancement
 
+[WIP]
+
 ## ⚙️ Compilation de l'Application
 
 [WIP]
