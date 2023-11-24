@@ -19,7 +19,7 @@ Food Guardian révolutionne votre expérience d'achat alimentaire en scannant, s
    - [Alertes utilisateur](#alertes-utilisateur-)
    - [Recherche et filtrage de produits](#recherche-et-filtrage-de-produits-)
    - [Avis et évaluations des utilisateurs](#avis-et-évaluations-des-utilisateurs-)
-   - [Produits enregistrés](#produits-enregistrés-)
+   - [Produits favoris](#produits-favoris)
    - [Recommandations](#recommandations-)
    - [Paramètres](#paramètres-)
 
@@ -133,6 +133,7 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 - [ ] En tant qu'utilisateur, je veux voir les valeurs nutritionnelles d'un produit scanné.
 - [ ] En tant qu'utilisateur, je veux lire les commentaires et les évaluations des utilisateurs sur les produits afin de prendre des décisions éclairées.
 
+<!--
 ### Alertes utilisateur :
 
 - [ ] En tant qu'utilisateur, je veux recevoir des alertes immédiates lorsqu'un produit scanné contient des allergènes que je dois éviter.
@@ -150,16 +151,16 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 - [ ] En tant qu'utilisateur, je veux laisser mon propre avis et ma propre évaluation sur un produit.
 - [ ] En tant qu'utilisateur, je veux lire ce que d'autres ont dit sur les produits qui m'intéressent.
 - [ ] En tant qu'utilisateur, je veux avoir la possibilité de signaler les avis inappropriés ou inexacts. 
+-->
+### Produits favoris :
 
-### Produits enregistrés :
-
-- [ ] En tant qu'utilisateur, je souhaite enregistrer des produits dans mon profil pour pouvoir m'y référer ultérieurement.
-- [ ] En tant qu'utilisateur, je veux pouvoir accéder facilement à ma liste de produits enregistrés.
+- [ ] En tant qu'utilisateur, je souhaite enregistrer mes produits favoris dans mon profil pour pouvoir m'y référer ultérieurement.
+- [ ] En tant qu'utilisateur, je veux pouvoir accéder facilement à ma liste de produits favoris.
 - [ ] En tant qu'utilisateur, je veux pouvoir supprimer des produits de ma liste lorsque je n'en ai plus besoin.
 
 ### Recommandations :
 
-- [ ] En tant qu'utilisateur, je veux que l'application me suggère des produits qui correspondent à mes préférences en matière d'allergènes et à mes restrictions alimentaires.
+- [ ] En tant qu'utilisateur, je veux que l'application me suggère des produits alternatifs qui correspondent à mes préférences en matière d'allergènes et à mes restrictions alimentaires.
 - [ ] En tant qu'utilisateur, je veux savoir pourquoi un produit spécifique m'est recommandé.
 
 ### Paramètres :
