@@ -5,12 +5,12 @@ Food Guardian révolutionne votre expérience d'achat alimentaire en scannant, s
 # Table des matières 📖
 
 1. [Food Guardian 😋](#food-guardian-)
-2. [Structure du dépôt 🛠️](#structure-du-dépôt-)
-3. [Présentation de l'application](#présentation-de-lapplication)
-4. [Étude de l'existant 🛒](#étude-de-lexistant-)
+2. [📁 Présentation des Principaux Dossiers](#-présentation-des-principaux-dossiers)
+3. [🚀 Présentation de l'Application](#-présentation-de-lapplication)
+4. [🌐 Étude de l'Existant](#-étude-de-lexistant)
    - [Applications Concurrentes](#applications-concurrentes-)
-5. [Public Cible 📢](#public-cible-)
-6. [Récits Utilisateurs 🧑🏽](#récits-utilisateurs-)
+5. [🎯 Public Cible](#-public-cible)
+6. [📋 Fonctionnalités](#-fonctionnalités)
    - [Déscription des Personas](#déscription-des-personas)
    - [Enregistrement et profils des utilisateurs](#enregistrement-et-profils-des-utilisateurs-)
    - [Lecteur de codes-barres](#lecteur-de-codes-barres-)
@@ -22,8 +22,11 @@ Food Guardian révolutionne votre expérience d'achat alimentaire en scannant, s
    - [Produits favoris](#produits-favoris-)
    - [Recommandations](#recommandations-)
    - [Paramètres](#paramètres-)
+7. [📈 État d'Avancement](#-état-davancement)
+8. [⚙️ Compilation de l'Application](#-compilation-de-lapplication)
 
-## Structure du dépôt 🛠️
+
+## 📁 Présentation des Principaux Dossiers
 
 ~~~text
 food_guardian/
@@ -53,7 +56,7 @@ food_guardian/
 - `/assets`: 
 - `/android`:
 
-## Présentation de l'application
+## 🚀 Présentation de l'Application
 
 Bienvenue dans l'univers de Food Guardian, votre guide incontournable pour des achats alimentaires en toute sérénité ! Imaginez-vous avec un super scanner de code-barres qui vous dévoile instantanément les secrets de chaque produit que vous touchez. Pour ceux qui jonglent avec des intolérances ou des allergies, c'est une aubaine. D'un simple scan, notre appli se met en quête des allergènes et des ingrédients qui pourraient vous jouer des tours. Mais ce n'est pas tout : en créant votre profil personnalisé, vous dites adieu aux indésirables dans votre assiette. Vous recevez des alertes sur-le-champ dès qu'un produit pointé du doigt contient ce que vous voulez éviter.
 
@@ -61,7 +64,7 @@ Cerise sur le gâteau 🍰, Food Guardian ne se contente pas de vous dire ce qu'
 
 Avec Food Guardian, faire ses courses devient une aventure sécurisée, pleine de découvertes et sans mauvaise surprise.
 
-## Étude de l'existant 🛒
+## 🌐 Étude de l'Existant
 
 ### Applications Concurrentes 
 
@@ -94,11 +97,11 @@ Yuka est une application mobile qui scanne les produits alimentaires pour obteni
     <img src="/assets/screenshots/ingredio2.jpg" alt="Capture d'écran de l'application Yuka" height="500">
 </div>
 
-## Public Cible 📢
+## 🎯 Public Cible
 
 Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur santé et de leur bien-être. Cette application est un incontournable pour les personnes aux prises avec des allergies et des intolérances alimentaires, offrant une tranquillité d'esprit lors des courses. Les familles préoccupées par la qualité des aliments qu'elles consomment trouveront en Food Guardian un allié précieux pour veiller à la sécurité et à la santé de leurs proches. Les voyageurs, soucieux de décoder les étiquettes à l'étranger, apprécieront la facilité avec laquelle l'application traduit les ingrédients. En somme, Food Guardian s'adresse à toute personne désireuse de consommer de manière éclairée, informée et sécurisée.
 
-## Récits Utilisateurs 🧑🏽
+## 📋 Fonctionnalités
 
 ### Déscription des Personas
 
@@ -171,13 +174,8 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 
 <!--![Maquette de la Fonctionnalité](lien_vers_maquette)-->
 
+## 📈 État d'Avancement
 
-### Fonctionnalité 1
-![GIF Illustrant la Fonctionnalité 1](lien_vers_gif)
-
-### Fonctionnalité 2
-![GIF Illustrant la Fonctionnalité 2](lien_vers_gif)
-
-## Documentation pour les Développeurs
+## ⚙️ Compilation de l'Application
 
 [WIP]
