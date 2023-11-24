@@ -4,22 +4,22 @@ Food Guardian révolutionne votre expérience d'achat alimentaire en scannant, s
 
 # Table des matières 📖
 
-1. [Food Guardian](#food-guardian-)
-2. [Structure du dépôt](#structure-du-dépôt-)
+1. [Food Guardian 😋](#food-guardian-)
+2. [Structure du dépôt 🛠️](#structure-du-dépôt-)
 3. [Présentation de l'application](#présentation-de-lapplication)
-4. [Étude de l'existant](#étude-de-lexistant-)
-   - [Applications Concurrentes](#applications-concurrentes)
-5. [Public Cible](#public-cible-)
-6. [Récits Utilisateurs](#récits-utilisateurs-)
+4. [Étude de l'existant 🛒](#étude-de-lexistant-)
+   - [Applications Concurrentes](#applications-concurrentes-)
+5. [Public Cible 📢](#public-cible-)
+6. [Récits Utilisateurs 🧑🏽](#récits-utilisateurs-)
    - [Déscription des Personas](#déscription-des-personas)
    - [Enregistrement et profils des utilisateurs](#enregistrement-et-profils-des-utilisateurs-)
    - [Lecteur de codes-barres](#lecteur-de-codes-barres-)
    - [Détection des allergènes](#détection-des-allergènes-)
    - [Détails du produit](#détails-du-produit-)
-   - [Alertes utilisateur](#alertes-utilisateur-)
+   <!--- [Alertes utilisateur](#alertes-utilisateur-)
    - [Recherche et filtrage de produits](#recherche-et-filtrage-de-produits-)
-   - [Avis et évaluations des utilisateurs](#avis-et-évaluations-des-utilisateurs-)
-   - [Produits favoris](#produits-favoris)
+   - [Avis et évaluations des utilisateurs](#avis-et-évaluations-des-utilisateurs-)-->
+   - [Produits favoris](#produits-favoris-)
    - [Recommandations](#recommandations-)
    - [Paramètres](#paramètres-)
 
@@ -57,7 +57,7 @@ food_guardian/
 
 Bienvenue dans l'univers de Food Guardian, votre guide incontournable pour des achats alimentaires en toute sérénité ! Imaginez-vous avec un super scanner de code-barres qui vous dévoile instantanément les secrets de chaque produit que vous touchez. Pour ceux qui jonglent avec des intolérances ou des allergies, c'est une aubaine. D'un simple scan, notre appli se met en quête des allergènes et des ingrédients qui pourraient vous jouer des tours. Mais ce n'est pas tout : en créant votre profil personnalisé, vous dites adieu aux indésirables dans votre assiette. Vous recevez des alertes sur-le-champ dès qu'un produit pointé du doigt contient ce que vous voulez éviter.
 
-Cerise sur le gâteau, Food Guardian ne se contente pas de vous dire ce qu'il y a dans vos courses, il vous donne aussi un maximum d'infos sur chaque produit, des avis de ceux qui l'ont testé et des recommandations sur mesure. Fini les prises de tête dans les rayons, même à l'étranger ! Notre appli traduit les étiquettes pour vous, pour que vous fassiez vos emplettes l'esprit léger. Et si jamais un produit refuse de se dévoiler dans la base de données, pas de panique : prenez une photo des ingrédients et Food Guardian prend la relève pour vous assurer que rien de dangereux ne se cache dans votre panier.
+Cerise sur le gâteau 🍰, Food Guardian ne se contente pas de vous dire ce qu'il y a dans vos courses, il vous donne aussi un maximum d'infos sur chaque produit, des avis de ceux qui l'ont testé et des recommandations sur mesure. Fini les prises de tête dans les rayons, même à l'étranger ! Notre appli traduit les étiquettes pour vous, pour que vous fassiez vos emplettes l'esprit léger. Et si jamais un produit refuse de se dévoiler dans la base de données, pas de panique : prenez une photo des ingrédients et Food Guardian prend la relève pour vous assurer que rien de dangereux ne se cache dans votre panier.
 
 Avec Food Guardian, faire ses courses devient une aventure sécurisée, pleine de découvertes et sans mauvaise surprise.
 
