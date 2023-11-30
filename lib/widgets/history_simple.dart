@@ -8,17 +8,20 @@ class HistorySimple extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
-      child: ListTile(
-        leading: Image(
-          image: AssetImage("assets/img/pandistelle.png"),
-          height: kProfileSize,
-          fit: BoxFit.cover,
-        ),
-        title: Text('Canned corn'),
-        subtitle: Text('I fucking hate corn'),
-        trailing: Icon(
-          Icons.arrow_forward_rounded,
+    return GestureDetector(
+      onTap: () { Navigator.pushNamed(context, "/productDetail"); },
+      child: const Card(
+        child: ListTile(
+          leading: Image(
+            image: AssetImage("assets/img/pandistelle.png"),
+            height: kProfileSize,
+            fit: BoxFit.cover,
+          ),
+          title: Text('Canned corn'),
+          subtitle: Text('I fucking hate corn'),
+          trailing: Icon(
+            Icons.arrow_forward_rounded,
+          ),
         ),
       ),
     );
