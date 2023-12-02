@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_guardian/styles/spacings.dart';
 
 import '../styles/font.dart';
 
@@ -11,39 +12,12 @@ class TestPage extends StatefulWidget {
   State<TestPage> createState() => _TestPageState();
 }
 
-class Step {
-  Step(
-      this.title,
-      this.body,
-      [this.isExpanded = false]
-      );
-  String title;
-  String body;
-  bool isExpanded;
-}
-
-List<Step> getSteps() {
-  return [
-    Step('Step 0: Espérer que ça marche', 'Install Flutter development tools according to the official documentation.'),
-    Step('Step 1: Essayer', 'Open your terminal, run `flutter create <project_name>` to create a new project.'),
-    Step('Step 2: Pleurer', 'Change your terminal directory to the project directory, enter `flutter run`.'),
-    Step('Step 3: Pleurer', 'Change your terminal directory to the project directory, enter `flutter run`.'),
-    Step('Step 4: Pleurer', 'Change your terminal directory to the project directory, enter `flutter run`.'),
-    Step('Step 5: Pleurer', 'Change your terminal directory to the project directory, enter `flutter run`.'),
-    Step('Step 6: Pleurer', 'Change your terminal directory to the project directory, enter `flutter run`.'),
-    Step('Step 7: Pleurer', 'Change your terminal directory to the project directory, enter `flutter run`.'),
-    Step('Step 8: Pleurer', 'Change your terminal directory to the project directory, enter `flutter run`.'),
-    Step('Step 9: Pleurer', 'Change your terminal directory to the project directory, enter `flutter run`.'),
-  ];
-}
-
 class _TestPageState extends State<TestPage> {
-  late List<bool> _isOpen;
-  final List<Step> _steps = getSteps();
+  late bool _ingredientsIsOpen;
 
   @override
   void initState() {
-    _isOpen = List.filled(_steps.length, false);
+    _ingredientsIsOpen = false;
     super.initState();
   }
 
@@ -54,45 +28,35 @@ class _TestPageState extends State<TestPage> {
         child: SafeArea(
           child: Column(
             children: [
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-
               ExpansionPanelList(
-                children: _steps.asMap().entries.map((entry) {
-                  int index = entry.key;
-                  Step step = entry.value;
-                  return ExpansionPanel(
-                    headerBuilder: (BuildContext context, bool isExpanded) {
-                      return ListTile(
-                        title: Text(step.title),
-                      );
-                    },
-                    body: ListTile(
-                      title: Text(step.body),
-                    ),
-                    isExpanded: _isOpen[index],
-                  );
-                }).toList(),
+                children: [
+                  ExpansionPanel(
+                      headerBuilder: (BuildContext context, bool isExpanded) {
+                        return const Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                              child: Text(
+                                "All ingredients",
+                                style: kTextSideBar,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                      body: const Center(child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingL, vertical: kVerticalPaddingS),
+                        child: Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", style: kHintStyle,),
+                      )),
+                      isExpanded: _ingredientsIsOpen)
+                ],
                 expansionCallback: (int index, bool isExpanded) {
                   setState(() {
-                    _isOpen[index] = isExpanded;
+                    _ingredientsIsOpen = !_ingredientsIsOpen;
                   });
                 },
               ),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
-              const Text("Other allergens", style: kTextSideBar,),
             ],
           ),
         ),

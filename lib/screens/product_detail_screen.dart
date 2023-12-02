@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_guardian/widgets/ingredients_expansion_list.dart';
 
 import '../styles/font.dart';
 import '../styles/spacings.dart';
@@ -36,12 +37,14 @@ List<Step> getSteps() {
 
 class _ProductDetailState extends State<ProductDetail> {
   late List<bool> _isOpen;
+  late bool _ingredientsIsOpen;
 
   final List<Step> _steps = getSteps();
 
   @override
   void initState() {
     _isOpen = List.filled(_steps.length, false);
+    _ingredientsIsOpen = false;
     super.initState();
   }
 
@@ -150,8 +153,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 ),
 
 
-                const Text("All ingredients", style: kTextSideBar,),
-
+                const IngredientsExpansionList(),
 
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
