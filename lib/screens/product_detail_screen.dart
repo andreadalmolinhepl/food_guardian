@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:food_guardian/widgets/allergens_expanded_list.dart';
 import 'package:food_guardian/widgets/ingredients_expansion_list.dart';
+import 'package:food_guardian/widgets/nutritional_preferences_list.dart';
 
 import '../styles/font.dart';
 import '../styles/spacings.dart';
@@ -16,37 +18,8 @@ class ProductDetail extends StatefulWidget {
   State<ProductDetail> createState() => _ProductDetailState();
 }
 
-class Step {
-  Step(
-      this.title,
-      this.body,
-      [this.isExpanded = false]
-      );
-  String title;
-  String body;
-  bool isExpanded;
-}
-
-List<Step> getSteps() {
-  return [
-    Step('Step 0: Espérer que ça marche', 'Install Flutter development tools according to the official documentation.'),
-    Step('Step 1: Essayer', 'Open your terminal, run `flutter create <project_name>` to create a new project.'),
-    Step('Step 2: Pleurer', 'Change your terminal directory to the project directory, enter `flutter run`.'),
-  ];
-}
-
 class _ProductDetailState extends State<ProductDetail> {
-  late List<bool> _isOpen;
-  late bool _ingredientsIsOpen;
-
-  final List<Step> _steps = getSteps();
-
-  @override
-  void initState() {
-    _isOpen = List.filled(_steps.length, false);
-    _ingredientsIsOpen = false;
-    super.initState();
-  }
+  bool _isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +31,11 @@ class _ProductDetailState extends State<ProductDetail> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Padding(
-                    padding: EdgeInsets.all(8.0), child: ArrowBack()),
-                const Row(
+                const ArrowBack(),
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Expanded(
+                    const Expanded(
                       flex: 2,
                       child: Padding(
                         padding: EdgeInsets.all(8.0),
@@ -73,15 +45,18 @@ class _ProductDetailState extends State<ProductDetail> {
                             fit: BoxFit.contain),
                       ),
                     ),
-                    Expanded(
+                    const Expanded(
                       flex: 3,
                       child: Padding(
                         padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text("Pan di Stelle"),
-                            Text("Barilla"),
+                            Padding(
+                              padding: EdgeInsets.symmetric(vertical: kVerticalPaddingS),
+                              child: Text("Pan di Stelle", style: kTitleHome,),
+                            ),
+                            Text("Barilla", style: kSectionTitle,),
                           ],
                         ),
                       ),
@@ -89,8 +64,15 @@ class _ProductDetailState extends State<ProductDetail> {
                     Expanded(
                       flex: 1,
                       child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Icon(Icons.favorite_border),
+                        padding: const EdgeInsets.all(8.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _isFavorite = !_isFavorite;
+                            });
+                          },
+                            child: _isFavorite ? const Icon(Icons.favorite, color: Colors.red,) : const Icon(Icons.favorite_border, color: Colors.red,)
+                        ),
                       ),
                     ),
                   ],
@@ -118,31 +100,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 const Text("Your allergens", style: kTextSideBar,),
 
 
-                Container(
-                  padding: const EdgeInsets.symmetric(vertical: kVerticalPadding),
-                  child: ExpansionPanelList(
-                    children: _steps.asMap().entries.map((entry) {
-                      int index = entry.key;
-                      Step step = entry.value;
-                      return ExpansionPanel(
-                        headerBuilder: (BuildContext context, bool isExpanded) {
-                          return ListTile(
-                            title: Text(step.title),
-                          );
-                        },
-                        body: ListTile(
-                          title: Text(step.body),
-                        ),
-                        isExpanded: _isOpen[index],
-                      );
-                    }).toList(),
-                    expansionCallback: (int index, bool isExpanded) {
-                      setState(() {
-                        _isOpen[index] = isExpanded;
-                      });
-                    },
-                  ),
-                ),
+                const AllergensExpandedList(),
 
 
                 const Text("Other allergens", style: kTextSideBar,),
@@ -155,26 +113,36 @@ class _ProductDetailState extends State<ProductDetail> {
 
                 const IngredientsExpansionList(),
 
-                const Row(
+                const SizedBox(height: kVerticalPadding,),
+
+                Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text("Nutriscore", style: kTextSideBar,),
+                    const Text("Nutriscore", style: kTextSideBar,),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Image(
-                          image: AssetImage("assets/img/nutriscoreA.png"),
-                          height: 40,
-                          fit: BoxFit.cover,
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                          child: Image(
+                            image: AssetImage("assets/img/nutriscoreA.png"),
+                            height: 40,
+                            fit: BoxFit.cover,
+                          ),
                         ),
-                        Icon(Icons.arrow_forward)
+                        GestureDetector(
+                            onTap: () { Navigator.pushNamed(context, "/nutriscoreInfo"); },
+                            child: const Icon(Icons.arrow_forward)
+                        )
                       ],
                     ),
                   ],
                 ),
 
+                const SizedBox(height: kVerticalPadding,),
 
                 const Text("Nutritional preferences", style: kTextSideBar,),
+                const NutritionalPreferences(),
 
               ],
             ),
