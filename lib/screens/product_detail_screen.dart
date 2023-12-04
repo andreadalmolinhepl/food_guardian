@@ -99,7 +99,6 @@ class _ProductDetailState extends State<ProductDetail> {
                 const SizedBox(height: kVerticalPaddingL,),
                 const Text("Your allergens", style: kTextSideBar,),
 
-
                 const AllergensExpandedList(),
 
 
