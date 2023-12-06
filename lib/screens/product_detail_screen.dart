@@ -3,14 +3,16 @@ import 'package:food_guardian/widgets/allergens_expanded_list.dart';
 import 'package:food_guardian/widgets/ingredients_expansion_list.dart';
 import 'package:food_guardian/widgets/nutritional_preferences_list.dart';
 
+import '../model/product.dart';
 import '../styles/font.dart';
 import '../styles/spacings.dart';
 import '../widgets/arrow_back.dart';
 
 class ProductDetail extends StatefulWidget {
-  static const String routeName = "/productDetail";
+  final Product product;
 
   const ProductDetail({
+    required this.product,
     super.key
   });
 
@@ -35,28 +37,28 @@ class _ProductDetailState extends State<ProductDetail> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    const Expanded(
+                    Expanded(
                       flex: 2,
                       child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Image(
-                            image: AssetImage("assets/img/pandistelle.png"),
-                            height: kProfileSize,
-                            fit: BoxFit.contain),
+                        padding: const EdgeInsets.all(8.0),
+                        child: Image.network(
+                          widget.product.product.imageUrl,
+                          height: kProfileSize,
+                          fit: BoxFit.contain),
                       ),
                     ),
-                    const Expanded(
+                    Expanded(
                       flex: 3,
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: EdgeInsets.symmetric(vertical: kVerticalPaddingS),
-                              child: Text("Pan di Stelle", style: kTitleHome,),
+                              padding: const EdgeInsets.symmetric(vertical: kVerticalPaddingS),
+                              child: Text(widget.product.product.productName, style: kTitleHome,),
                             ),
-                            Text("Barilla", style: kSectionTitle,),
+                            FittedBox(child: Text("widget.product.product.brand", style: kSectionTitle,)),
                           ],
                         ),
                       ),
@@ -101,7 +103,6 @@ class _ProductDetailState extends State<ProductDetail> {
 
                 const AllergensExpandedList(),
 
-
                 const Text("Other allergens", style: kTextSideBar,),
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: kVerticalPaddingL),
@@ -110,7 +111,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 ),
 
 
-                const IngredientsExpansionList(),
+                IngredientsExpansionList(ingredientList: "widget.product.product.ingredientsText"),
 
                 const SizedBox(height: kVerticalPadding,),
 
@@ -121,10 +122,10 @@ class _ProductDetailState extends State<ProductDetail> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
                           child: Image(
-                            image: AssetImage("assets/img/nutriscoreA.png"),
+                            image: AssetImage("assets/img/nutriscore_${widget.product.product.nutriscoreGrade}.png"),
                             height: 40,
                             fit: BoxFit.cover,
                           ),
@@ -138,7 +139,7 @@ class _ProductDetailState extends State<ProductDetail> {
                   ],
                 ),
 
-                const SizedBox(height: kVerticalPadding,),
+                const SizedBox(height: kVerticalPaddingL,),
 
                 const Text("Nutritional preferences", style: kTextSideBar,),
                 const NutritionalPreferences(),

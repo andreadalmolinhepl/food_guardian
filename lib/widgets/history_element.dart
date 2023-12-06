@@ -76,7 +76,7 @@ class HistoryElement extends StatelessWidget {
                                     padding: EdgeInsets.all(8.0),
                                     child: Center(
                                         child: Image(
-                                            image: AssetImage("assets/img/nutriscoreA.png"),
+                                            image: AssetImage("assets/img/nutriscore_a.png"),
                                             height: kProfileSize,
                                             fit: BoxFit.contain)
                                     ),

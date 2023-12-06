@@ -8,7 +8,10 @@ import 'package:food_guardian/widgets/main_button.dart';
 class HomePage extends StatelessWidget {
   final Function(int) onPageChanged;
 
-  const HomePage({Key? key, required this.onPageChanged}) : super(key: key);
+  final Future<void> Function() scanBarcodeRequest;
+
+
+  const HomePage({Key? key, required this.onPageChanged, required this.scanBarcodeRequest}) : super(key: key);
 
 
   @override
@@ -39,11 +42,16 @@ class HomePage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle
+                            GestureDetector(
+                              onTap: () {
+                                scanBarcodeRequest();
+                              },
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                    shape: BoxShape.circle
+                                ),
+                                child: const Icon(Icons.add_circle_rounded, size: 150, color: Colors.grey,),
                               ),
-                              child: const Icon(Icons.add_circle_rounded, size: 150, color: Colors.grey,),
                             ),
                           ],
                         ),

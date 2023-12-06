@@ -15,7 +15,6 @@ Map<String, WidgetBuilder> routes = {
   RegisterScreen.routeName : (context) => const RegisterScreen(),
   HomeScreen.routeName : (context) => const HomeScreen(),
   SettingsScreen.routeName : (context) => const SettingsScreen(),
-  ProductDetail.routeName : (context) => const ProductDetail(),
   TestPage.routeName : (context) => const TestPage(),
   NutriscoreInformation.routeName : (context) => const NutriscoreInformation(),
 };

@@ -3,7 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:food_guardian/screens/account_page.dart';
 import 'package:food_guardian/screens/home_page.dart';
+import 'package:food_guardian/screens/product_detail_screen.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
+import '../model/product.dart';
 import '../styles/spacings.dart';
 import 'favorites_page.dart';
 import 'history_page.dart';
@@ -35,14 +39,20 @@ class _HomeScreenState extends State<HomeScreen> {
       barcodeScanRes = 'Failed to get platform version.';
     }
 
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
+    var url = Uri.parse('https://world.openfoodfacts.org/api/v0/product/$barcodeScanRes?fields=product_name,nutriscore_grade,allergens,ingredients_text,traces,image_url,brands');
+    var jsonString = await http.read(url);
 
-    setState(() {
-      _scanBarcode = barcodeScanRes;
-    });
+    Map<String, dynamic> jsonMap = json.decode(jsonString);
+    Product product = Product.fromJson(jsonMap);
+
+    if (context.mounted) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ProductDetail(product: product),
+        ),
+      );
+    }
   }
 
   void changePageIndex(int newIndex) {
@@ -58,10 +68,13 @@ class _HomeScreenState extends State<HomeScreen> {
         height: kNavigationBarHeight,
         onDestinationSelected: (int index) {
           setState(() {
-            currentPageIndex = index;
-            if (index == 2) { // Check if Scan page is selected
-              scanBarcodeNormal(); // Call your method here
+            if (index == 2) {
+              scanBarcodeNormal();
+              return;
             }
+            setState(() {
+              currentPageIndex = index;
+            });
           });
         },
         indicatorColor: Colors.amber,
@@ -92,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: <Widget>[
         /// Home page
-        HomePage(onPageChanged: changePageIndex),
+        HomePage(onPageChanged: changePageIndex, scanBarcodeRequest: scanBarcodeNormal),
 
         /// Favorites page
         const FavoritesPage(),
