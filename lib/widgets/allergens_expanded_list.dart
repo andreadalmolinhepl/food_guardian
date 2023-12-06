@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:food_guardian/model/allergen.dart';
 import 'package:food_guardian/styles/font.dart';
 
 import '../styles/spacings.dart';
 
 class AllergensExpandedList extends StatefulWidget {
-  const AllergensExpandedList({super.key});
+  final List<Allergen> allergenList;
+
+  const AllergensExpandedList({
+    required this.allergenList,
+    super.key
+  });
 
   @override
   State<AllergensExpandedList> createState() => _AllergensExpandedListState();

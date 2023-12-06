@@ -6,13 +6,11 @@ import '../styles/spacings.dart';
 class IngredientsExpansionList extends StatefulWidget {
   final String ingredientList;
 
-  const IngredientsExpansionList({
-    required this.ingredientList,
-    super.key
-  });
+  const IngredientsExpansionList({required this.ingredientList, super.key});
 
   @override
-  State<IngredientsExpansionList> createState() => _IngredientsExpansionListState();
+  State<IngredientsExpansionList> createState() =>
+      _IngredientsExpansionListState();
 }
 
 class _IngredientsExpansionListState extends State<IngredientsExpansionList> {
@@ -34,7 +32,8 @@ class _IngredientsExpansionListState extends State<IngredientsExpansionList> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: kHorizontalPadding),
                     child: Text(
                       "All ingredients",
                       style: kTextSideBar,
@@ -43,9 +42,19 @@ class _IngredientsExpansionListState extends State<IngredientsExpansionList> {
                 ],
               );
             },
-            body: Center(child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: kHorizontalPaddingL, vertical: kVerticalPaddingS),
-              child: Text(widget.ingredientList, style: kHintStyle,),
+            body: Center(
+                child: Padding(
+              padding: const EdgeInsets.symmetric(
+                  horizontal: kHorizontalPaddingL, vertical: kVerticalPaddingS),
+              child: widget.ingredientList == ""
+                  ? const Text(
+                      "No ingredients found for this product",
+                      style: kHintStyle,
+                    )
+                  : Text(
+                      widget.ingredientList,
+                      style: kHintStyle,
+                    ),
             )),
             isExpanded: _ingredientsIsOpen)
       ],

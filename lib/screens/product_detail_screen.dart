@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_guardian/widgets/allergens_expanded_list.dart';
-import 'package:food_guardian/widgets/ingredients_expansion_list.dart';
+import 'package:food_guardian/widgets/ingredients_expanded_list.dart';
 import 'package:food_guardian/widgets/nutritional_preferences_list.dart';
 
 import '../model/product.dart';
@@ -101,7 +101,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 const SizedBox(height: kVerticalPaddingL,),
                 const Text("Your allergens", style: kTextSideBar,),
 
-                const AllergensExpandedList(),
+                AllergensExpandedList(allergenList: widget.product.product.allergens,),
 
                 const Text("Other allergens", style: kTextSideBar,),
                 const Padding(
@@ -110,8 +110,7 @@ class _ProductDetailState extends State<ProductDetail> {
                       child: Text("No other allergens found", style: kHintStyle,)),
                 ),
 
-
-                IngredientsExpansionList(ingredientList: "widget.product.product.ingredientsText"),
+                IngredientsExpansionList(ingredientList: widget.product.product.ingredientsText),
 
                 const SizedBox(height: kVerticalPadding,),
 
