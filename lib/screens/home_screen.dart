@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> scanBarcodeNormal() async {
-    String barcodeScanRes;
+    /*String barcodeScanRes;
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
@@ -37,9 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
       debugPrint(barcodeScanRes);
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
-    }
+    }*/
 
-    var url = Uri.parse('https://world.openfoodfacts.org/api/v0/product/$barcodeScanRes?fields=product_name,nutriscore_grade,allergens,ingredients_text,traces,image_url,brands');
+    var url = Uri.parse('https://world.openfoodfacts.org/api/v0/product/80050834?fields=product_name,nutriscore_grade,allergens,ingredients_text,traces,image_url,brands');
     var jsonString = await http.read(url);
 
     Map<String, dynamic> jsonMap = json.decode(jsonString);

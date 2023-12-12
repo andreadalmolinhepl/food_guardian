@@ -11,10 +11,7 @@ import '../widgets/arrow_back.dart';
 class ProductDetail extends StatefulWidget {
   final Product product;
 
-  const ProductDetail({
-    required this.product,
-    super.key
-  });
+  const ProductDetail({required this.product, super.key});
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
@@ -25,11 +22,14 @@ class _ProductDetailState extends State<ProductDetail> {
 
   @override
   Widget build(BuildContext context) {
+    final validGrades = ['a', 'b', 'c', 'd', 'e'];
+
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
+            padding: const EdgeInsets.symmetric(
+                horizontal: kHorizontalPadding, vertical: kVerticalPadding),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -41,24 +41,34 @@ class _ProductDetailState extends State<ProductDetail> {
                       flex: 2,
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Image.network(
-                          widget.product.product.imageUrl,
-                          height: kProfileSize,
-                          fit: BoxFit.contain),
+                        child: Image.network(widget.product.product.imageUrl,
+                            height: kProfileSize, fit: BoxFit.contain),
                       ),
                     ),
                     Expanded(
                       flex: 3,
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: kHorizontalPadding),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsets.symmetric(vertical: kVerticalPaddingS),
-                              child: Text(widget.product.product.productName, style: kTitleHome,),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: kVerticalPaddingS),
+                              child: Text(
+                                widget.product.product.productName,
+                                style: kTitleHome,
+                              ),
                             ),
-                            FittedBox(child: Text("widget.product.product.brand", style: kSectionTitle,)),
+                            FittedBox(
+                                child: widget.product.product.brand == ""
+                                    ? const Text("No brand found",
+                                        style: kHintStyle)
+                                    : Text(
+                                        widget.product.product.brand,
+                                        style: kSectionTitle,
+                                      )),
                           ],
                         ),
                       ),
@@ -68,18 +78,27 @@ class _ProductDetailState extends State<ProductDetail> {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _isFavorite = !_isFavorite;
-                            });
-                          },
-                            child: _isFavorite ? const Icon(Icons.favorite, color: Colors.red,) : const Icon(Icons.favorite_border, color: Colors.red,)
-                        ),
+                            onTap: () {
+                              setState(() {
+                                _isFavorite = !_isFavorite;
+                              });
+                            },
+                            child: _isFavorite
+                                ? const Icon(
+                                    Icons.favorite,
+                                    color: Colors.red,
+                                  )
+                                : const Icon(
+                                    Icons.favorite_border,
+                                    color: Colors.red,
+                                  )),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: kVerticalPaddingL,),
+                const SizedBox(
+                  height: kVerticalPaddingL,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -89,60 +108,83 @@ class _ProductDetailState extends State<ProductDetail> {
                             color: Colors.black,
                           ),
                           borderRadius: BorderRadius.circular(10),
-                          color: Colors.amber
-                      ),
+                          color: Colors.amber),
                       child: const Padding(
-                        padding: EdgeInsets.symmetric(vertical: kVerticalPaddingS, horizontal: kHorizontalPadding),
-                        child: Text("1 potentially dangerous ingredient for you"),
+                        padding: EdgeInsets.symmetric(
+                            vertical: kVerticalPaddingS,
+                            horizontal: kHorizontalPadding),
+                        child:
+                            Text("1 potentially dangerous ingredient for you"),
                       ),
                     )
                   ],
                 ),
-                const SizedBox(height: kVerticalPaddingL,),
-                const Text("Your allergens", style: kTextSideBar,),
-
-                AllergensExpandedList(allergenList: widget.product.product.allergens,),
-
-                const Text("Other allergens", style: kTextSideBar,),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: kVerticalPaddingL),
-                  child: Center(
-                      child: Text("No other allergens found", style: kHintStyle,)),
+                const SizedBox(
+                  height: kVerticalPaddingL,
                 ),
-
-                IngredientsExpansionList(ingredientList: widget.product.product.ingredientsText),
-
-                const SizedBox(height: kVerticalPadding,),
-
+                const Text(
+                  "Your allergens",
+                  style: kTextSideBar,
+                ),
+                const AllergensExpandedList(
+                  allergenList: [],
+                ),
+                const Text(
+                  "Other allergens",
+                  style: kTextSideBar,
+                ),
+                AllergensExpandedList(
+                  allergenList: widget.product.product.allergens,
+                ),
+                IngredientsExpansionList(
+                    ingredientList: widget.product.product.ingredientsText),
+                const SizedBox(
+                  height: kVerticalPadding,
+                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text("Nutriscore", style: kTextSideBar,),
+                    const Text(
+                      "Nutriscore",
+                      style: kTextSideBar,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-                          child: Image(
-                            image: AssetImage("assets/img/nutriscore_${widget.product.product.nutriscoreGrade}.png"),
-                            height: 40,
-                            fit: BoxFit.cover,
-                          ),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: kHorizontalPadding),
+                          child: !validGrades.contains(
+                                  widget.product.product.nutriscoreGrade)
+                              ? Image(
+                                  image: AssetImage(
+                                      "assets/img/nutriscore_${widget.product.product.nutriscoreGrade}.png"),
+                                  height: 40,
+                                  fit: BoxFit.cover,
+                                )
+                              : const Row(
+                                children: [
+                                  Icon(Icons.warning, color: Colors.red),
+                                ],
+                              ),
                         ),
                         GestureDetector(
-                            onTap: () { Navigator.pushNamed(context, "/nutriscoreInfo"); },
-                            child: const Icon(Icons.arrow_forward)
-                        )
+                            onTap: () {
+                              Navigator.pushNamed(context, "/nutriscoreInfo");
+                            },
+                            child: const Icon(Icons.arrow_forward))
                       ],
                     ),
                   ],
                 ),
-
-                const SizedBox(height: kVerticalPaddingL,),
-
-                const Text("Nutritional preferences", style: kTextSideBar,),
+                const SizedBox(
+                  height: kVerticalPaddingL,
+                ),
+                const Text(
+                  "Nutritional preferences",
+                  style: kTextSideBar,
+                ),
                 const NutritionalPreferences(),
-
               ],
             ),
           ),

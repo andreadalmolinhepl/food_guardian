@@ -44,9 +44,15 @@ class ProductDetails {
 
   factory ProductDetails.fromJson(Map<String, dynamic> json) {
     List<Allergen> allergensList = [];
-    if (json['allergens'] != null) {
+    if (json['allergens'] != null && (json['allergens'] as String).isNotEmpty) {
       List<String> allergenNames = (json['allergens'] as String).split(',');
-      allergensList = allergenNames.map((name) => Allergen(name: name)).toList();
+      allergensList = allergenNames.map((name) {
+        String transformedName = name.substring(3).toLowerCase();
+        transformedName = transformedName[0].toUpperCase() + transformedName.substring(1);
+        return Allergen(name: transformedName);
+      }).toList();
+    } else {
+      allergensList = List.empty();
     }
 
     return ProductDetails(

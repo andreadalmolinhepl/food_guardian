@@ -48,7 +48,15 @@ class _NutritionalPreferencesState extends State<NutritionalPreferences> {
           return ExpansionPanel(
             headerBuilder: (BuildContext context, bool isExpanded) {
               return ListTile(
-                title: Text(step.title),
+                title: Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingS),
+                      child: Icon(Icons.warning_amber_rounded, color: Colors.amber,),
+                    ),
+                    Text(step.title),
+                  ],
+                ),
               );
             },
             body: ListTile(
