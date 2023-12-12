@@ -54,7 +54,7 @@ class _AllergensExpandedListState extends State<AllergensExpandedList> {
                       isExpanded: _isOpen[index],
                     );
                   }).toList() ??
-                  [], // If allergens list is null, return an empty list
+                  [],
               expansionCallback: (int index, bool isExpanded) {
                 setState(() {
                   _isOpen[index] = isExpanded;
@@ -64,9 +64,3 @@ class _AllergensExpandedListState extends State<AllergensExpandedList> {
     );
   }
 }
-
-/*
-
-
-
- */

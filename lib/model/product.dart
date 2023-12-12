@@ -1,5 +1,8 @@
 import 'package:food_guardian/model/allergen.dart';
 
+import 'nutritional_info_monitored.dart';
+import 'nutritional_preference.dart';
+
 class Product {
   final String code;
   final ProductDetails product;
@@ -25,6 +28,7 @@ class Product {
 
 class ProductDetails {
   final List<Allergen> allergens;
+  final List<NutritionalPreference> nutritionalPreferences;
   final String ingredientsText;
   final String nutriscoreGrade;
   final String productName;
@@ -34,6 +38,7 @@ class ProductDetails {
 
   ProductDetails({
     required this.allergens,
+    required this.nutritionalPreferences,
     required this.ingredientsText,
     required this.nutriscoreGrade,
     required this.productName,
@@ -55,8 +60,43 @@ class ProductDetails {
       allergensList = List.empty();
     }
 
+    List<NutritionalPreference> nutritionalPrefs = [];
+
+    if (json['ingredients_analysis_tags'] != null) {
+      List<String> ingredientsTags = List<String>.from(json['ingredients_analysis_tags']);
+
+      nutritionalPrefs = ingredientsTags.where((tag) {
+        return NutritionalInfoMonitored.values.any((value) {
+          String enumName = value.toString().split('.').last;
+          return tag.toLowerCase().contains(enumName.toLowerCase());
+        });
+      }).map((tag) {
+        NutritionalInfoMonitored? matchedEnum = NutritionalInfoMonitored.values.firstWhere((value) {
+          String enumName = value.stringValue;
+          return tag.toLowerCase().contains(enumName.toLowerCase());
+        });
+
+        String status = 'Unknown';
+
+        if (tag.contains('unknown')) {
+          status = 'Unknown';
+        } else if (tag.contains('may')) {
+          status = 'May';
+        } else if (tag.contains('non')) {
+          status = 'No';
+        } else {
+          status = 'Yes';
+        }
+
+        String modifiedTag = matchedEnum.stringValue ?? tag;
+
+        return NutritionalPreference(name: modifiedTag, status: status);
+      }).toList();
+    }
+
     return ProductDetails(
       allergens: allergensList,
+      nutritionalPreferences: nutritionalPrefs,
       ingredientsText: json['ingredients_text'] ?? '',
       nutriscoreGrade: json['nutriscore_grade'] ?? '',
       productName: json['product_name'] ?? '',

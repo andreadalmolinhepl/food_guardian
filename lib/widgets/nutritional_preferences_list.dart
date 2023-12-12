@@ -1,39 +1,23 @@
 import 'package:flutter/material.dart';
 
+import '../model/nutritional_preference.dart';
 import '../styles/spacings.dart';
 
 class NutritionalPreferences extends StatefulWidget {
-  const NutritionalPreferences({super.key});
+  final List<NutritionalPreference> nutritionalList;
+
+  const NutritionalPreferences({required this.nutritionalList, super.key});
 
   @override
   State<NutritionalPreferences> createState() => _NutritionalPreferencesState();
 }
 
-class Step {
-  Step(
-      this.title,
-      this.body,
-      [this.isExpanded = false]
-      );
-  String title;
-  String body;
-  bool isExpanded;
-}
-
-List<Step> getSteps() {
-  return [
-    Step('Not vegan', 'This product is not vegan'),
-    Step('Vegetarian', 'This product is suitable for vegetarians'),
-  ];
-}
-
 class _NutritionalPreferencesState extends State<NutritionalPreferences> {
   late List<bool> _isOpen;
-  final List<Step> _steps = getSteps();
 
   @override
   void initState() {
-    _isOpen = List.filled(_steps.length, false);
+    _isOpen = List.filled(widget.nutritionalList.length, false);
     super.initState();
   }
 
@@ -41,36 +25,47 @@ class _NutritionalPreferencesState extends State<NutritionalPreferences> {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: kVerticalPadding),
-      child: ExpansionPanelList(
-        children: _steps.asMap().entries.map((entry) {
-          int index = entry.key;
-          Step step = entry.value;
-          return ExpansionPanel(
-            headerBuilder: (BuildContext context, bool isExpanded) {
-              return ListTile(
-                title: Row(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingS),
-                      child: Icon(Icons.warning_amber_rounded, color: Colors.amber,),
-                    ),
-                    Text(step.title),
-                  ],
-                ),
-              );
-            },
-            body: ListTile(
-              title: Text(step.body),
+      child: widget.nutritionalList.isEmpty
+          ? const Center(child: Text("No nutritional information found"))
+          : ExpansionPanelList(
+              children: widget.nutritionalList.asMap().entries.map((entry) {
+                int index = entry.key;
+                NutritionalPreference nutriInfo = entry.value;
+                return ExpansionPanel(
+                  headerBuilder: (BuildContext context, bool isExpanded) {
+                    return Row(
+                      children: [
+                        if (nutriInfo.status == "No")
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingS),
+                            child: Icon(Icons.close, color: Colors.red,)
+                          )
+                        else if (nutriInfo.status == "Unknown")
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingS),
+                            child: Icon(Icons.help_outline_rounded, color: Colors.lightBlue,)
+                          )
+                        else
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingS),
+                            child: Icon(Icons.verified, color: Colors.green,)
+                          ),
+                        Text(nutriInfo.name),
+                      ],
+                    );
+                  },
+                  body: ListTile(
+                    title: Text(nutriInfo.status),
+                  ),
+                  isExpanded: _isOpen[index],
+                );
+              }).toList() ?? [],
+              expansionCallback: (int index, bool isExpanded) {
+                setState(() {
+                  _isOpen[index] = isExpanded;
+                });
+              },
             ),
-            isExpanded: _isOpen[index],
-          );
-        }).toList(),
-        expansionCallback: (int index, bool isExpanded) {
-          setState(() {
-            _isOpen[index] = isExpanded;
-          });
-        },
-      ),
     );
   }
 }

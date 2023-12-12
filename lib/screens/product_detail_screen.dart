@@ -184,7 +184,7 @@ class _ProductDetailState extends State<ProductDetail> {
                   "Nutritional preferences",
                   style: kTextSideBar,
                 ),
-                const NutritionalPreferences(),
+                NutritionalPreferences(nutritionalList: widget.product.product.nutritionalPreferences,),
               ],
             ),
           ),

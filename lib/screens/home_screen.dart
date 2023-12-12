@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
       barcodeScanRes = 'Failed to get platform version.';
     }*/
 
-    var url = Uri.parse('https://world.openfoodfacts.org/api/v0/product/80050834?fields=product_name,nutriscore_grade,allergens,ingredients_text,traces,image_url,brands');
+    var url = Uri.parse('https://world.openfoodfacts.org/api/v0/product/80050834?fields=product_name,nutriscore_grade,allergens,ingredients_text,traces,image_url,brands,ingredients_analysis_tags');
     var jsonString = await http.read(url);
 
     Map<String, dynamic> jsonMap = json.decode(jsonString);
