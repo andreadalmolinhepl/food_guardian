@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:food_guardian/widgets/separator.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/http.dart';
 import 'package:shimmer/shimmer.dart';
@@ -42,24 +43,23 @@ class _ProductDetailState extends State<ProductDetail> {
       body: SafeArea(
         child: Stack(children: [
           SingleChildScrollView(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: kHorizontalPadding, vertical: kVerticalPadding),
-              child: FutureBuilder(
-                future: fetchProductFromAPI(),
-                builder: (BuildContext context, AsyncSnapshot<Product> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(child: CircularProgressIndicator());
-                  } else if (snapshot.hasError) {
-                    return const Center(child: Text('Error fetching data'));
-                  } else if (!snapshot.hasData) {
-                    return const Center(child: Text('No data available'));
-                  } else {
-                    Product product = snapshot.data!;
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
+            child: FutureBuilder(
+              future: fetchProductFromAPI(),
+              builder: (BuildContext context, AsyncSnapshot<Product> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return const Center(child: Text('Error fetching data'));
+                } else if (!snapshot.hasData) {
+                  return const Center(child: Text('No data available'));
+                } else {
+                  Product product = snapshot.data!;
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             Expanded(
@@ -121,52 +121,28 @@ class _ProductDetailState extends State<ProductDetail> {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          height: kVerticalPaddingL,
-                        ),
-                        const AllergenWarningBox(),
+                      ),
 
-                        const SizedBox(
-                          height: kVerticalPaddingL,
-                        ),
-                        const Text(
-                          "Your allergens",
-                          style: kTextSideBar,
-                        ),
-                        const AllergensExpandedList(
-                          allergenList: [],
-                        ),
+                      const AllergenWarningBox(),
 
-                        const Text(
-                          "Other allergens",
-                          style: kTextSideBar,
-                        ),
-                        AllergensExpandedList(
-                          allergenList: product.product.allergens,
-                        ),
+                      const Separator(),
+                      const AllergensExpandedList(allergenList: [], isUserSpecific: true),
 
-                        IngredientsExpansionList(
-                            ingredientList: product.product.ingredientsText),
+                      const Separator(),
+                      AllergensExpandedList(allergenList: product.product.allergens, isUserSpecific: false),
 
-                        const SizedBox(
-                          height: kVerticalPadding,
-                        ),
-                        Nutriscore(nutriscore: product.product.nutriscoreGrade),
+                      const Separator(),
+                      IngredientsExpansionList(ingredientList: product.product.ingredientsText),
 
-                        const SizedBox(
-                          height: kVerticalPaddingL,
-                        ),
+                      const Separator(),
+                      Nutriscore(nutriscore: product.product.nutriscoreGrade),
 
-                        const Text(
-                          "Nutritional preferences",
-                          style: kTextSideBar,
-                        ),
-                        NutritionalPreferences(nutritionalList: product.product.nutritionalPreferences,),
-                      ],
-                    );
-                  }
+                      const Separator(),
+                      NutritionalPreferences(nutritionalList: product.product.nutritionalPreferences,),
+                    ],
+                  );
                 }
-              ), // Show product details once fetched,
+              }
             ),
           ),
           const Positioned(
@@ -180,51 +156,3 @@ class _ProductDetailState extends State<ProductDetail> {
     );
   }
 }
-
-
-/*
-
-                const SizedBox(
-                  height: kVerticalPaddingL,
-                ),
-                const AllergenWarningBox(),
-
-                const SizedBox(
-                  height: kVerticalPaddingL,
-                ),
-                const Text(
-                  "Your allergens",
-                  style: kTextSideBar,
-                ),
-                const AllergensExpandedList(
-                  allergenList: [],
-                ),
-
-                const Text(
-                  "Other allergens",
-                  style: kTextSideBar,
-                ),
-                AllergensExpandedList(
-                  allergenList: widget.product.product.allergens,
-                ),
-
-                IngredientsExpansionList(
-                    ingredientList: widget.product.product.ingredientsText),
-
-                const SizedBox(
-                  height: kVerticalPadding,
-                ),
-                Nutriscore(nutriscore: widget.product.product.nutriscoreGrade),
-
-                const SizedBox(
-                  height: kVerticalPaddingL,
-                ),
-
-                const Text(
-                  "Nutritional preferences",
-                  style: kTextSideBar,
-                ),
-                NutritionalPreferences(nutritionalList: widget.product.product.nutritionalPreferences,),
-
-
- */

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../styles/colors.dart';
 import '../styles/others.dart';
 import '../styles/spacings.dart';
 
@@ -19,9 +18,9 @@ class ArrowBack extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: kHorizontalPaddingS, vertical: kVerticalPaddingS),
             decoration: BoxDecoration(
-                color: kBackgroundColor,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(kButtonBorderRadius),
-                border: Border.all(color: kTertiaryColor, width: kBorderWidth),
+                border: Border.all(width: kBorderWidth),
                 boxShadow: [
                   kShadow
                 ]

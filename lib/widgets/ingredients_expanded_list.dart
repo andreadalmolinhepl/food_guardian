@@ -24,45 +24,49 @@ class _IngredientsExpansionListState extends State<IngredientsExpansionList> {
 
   @override
   Widget build(BuildContext context) {
-    return ExpansionPanelList(
-      children: [
-        ExpansionPanel(
-            headerBuilder: (BuildContext context, bool isExpanded) {
-              return const Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-                    child: Text(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      child: ExpansionPanelList(
+        expandedHeaderPadding: EdgeInsets.zero,
+        materialGapSize: 0,
+        elevation: 0,
+
+        children: [
+          ExpansionPanel(
+              headerBuilder: (BuildContext context, bool isExpanded) {
+
+                return const Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
                       "All ingredients",
                       style: kTextSideBar,
                     ),
-                  ),
-                ],
-              );
-            },
-            body: Center(
-                child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: kHorizontalPaddingL, vertical: kVerticalPaddingS),
-              child: widget.ingredientList == ""
-                  ? const Text(
-                      "No ingredients found for this product",
-                      style: kHintStyle,
-                    )
-                  : Text(
-                      widget.ingredientList,
-                      style: kHintStyle,
-                    ),
-            )),
-            isExpanded: _ingredientsIsOpen)
-      ],
-      expansionCallback: (int index, bool isExpanded) {
-        setState(() {
-          _ingredientsIsOpen = !_ingredientsIsOpen;
-        });
-      },
+                  ],
+                );
+              },
+              body: Center(
+                  child: Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: kHorizontalPaddingL, vertical: kVerticalPaddingS),
+                child: widget.ingredientList == ""
+                    ? const Text(
+                        "No ingredients found for this product",
+                        style: kHintStyle,
+                      )
+                    : Text(
+                        widget.ingredientList,
+                        style: kHintStyle,
+                      ),
+              )),
+              isExpanded: _ingredientsIsOpen)
+        ],
+        expansionCallback: (int index, bool isExpanded) {
+          setState(() {
+            _ingredientsIsOpen = !_ingredientsIsOpen;
+          });
+        },
+      ),
     );
   }
 }
