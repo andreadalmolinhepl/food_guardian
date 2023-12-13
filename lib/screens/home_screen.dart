@@ -28,21 +28,21 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
   Future<void> scanBarcodeNormal() async {
-    // String barcodeScanRes;
-    // // Platform messages may fail, so we use a try/catch PlatformException.
-    // try {
-    //   barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-    //       '#ff6666', 'Cancel', true, ScanMode.BARCODE);
-    //   debugPrint(barcodeScanRes);
-    // } on PlatformException {
-    //   barcodeScanRes = 'Failed to get platform version.';
-    // }
+    String barcodeScanRes;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.BARCODE);
+      debugPrint(barcodeScanRes);
+    } on PlatformException {
+      barcodeScanRes = 'Failed to get platform version.';
+    }
 
     if (context.mounted) {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const ProductDetail(barcode: "80050834"),
+          builder: (context) => ProductDetail(barcode: barcodeScanRes),
         ),
       );
     }

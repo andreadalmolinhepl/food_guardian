@@ -1,15 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:food_guardian/screens/product_not_found.dart';
 import 'package:food_guardian/widgets/separator.dart';
 import 'package:http/http.dart' as http;
 
 import '../model/product.dart';
-import '../styles/font.dart';
 import '../styles/spacings.dart';
 import '../widgets/allergen_warning_box.dart';
 import '../widgets/allergens_expanded_list.dart';
-import '../widgets/arrow_back.dart';
 import '../widgets/ingredients_expanded_list.dart';
 import '../widgets/nutritional_preferences_list.dart';
 import 'nutriscore.dart';
@@ -28,7 +27,7 @@ class _ProductDetailState extends State<ProductDetail> {
 
   Future<Product> fetchProductFromAPI() async {
     Uri uri = Uri.parse(
-        'https://world.openfoodfacts.org/api/v0/product/80050834?fields=product_name,nutriscore_grade,allergens,ingredients_text,traces,image_url,brands,ingredients_analysis_tags');
+        'https://world.openfoodfacts.org/api/v0/product/${widget.barcode}?fields=product_name,nutriscore_grade,allergens,ingredients_text,traces,image_url,brands,ingredients_analysis_tags');
     var json =
         await http.get(uri).then((response) => jsonDecode(response.body));
 
@@ -46,7 +45,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
-                  return const Center(child: Text('Error fetching data'));
+                  return const ProductNotFound();
                 } else if (!snapshot.hasData) {
                   return const Center(child: Text('No data available'));
                 } else {
@@ -56,6 +55,7 @@ class _ProductDetailState extends State<ProductDetail> {
                       SliverAppBar(
                         pinned: true,
                         expandedHeight: 200,
+                        backgroundColor: Colors.orange,
                         flexibleSpace: FlexibleSpaceBar(
                           title: Text(product.product.productName),
                           centerTitle: false,
@@ -155,12 +155,6 @@ class _ProductDetailState extends State<ProductDetail> {
                   );
                 }
               }),
-          const Positioned(
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingS, vertical: kVerticalPaddingS),
-              child: ArrowBack(),
-            ),
-          ),
         ]),
       ),
     );
