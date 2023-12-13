@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_guardian/styles/spacings.dart';
 import 'package:food_guardian/widgets/food_restrictions.dart';
 import 'package:food_guardian/widgets/line.dart';
+import 'package:food_guardian/widgets/separator.dart';
 
 import '../styles/font.dart';
 
@@ -35,17 +36,14 @@ class AccountPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    const SizedBox(height: kVerticalPadding,),
-                    const Line(),
-                    const SizedBox(height: kVerticalPaddingL,),
+                    const Separator(),
                     const FoodRestrictions(label: "Your allergies",),
                     const SizedBox(height: kVerticalPaddingS,),
                     const FoodRestrictions(label: "Your intolerances",),
                     const SizedBox(height: kVerticalPaddingS,),
                     const FoodRestrictions(label: "Your sensitivities",),
                     const SizedBox(height: kVerticalPadding,),
-                    const Line(),
-                    const SizedBox(height: kVerticalPadding,),
+                    const Separator(),
 
                     GestureDetector(
                       onTap: () { Navigator.pushNamed(context, "/settings"); },

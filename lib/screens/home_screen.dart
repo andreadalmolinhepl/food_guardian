@@ -4,6 +4,7 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:food_guardian/screens/account_page.dart';
 import 'package:food_guardian/screens/home_page.dart';
 import 'package:food_guardian/screens/product_detail_screen.dart';
+import 'package:food_guardian/styles/others.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -72,25 +73,35 @@ class _HomeScreenState extends State<HomeScreen> {
         },
         indicatorColor: Colors.amber,
         selectedIndex: currentPageIndex,
-        destinations: const <Widget>[
-          NavigationDestination(
+        destinations: <Widget>[
+          const NavigationDestination(
             selectedIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
-          NavigationDestination(
+          const NavigationDestination(
             icon: Icon(Icons.favorite),
             label: 'Favorites',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.qr_code_scanner),
-            label: 'Scan',
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.lightBlue.shade100,
+                borderRadius: BorderRadius.circular(25),
+                boxShadow: [kShadow]
+              ),
+              child: const NavigationDestination(
+                icon: Icon(Icons.qr_code_scanner),
+                label: 'Scan',
+              ),
+            ),
           ),
-          NavigationDestination(
+          const NavigationDestination(
             icon: Icon(Icons.history),
             label: 'History',
           ),
-          NavigationDestination(
+          const NavigationDestination(
             icon: Icon(Icons.account_circle),
             label: 'Account',
           ),

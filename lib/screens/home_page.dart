@@ -111,6 +111,7 @@ class HomePage extends StatelessWidget {
                                   HistorySimple(),
                                   HistorySimple(),
                                   HistorySimple(),
+                                  HistorySimple(),
                                 ],
                               )
                           ),
