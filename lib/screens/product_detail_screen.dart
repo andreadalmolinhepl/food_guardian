@@ -27,8 +27,10 @@ class _ProductDetailState extends State<ProductDetail> {
   bool _isFavorite = false;
 
   Future<Product> fetchProductFromAPI() async {
-    Uri uri = Uri.parse('https://world.openfoodfacts.org/api/v0/product/80050834?fields=product_name,nutriscore_grade,allergens,ingredients_text,traces,image_url,brands,ingredients_analysis_tags');
-    var json = await http.get(uri).then((response) => jsonDecode(response.body));
+    Uri uri = Uri.parse(
+        'https://world.openfoodfacts.org/api/v0/product/80050834?fields=product_name,nutriscore_grade,allergens,ingredients_text,traces,image_url,brands,ingredients_analysis_tags');
+    var json =
+        await http.get(uri).then((response) => jsonDecode(response.body));
 
     return Product.fromJson(json);
   }
@@ -38,127 +40,121 @@ class _ProductDetailState extends State<ProductDetail> {
     return Scaffold(
       body: SafeArea(
         child: Stack(children: [
-          CustomScrollView(
-            slivers: [
-              const SliverAppBar(
-                pinned: true,
-                expandedHeight: 300,
-                backgroundColor: Colors.orange,
-                foregroundColor: Colors.white,
-                flexibleSpace: FlexibleSpaceBar(
-                  title: Text("Text"),
-                  centerTitle: false,
-
-                ),
-                actions: [
-                  Padding(padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding), child: Icon(Icons.share),)
-                ],
-              ),
-              SliverList(delegate: SliverChildListDelegate([
-                FutureBuilder(
-                    future: fetchProductFromAPI(),
-                    builder: (BuildContext context, AsyncSnapshot<Product> snapshot) {
-                      if (snapshot.connectionState == ConnectionState.waiting) {
-                        return const Center(child: CircularProgressIndicator());
-                      } else if (snapshot.hasError) {
-                        return const Center(child: Text('Error fetching data'));
-                      } else if (!snapshot.hasData) {
-                        return const Center(child: Text('No data available'));
-                      } else {
-                        Product product = snapshot.data!;
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  Expanded(
-                                    flex: 2,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Image.network(product.product.imageUrl,
-                                          height: kProfileSize, fit: BoxFit.contain),
-                                    ),
+          FutureBuilder(
+              future: fetchProductFromAPI(),
+              builder: (BuildContext context, AsyncSnapshot<Product> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return const Center(child: Text('Error fetching data'));
+                } else if (!snapshot.hasData) {
+                  return const Center(child: Text('No data available'));
+                } else {
+                  Product product = snapshot.data!;
+                  return CustomScrollView(
+                    slivers: [
+                      SliverAppBar(
+                        pinned: true,
+                        expandedHeight: 200,
+                        flexibleSpace: FlexibleSpaceBar(
+                          title: Text(product.product.productName),
+                          centerTitle: false,
+                          background: Stack(
+                            fit: StackFit.expand,
+                            children: <Widget>[
+                              Image.network(
+                                product.product.imageUrl,
+                                fit: BoxFit.cover,
+                              ),
+                              const DecoratedBox(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment(0.0, 0.5),
+                                    end: Alignment.center,
+                                    colors: <Color>[
+                                      Color(0x60000000),
+                                      Color(0x00000000),
+                                    ],
                                   ),
-                                  Expanded(
-                                    flex: 3,
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: kHorizontalPadding),
-                                      child: Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                vertical: kVerticalPaddingS),
-                                            child: Text(
-                                              product.product.productName,
-                                              style: kTitleHome,
-                                            ),
-                                          ),
-                                          FittedBox(
-                                              child: product.product.brand == ""
-                                                  ? const Text("No brand found",
-                                                  style: kHintStyle)
-                                                  : Text(
-                                                product.product.brand,
-                                                style: kSectionTitle,
-                                              )),
-                                        ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        actions: [
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                _isFavorite = !_isFavorite;
+                              });
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: kHorizontalPadding),
+                              child: _isFavorite
+                                  ? Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Icon(
+                                          Icons.favorite,
+                                          color: Colors.red,
+                                        ),
+                                      ),
+                                    )
+                                  : Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(8.0),
+                                        child: Icon(
+                                          Icons.favorite_border,
+                                          color: Colors.red,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Expanded(
-                                    flex: 1,
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: GestureDetector(
-                                          onTap: () {
-                                            setState(() {
-                                              _isFavorite = !_isFavorite;
-                                            });
-                                          },
-                                          child: _isFavorite
-                                              ? const Icon(
-                                            Icons.favorite,
-                                            color: Colors.red,
-                                          )
-                                              : const Icon(
-                                            Icons.favorite_border,
-                                            color: Colors.red,
-                                          )),
-                                    ),
-                                  ),
-                                ],
-                              ),
                             ),
-
+                          )
+                        ],
+                      ),
+                      SliverList(
+                          delegate: SliverChildListDelegate([
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: kVerticalPadding,),
                             const AllergenWarningBox(),
-
                             const Separator(),
-                            const AllergensExpandedList(allergenList: [], isUserSpecific: true),
-
+                            const AllergensExpandedList(
+                                allergenList: [], isUserSpecific: true),
                             const Separator(),
-                            AllergensExpandedList(allergenList: product.product.allergens, isUserSpecific: false),
-
+                            AllergensExpandedList(
+                                allergenList: product.product.allergens,
+                                isUserSpecific: false),
                             const Separator(),
-                            IngredientsExpansionList(ingredientList: product.product.ingredientsText),
-
+                            IngredientsExpansionList(
+                                ingredientList:
+                                    product.product.ingredientsText),
                             const Separator(),
-                            Nutriscore(nutriscore: product.product.nutriscoreGrade),
-
+                            Nutriscore(
+                                nutriscore: product.product.nutriscoreGrade),
                             const Separator(),
-                            NutritionalPreferences(nutritionalList: product.product.nutritionalPreferences,),
+                            NutritionalPreferences(
+                              nutritionalList:
+                                  product.product.nutritionalPreferences,
+                            ),
                           ],
-                        );
-                      }
-                    }
-                )
-              ]))
-            ],
-          ),
+                        )
+                      ]))
+                    ],
+                  );
+                }
+              }),
           const Positioned(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingS, vertical: kVerticalPaddingS),
