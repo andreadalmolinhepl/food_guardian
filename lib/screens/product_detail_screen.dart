@@ -76,7 +76,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 } else {
                   Product product = snapshot.data!;
 
-                  if (!widget.fromHistory) _addProduct();
+                  if (!widget.fromHistory) {_addProduct();
 
                   return CustomScrollView(
                     slivers: [
