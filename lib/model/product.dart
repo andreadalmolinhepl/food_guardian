@@ -122,7 +122,7 @@ class ProductSnippet {
 
   factory ProductSnippet.fromMap(String id, Map<String, dynamic> map) {
     return ProductSnippet(
-      id: id,
+      id: map['id'] ?? '',
       productName: map['productName'] ?? '',
       brand: map['productBrand'] ?? '',
       imageUrl: map['image'] ?? '',

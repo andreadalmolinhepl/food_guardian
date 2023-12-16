@@ -1,22 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:food_guardian/styles/spacings.dart';
 
-import '../styles/font.dart';
+import '../screens/product_detail_screen.dart';
 
 class HistorySimple extends StatelessWidget {
-  final String id;
+  final String barcode;
   final String name;
   final String brand;
   final String image;
 
-  const HistorySimple({
-    super.key, required this.id, required this.name, required this.brand, required this.image
-  });
+  const HistorySimple(
+      {super.key,
+      required this.barcode,
+      required this.name,
+      required this.brand,
+      required this.image});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () { Navigator.pushNamed(context, "/productDetail"); },
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductDetail(barcode: barcode, fromHistory: true),
+          ),
+        );
+      },
       child: Card(
         child: ListTile(
           leading: Image.network(

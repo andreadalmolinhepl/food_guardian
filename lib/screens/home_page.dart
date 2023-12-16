@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
                                 return Column(
                                   children: snippets.map((snippet) {
                                     return HistorySimple(
-                                      id: snippet.id,
+                                      barcode: snippet.id,
                                       name: snippet.productName,
                                       brand: snippet.brand,
                                       image: snippet.imageUrl,

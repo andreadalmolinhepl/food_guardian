@@ -19,12 +19,18 @@ import 'nutriscore.dart';
 class ProductDetail extends StatefulWidget {
   final String barcode;
   late Product _product;
+  final bool fromHistory;
 
-  ProductDetail({required this.barcode, super.key});
+  ProductDetail({
+    required this.barcode,
+    this.fromHistory = false,
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
 }
+
 
 class _ProductDetailState extends State<ProductDetail> {
   bool _isFavorite = false;
@@ -70,7 +76,7 @@ class _ProductDetailState extends State<ProductDetail> {
                 } else {
                   Product product = snapshot.data!;
 
-                  _addProduct();
+                  if (!widget.fromHistory) _addProduct();
 
                   return CustomScrollView(
                     slivers: [
