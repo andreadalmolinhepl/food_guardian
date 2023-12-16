@@ -21,24 +21,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  Future<List<ProductSnippet>> fetchData() async {
-    String? userId = FirebaseAuth.instance.currentUser?.uid;
-    if (userId != null) {
-      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(userId)
-          .collection('productsScanned')
-          .get();
-
-      List<ProductSnippet> snippets = querySnapshot.docs.map((doc) {
-        return ProductSnippet.fromMap(doc.id, doc.data() as Map<String, dynamic>);
-      }).toList();
-
-      return snippets;
-    }
-    return [];
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,17 +108,23 @@ class _HomePageState extends State<HomePage> {
                               ],
                             ),
                           ),
-                          FutureBuilder(
-                            future: fetchData(),
-                            builder: (BuildContext context, AsyncSnapshot<List<ProductSnippet>> snapshot) {
+                          StreamBuilder<QuerySnapshot>(
+                            stream: FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(FirebaseAuth.instance.currentUser?.uid)
+                                .collection('productsScanned')
+                                .snapshots(),
+                            builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
                               if (snapshot.connectionState == ConnectionState.waiting) {
                                 return const CircularProgressIndicator();
                               } else if (snapshot.hasError) {
                                 return Text('Error: ${snapshot.error}');
-                              } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                              } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                                 return const Text('No data available');
                               } else {
-                                List<ProductSnippet> snippets = snapshot.data!;
+                                List<ProductSnippet> snippets = snapshot.data!.docs.map((doc) {
+                                  return ProductSnippet.fromMap(doc.id, doc.data() as Map<String, dynamic>);
+                                }).toList();
                                 return Column(
                                   children: snippets.map((snippet) {
                                     return HistorySimple(
