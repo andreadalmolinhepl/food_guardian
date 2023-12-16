@@ -25,21 +25,32 @@ class _LoginScreenState extends State<LoginScreen> {
   bool _isPasswordVisible = false;
 
   Future<void> _submit() async {
-    if (_loginFormKey.currentState!.validate()) {
+    //if (_loginFormKey.currentState!.validate()) {
       try {
         await FirebaseAuth.instance
             .signInWithEmailAndPassword(
-                email: _emailController.text,
-                password: _passwordController.text)
+                email: "ana@gmail.com",
+                password: "ciscocisco",)
             .then((value) => {Navigator.pushNamed(context, "/home")});
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {
-          debugPrint('No user found for that email.');
+          _showSnackBar('No user found for that email');
         } else if (e.code == 'wrong-password') {
-          debugPrint('Wrong password provided for that user.');
+          _showSnackBar('Wrong password provided for that user.');
         }
       }
-    }
+//    } else {
+ //     _showSnackBar("Please fill in all required fields.");
+ //   }
+  }
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 3),
+      ),
+    );
   }
 
   @override

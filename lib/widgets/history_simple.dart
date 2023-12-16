@@ -4,22 +4,28 @@ import 'package:food_guardian/styles/spacings.dart';
 import '../styles/font.dart';
 
 class HistorySimple extends StatelessWidget {
-  const HistorySimple({super.key});
+  final String id;
+  final String name;
+  final String brand;
+  final String image;
+
+  const HistorySimple({
+    super.key, required this.id, required this.name, required this.brand, required this.image
+  });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () { Navigator.pushNamed(context, "/productDetail"); },
-      child: const Card(
+      child: Card(
         child: ListTile(
-          leading: Image(
-            image: AssetImage("assets/img/pandistelle.png"),
-            height: kProfileSize,
+          leading: Image.network(
+            image,
             fit: BoxFit.cover,
           ),
-          title: Text('Canned corn'),
-          subtitle: Text('I fucking hate corn'),
-          trailing: Icon(
+          title: Text(name),
+          subtitle: Text(brand),
+          trailing: const Icon(
             Icons.arrow_forward_rounded,
           ),
         ),

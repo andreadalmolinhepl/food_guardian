@@ -42,9 +42,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
         );
 
         final User? newUser = result.user;
+        newUser?.updateDisplayName(_firstnameController.text);
 
         if (newUser != null) {
           var usersRef = FirebaseFirestore.instance.collection("users");
+          String userId = newUser.uid;
 
           Map<String, dynamic> userData = {
             'uid': newUser.uid,
@@ -53,24 +55,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
             'emailVerified': newUser.emailVerified,
           };
 
-          await usersRef.add(userData);
+          await usersRef.doc(userId).set(userData);
 
           setState(() {
-            _isLoading = false; // Set loading state to false in case of exception
+            _isLoading = false;
           });
 
           _showSnackBar("User registered successfully!");
+
+          if (context.mounted) {
+            Navigator.pushNamed(context, "/home");
+          }
+
         }
       } on FirebaseAuthException catch (e) {
         if (e.code == 'email-already-in-use') {
           _showSnackBar('This email is already in use');
           setState(() {
-            _isLoading = false; // Set loading state to false if validation fails
+            _isLoading = false;
           });
         } else {
           _showSnackBar("An error occurred during registration. Please try again later");
           setState(() {
-            _isLoading = false; // Set loading state to false if validation fails
+            _isLoading = false;
           });
         }
       }
@@ -183,7 +190,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: ArrowBack()
                 ),
               ),
-              if (_isLoading) // Show loading indicator conditionally
+              if (_isLoading)
                 Container(
                   color: Colors.black.withOpacity(0.5),
                   child: const Center(

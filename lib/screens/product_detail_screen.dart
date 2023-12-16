@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/screens/product_not_found.dart';
 import 'package:food_guardian/widgets/separator.dart';
@@ -13,10 +15,12 @@ import '../widgets/ingredients_expanded_list.dart';
 import '../widgets/nutritional_preferences_list.dart';
 import 'nutriscore.dart';
 
+@immutable
 class ProductDetail extends StatefulWidget {
   final String barcode;
+  late Product _product;
 
-  const ProductDetail({required this.barcode, super.key});
+  ProductDetail({required this.barcode, super.key});
 
   @override
   State<ProductDetail> createState() => _ProductDetailState();
@@ -31,7 +35,22 @@ class _ProductDetailState extends State<ProductDetail> {
     var json =
         await http.get(uri).then((response) => jsonDecode(response.body));
 
-    return Product.fromJson(json);
+    widget._product =  Product.fromJson(json);
+
+    return widget._product;
+  }
+
+  Future<void> _addProduct() async {
+    var productRef = FirebaseFirestore.instance.collection("users/${FirebaseAuth.instance.currentUser?.uid}/productsScanned");
+
+    Map<String, dynamic> userData = {
+      'id': widget.barcode,
+      'productName': widget._product.product.productName,
+      'productBrand': widget._product.product.brand,
+      'image': widget._product.product.imageUrl,
+    };
+
+    await productRef.add(userData);
   }
 
   @override
@@ -50,6 +69,9 @@ class _ProductDetailState extends State<ProductDetail> {
                   return const Center(child: Text('No data available'));
                 } else {
                   Product product = snapshot.data!;
+
+                  _addProduct();
+
                   return CustomScrollView(
                     slivers: [
                       SliverAppBar(

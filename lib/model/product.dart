@@ -106,3 +106,26 @@ class ProductDetails {
     );
   }
 }
+
+class ProductSnippet {
+  final String id;
+  final String productName;
+  final String brand;
+  final String imageUrl;
+
+  ProductSnippet({
+    required this.id,
+    required this.productName,
+    required this.brand,
+    required this.imageUrl,
+  });
+
+  factory ProductSnippet.fromMap(String id, Map<String, dynamic> map) {
+    return ProductSnippet(
+      id: id,
+      productName: map['productName'] ?? '',
+      brand: map['productBrand'] ?? '',
+      imageUrl: map['image'] ?? '',
+    );
+  }
+}

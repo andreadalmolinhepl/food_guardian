@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/styles/font.dart';
 import 'package:food_guardian/styles/spacings.dart';
@@ -5,14 +7,37 @@ import 'package:food_guardian/widgets/history_simple.dart';
 import 'package:food_guardian/widgets/line.dart';
 import 'package:food_guardian/widgets/main_button.dart';
 
-class HomePage extends StatelessWidget {
+import '../model/product.dart';
+
+class HomePage extends StatefulWidget {
   final Function(int) onPageChanged;
-
   final Future<void> Function() scanBarcodeRequest;
-
 
   const HomePage({Key? key, required this.onPageChanged, required this.scanBarcodeRequest}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  Future<List<ProductSnippet>> fetchData() async {
+    String? userId = FirebaseAuth.instance.currentUser?.uid;
+    if (userId != null) {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .collection('productsScanned')
+          .get();
+
+      List<ProductSnippet> snippets = querySnapshot.docs.map((doc) {
+        return ProductSnippet.fromMap(doc.id, doc.data() as Map<String, dynamic>);
+      }).toList();
+
+      return snippets;
+    }
+    return [];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,105 +48,114 @@ class HomePage extends StatelessWidget {
             minHeight: MediaQuery.of(context).size.height - kNavigationBarHeight,
           ),
           child: IntrinsicHeight(
-            child: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
-                child: Column(
-                  children: [
-                    const Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.symmetric(vertical: kVerticalPadding),
-                          child: Text("Hi Andrea", style: kTitleHome),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: kVerticalPaddingL,),
-                    Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                scanBarcodeRequest();
-                              },
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                    shape: BoxShape.circle
-                                ),
-                                child: const Icon(Icons.add_circle_rounded, size: 150, color: Colors.grey,),
-                              ),
-                            ),
-                          ],
-                        ),
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Scan a new item")
-                          ],
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(vertical: kVerticalPadding),
-                          child: Row(
-                            children: [
-                              Line(),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingL),
-                                child: Text("or"),
-                              ),
-                              Line()
-                            ],
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: kVerticalPadding),
+                            child: Text("Hi ${FirebaseAuth.instance.currentUser!.displayName}", style: kTitleHome),
                           ),
-                        ),
-                        MainButton(label: "Scan ingredients", onTap: () {}),
-                      ],
-                    ),
-                    const SizedBox(height: kVerticalPaddingL,),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(vertical: kVerticalPadding),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        ],
+                      ),
+                      const SizedBox(height: kVerticalPaddingL,),
+                      Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text("Your last scans", style: kTextTabItem),
                               GestureDetector(
-                                onTap: () { onPageChanged(3); },
-                                child: const Row(
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingS),
-                                      child: Text("See all", style: kTextTabItem),
-                                    ),
-                                    Icon(Icons.arrow_forward_rounded)
-                                  ],
+                                onTap: () {
+                                  widget.scanBarcodeRequest();
+                                },
+                                child: Container(
+                                  decoration: const BoxDecoration(
+                                      shape: BoxShape.circle
+                                  ),
+                                  child: const Icon(Icons.add_circle_rounded, size: 150, color: Colors.grey,),
                                 ),
                               ),
                             ],
                           ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.all(kHorizontalPaddingXS),
-                          child: Expanded(
-                              flex: 2,
-                              child: Column(
-                                children: [
-                                  HistorySimple(),
-                                  HistorySimple(),
-                                  HistorySimple(),
-                                  HistorySimple(),
-                                  HistorySimple(),
-                                ],
-                              )
+                          const Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Scan a new item")
+                            ],
                           ),
-                        )
-                      ],
-                    )
-                  ],
+                          const Padding(
+                            padding: EdgeInsets.symmetric(vertical: kVerticalPadding),
+                            child: Row(
+                              children: [
+                                Line(),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingL),
+                                  child: Text("or"),
+                                ),
+                                Line()
+                              ],
+                            ),
+                          ),
+                          MainButton(label: "Scan ingredients", onTap: () {}),
+                        ],
+                      ),
+                      const SizedBox(height: kVerticalPaddingL,),
+                      Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: kVerticalPadding),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Your last scans", style: kTextTabItem),
+                                GestureDetector(
+                                  onTap: () { widget.onPageChanged(3); },
+                                  child: const Row(
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingS),
+                                        child: Text("See all", style: kTextTabItem),
+                                      ),
+                                      Icon(Icons.arrow_forward_rounded)
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          FutureBuilder(
+                            future: fetchData(),
+                            builder: (BuildContext context, AsyncSnapshot<List<ProductSnippet>> snapshot) {
+                              if (snapshot.connectionState == ConnectionState.waiting) {
+                                return const CircularProgressIndicator();
+                              } else if (snapshot.hasError) {
+                                return Text('Error: ${snapshot.error}');
+                              } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                                return const Text('No data available');
+                              } else {
+                                List<ProductSnippet> snippets = snapshot.data!;
+                                return Column(
+                                  children: snippets.map((snippet) {
+                                    return HistorySimple(
+                                      id: snippet.id,
+                                      name: snippet.productName,
+                                      brand: snippet.brand,
+                                      image: snippet.imageUrl,
+                                    );
+                                  }).toList(),
+                                );
+                              }
+                            },
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
-              ),
-            )
+              )
           ),
         ),
       ),
