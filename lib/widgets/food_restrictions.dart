@@ -8,10 +8,7 @@ import 'allergen_box.dart';
 class FoodRestrictions extends StatelessWidget {
   final String label;
 
-  const FoodRestrictions({
-    required this.label,
-    super.key
-  });
+  const FoodRestrictions({required this.label, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +17,20 @@ class FoodRestrictions extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(label, style: kTextTabItem,),
-            const Icon(Icons.edit_note_rounded)
+            Text(
+              label,
+              style: kTextTabItem,
+            ),
+            GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, "/");
+                },
+                child: const Icon(Icons.edit_note_rounded))
           ],
         ),
-        const SizedBox(height: kVerticalPadding,),
+        const SizedBox(
+          height: kVerticalPadding,
+        ),
         const Padding(
           padding: EdgeInsets.only(top: 10, bottom: 10),
           child: Row(
@@ -32,7 +38,9 @@ class FoodRestrictions extends StatelessWidget {
             children: [
               AllergenBox(label: "Gluten"),
               AllergenBox(label: "Fish"),
-              AllergenBox(label: "Eggs",),
+              AllergenBox(
+                label: "Eggs",
+              ),
             ],
           ),
         )

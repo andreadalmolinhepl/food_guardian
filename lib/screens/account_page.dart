@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_guardian/model/food_restriction_types.dart';
 import 'package:food_guardian/styles/spacings.dart';
 import 'package:food_guardian/widgets/food_restrictions.dart';
 import 'package:food_guardian/widgets/line.dart';
@@ -37,11 +38,11 @@ class AccountPage extends StatelessWidget {
                       ],
                     ),
                     const Separator(),
-                    const FoodRestrictions(label: "Your allergies",),
+                    FoodRestrictions(label: "Your ${FoodRestrictionTypes.allergies.stringValue}",),
                     const SizedBox(height: kVerticalPaddingS,),
-                    const FoodRestrictions(label: "Your intolerances",),
+                    FoodRestrictions(label: "Your ${FoodRestrictionTypes.intolerances.stringValue}",),
                     const SizedBox(height: kVerticalPaddingS,),
-                    const FoodRestrictions(label: "Your sensitivities",),
+                    FoodRestrictions(label: "Your ${FoodRestrictionTypes.sensitivities.stringValue}",),
                     const SizedBox(height: kVerticalPadding,),
                     const Separator(),
 
