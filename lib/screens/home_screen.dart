@@ -5,10 +5,7 @@ import 'package:food_guardian/screens/account_page.dart';
 import 'package:food_guardian/screens/home_page.dart';
 import 'package:food_guardian/screens/product_detail_screen.dart';
 import 'package:food_guardian/styles/others.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
 
-import '../model/product.dart';
 import '../styles/spacings.dart';
 import 'favorites_page.dart';
 import 'history_page.dart';
@@ -25,8 +22,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int currentPageIndex = 0;
-  String _scanBarcode = 'Unknown';
-
 
   Future<void> scanBarcodeNormal() async {
     String barcodeScanRes;

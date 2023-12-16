@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/widgets/arrow_back.dart';
@@ -19,6 +20,7 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _registerFormKey = GlobalKey<FormState>();
+  bool _isLoading = false;
 
   bool _isPasswordVisible = false;
   final TextEditingController _firstnameController = TextEditingController();
@@ -27,11 +29,63 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   Future<void> _submit() async {
-    final FirebaseAuth auth = FirebaseAuth.instance;
-    UserCredential result = await auth.createUserWithEmailAndPassword(
-        email: _emailController.text, password: _passwordController.text);
-    //final User user = result.user!;
+    setState(() {
+      _isLoading = true; // Set loading state to true when submitting
+    });
 
+    if (_registerFormKey.currentState!.validate()) {
+      final FirebaseAuth auth = FirebaseAuth.instance;
+      try {
+        UserCredential result = await auth.createUserWithEmailAndPassword(
+          email: _emailController.text,
+          password: _passwordController.text,
+        );
+
+        final User? newUser = result.user;
+
+        if (newUser != null) {
+          var usersRef = FirebaseFirestore.instance.collection("users");
+
+          Map<String, dynamic> userData = {
+            'uid': newUser.uid,
+            'email': newUser.email,
+            'displayName': _firstnameController.text,
+            'emailVerified': newUser.emailVerified,
+          };
+
+          await usersRef.add(userData);
+
+          setState(() {
+            _isLoading = false; // Set loading state to false in case of exception
+          });
+
+          _showSnackBar("User registered successfully!");
+        }
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'email-already-in-use') {
+          _showSnackBar('This email is already in use');
+          setState(() {
+            _isLoading = false; // Set loading state to false if validation fails
+          });
+        } else {
+          _showSnackBar("An error occurred during registration. Please try again later");
+          setState(() {
+            _isLoading = false; // Set loading state to false if validation fails
+          });
+        }
+      }
+    } else {
+      _showSnackBar("Please fill in all required fields.");
+    }
+  }
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 3),
+      ),
+    );
   }
 
   @override
@@ -129,6 +183,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   child: ArrowBack()
                 ),
               ),
+              if (_isLoading) // Show loading indicator conditionally
+                Container(
+                  color: Colors.black.withOpacity(0.5),
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
             ],
           ),
         ));
