@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
               setState(() {
               _isLoading = false;
               }),
-              Navigator.popAndPushNamed(context, "/home")
+              Navigator.pushNamedAndRemoveUntil(context, "/home", (r) => false)
             });
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {

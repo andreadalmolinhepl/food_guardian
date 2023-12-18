@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/model/food_restriction_types.dart';
 import 'package:food_guardian/styles/spacings.dart';
@@ -46,7 +47,7 @@ class AccountPage extends StatelessWidget {
                     const SizedBox(height: kVerticalPadding,),
                     const Separator(),
 
-                    GestureDetector(
+                    InkWell(
                       onTap: () { Navigator.pushNamed(context, "/settings"); },
                       child: const Row(
                         children: [
@@ -61,8 +62,11 @@ class AccountPage extends StatelessWidget {
                         ],
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () {  },
+                    InkWell(
+                      onTap: () {
+                        FirebaseAuth.instance.signOut();
+                        Navigator.pushNamedAndRemoveUntil(context, "/", (r) => false);
+                      },
                       child: const Row(
                         children: [
                           Padding(
