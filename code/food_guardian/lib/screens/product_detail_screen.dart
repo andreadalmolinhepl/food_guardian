@@ -34,6 +34,7 @@ class ProductDetail extends StatefulWidget {
 
 class _ProductDetailState extends State<ProductDetail> {
   bool _isFavorite = false;
+  ValueNotifier<bool> favoriteNotifier = ValueNotifier(false);
 
   Future<Product> fetchProductFromAPI() async {
     Uri uri = Uri.parse(
@@ -57,6 +58,41 @@ class _ProductDetailState extends State<ProductDetail> {
     };
 
     await productRef.add(userData);
+  }
+
+  Future<void> _changeFavorite(bool isFavorite) async {
+    var userFavoritesRef = FirebaseFirestore.instance.collection("users/${FirebaseAuth.instance.currentUser?.uid}/favorites");
+
+    if (isFavorite) {
+      // Add the favorite item
+      Map<String, dynamic> userData = {
+        'id': widget.barcode,
+      };
+      await userFavoritesRef.add(userData);
+    } else {
+      var querySnapshot = await userFavoritesRef.where('id', isEqualTo: widget.barcode).get();
+      for (var doc in querySnapshot.docs) {
+        await doc.reference.delete();
+      }
+    }
+  }
+
+  Future<void> _checkIfFavorite() async {
+    var userFavoritesRef = FirebaseFirestore.instance.collection("users/${FirebaseAuth.instance.currentUser?.uid}/favorites");
+
+    var querySnapshot = await userFavoritesRef.where('id', isEqualTo: widget.barcode).get();
+    if (querySnapshot.docs.isNotEmpty) {
+      setState(() {
+        _isFavorite = true;
+        favoriteNotifier.value = true;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _checkIfFavorite();
   }
 
   @override
@@ -110,43 +146,37 @@ class _ProductDetailState extends State<ProductDetail> {
                           ),
                         ),
                         actions: [
-                          GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _isFavorite = !_isFavorite;
-                              });
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: kHorizontalPadding),
-                              child: _isFavorite
-                                  ? Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Icon(
-                                          Icons.favorite,
-                                          color: Colors.red,
-                                        ),
-                                      ),
-                                    )
-                                  : Container(
-                                      decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10)),
-                                      child: const Padding(
-                                        padding: EdgeInsets.all(8.0),
-                                        child: Icon(
-                                          Icons.favorite_border,
-                                          color: Colors.red,
-                                        ),
+                          ValueListenableBuilder<bool>(
+                            valueListenable: favoriteNotifier,
+                            builder: (context, isFavorite, child) {
+                              return GestureDetector(
+                                onTap: () {
+                                  favoriteNotifier.value = !isFavorite;
+                                  _changeFavorite(favoriteNotifier.value);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: isFavorite
+                                          ? const Icon(
+                                        Icons.favorite,
+                                        color: Colors.red,
+                                      )
+                                          : const Icon(
+                                        Icons.favorite_border,
+                                        color: Colors.red,
                                       ),
                                     ),
-                            ),
+                                  ),
+                                ),
+                              );
+                            },
                           )
                         ],
                       ),
