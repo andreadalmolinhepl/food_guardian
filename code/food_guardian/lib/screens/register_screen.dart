@@ -30,7 +30,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   Future<void> _submit() async {
     setState(() {
-      _isLoading = true; // Set loading state to true when submitting
+      _isLoading = true;
     });
 
     if (_registerFormKey.currentState!.validate()) {
@@ -83,6 +83,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       }
     } else {
       _showSnackBar("Please fill in all required fields.");
+
+      setState(() {
+        _isLoading = false;
+      });
     }
   }
 
