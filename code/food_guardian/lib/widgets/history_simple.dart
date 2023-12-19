@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../screens/product_detail_screen.dart';
+import '../styles/font.dart';
 
 class HistorySimple extends StatelessWidget {
   final String barcode;
@@ -22,7 +23,8 @@ class HistorySimple extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => ProductDetail(barcode: barcode, fromHistory: true),
+            builder: (context) =>
+                ProductDetail(barcode: barcode, fromHistory: true),
           ),
         );
       },
@@ -31,8 +33,16 @@ class HistorySimple extends StatelessWidget {
           leading: Image.network(
             image,
             fit: BoxFit.cover,
+            width: 80,
           ),
-          title: Text(name),
+          title: FittedBox(
+              alignment: Alignment.centerLeft,
+              fit: BoxFit.scaleDown,
+              child: Text(
+                name.length > 20 ? ("${name.substring(0, 15)}...") : name,
+                maxLines: 1,
+                style: kTextTabItem,
+              )),
           subtitle: Text(brand),
           trailing: const Icon(
             Icons.arrow_forward_rounded,

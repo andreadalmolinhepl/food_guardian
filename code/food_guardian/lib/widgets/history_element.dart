@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_guardian/styles/colors.dart';
 import 'package:food_guardian/styles/spacings.dart';
 
 import '../screens/product_detail_screen.dart';
@@ -32,7 +33,7 @@ class HistoryElement extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: kVerticalPaddingXS),
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: 125,
+          height: 140,
           decoration: BoxDecoration(
             color: Colors.lightBlue.shade50,
             borderRadius: BorderRadius.circular(10),
@@ -50,13 +51,14 @@ class HistoryElement extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  flex: 2,
+                  flex: 3,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Image.network(
                         image,
                         height: kProfileSize,
-                        fit: BoxFit.contain),
+                        fit: BoxFit.contain,
+                    ),
                   ),
                 ),
                 Expanded(
@@ -78,9 +80,27 @@ class HistoryElement extends StatelessWidget {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        Text(name),
-                                        Text(brand),
-                                        const Text("4 Days ago"),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(vertical: kVerticalPaddingS),
+                                          child: FittedBox(
+                                              fit: BoxFit.scaleDown,
+                                              child: Text(
+                                                name.length > 20
+                                                    ? ("${name.substring(0, 15)}...")
+                                                    : name,
+                                                maxLines: 1,
+                                                style: kTextTabItem,
+                                              )),
+                                        ),
+                                        FittedBox(
+                                            fit: BoxFit.scaleDown,
+                                            child: Text(
+                                              brand.length > 20
+                                                  ? ("${brand.substring(0, 15)}...")
+                                                  : brand,
+                                              maxLines: 1,
+                                            )),
+                                        const Text("4 Days ago", style: kHintStyle,),
                                       ],
                                     ),
                                   ),
