@@ -112,12 +112,14 @@ class ProductSnippet {
   final String productName;
   final String brand;
   final String imageUrl;
+  final String nutriscore;
 
   ProductSnippet({
     required this.id,
     required this.productName,
     required this.brand,
     required this.imageUrl,
+    required this.nutriscore,
   });
 
   factory ProductSnippet.fromMap(String id, Map<String, dynamic> map) {
@@ -126,6 +128,7 @@ class ProductSnippet {
       productName: map['productName'] ?? '',
       brand: map['productBrand'] ?? '',
       imageUrl: map['image'] ?? '',
+      nutriscore: map['nutriscore'] ?? '',
     );
   }
 }

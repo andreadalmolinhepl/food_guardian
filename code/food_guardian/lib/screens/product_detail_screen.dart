@@ -55,6 +55,7 @@ class _ProductDetailState extends State<ProductDetail> {
       'productName': widget._product.product.productName,
       'productBrand': widget._product.product.brand,
       'image': widget._product.product.imageUrl,
+      'nutriscore': widget._product.product.nutriscoreGrade,
     };
 
     await productRef.add(userData);

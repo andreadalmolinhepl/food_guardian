@@ -75,6 +75,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                         brand: snippet.brand,
                                         image: snippet.imageUrl,
                                         barcode: snippet.id,
+                                        nutriscore: snippet.nutriscore,
                                       );
                                     }).toList(),
                                   )
