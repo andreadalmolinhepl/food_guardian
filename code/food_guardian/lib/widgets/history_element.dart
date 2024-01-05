@@ -10,16 +10,20 @@ class HistoryElement extends StatelessWidget {
   final String name;
   final String brand;
   final String image;
+  final String nutriscore;
 
   const HistoryElement(
       {super.key,
       required this.barcode,
       required this.name,
       required this.brand,
-      required this.image});
+      required this.image,
+      required this.nutriscore});
 
   @override
   Widget build(BuildContext context) {
+    final validGrades = ['a', 'b', 'c', 'd', 'e'];
+
     return GestureDetector(
       onTap: () {
         Navigator.push(

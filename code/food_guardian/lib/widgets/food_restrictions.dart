@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:food_guardian/screens/food_restrictions_settings.dart';
 import 'package:food_guardian/styles/font.dart';
 import 'package:food_guardian/styles/spacings.dart';
 
+import '../screens/food_restrictions_settings.dart';
 import 'allergen_box.dart';
 
 @immutable
@@ -23,7 +25,12 @@ class FoodRestrictions extends StatelessWidget {
             ),
             GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, "/welcome");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => FoodRestrictionSettings(type: label),
+                    ),
+                  );
                 },
                 child: const Icon(Icons.edit_note_rounded))
           ],
@@ -38,9 +45,7 @@ class FoodRestrictions extends StatelessWidget {
             children: [
               AllergenBox(label: "Gluten"),
               AllergenBox(label: "Fish"),
-              AllergenBox(
-                label: "Eggs",
-              ),
+              AllergenBox(label: "Eggs",),
             ],
           ),
         )
