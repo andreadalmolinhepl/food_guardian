@@ -4,7 +4,7 @@ import 'package:food_guardian/widgets/main_button.dart';
 import '../../styles/spacings.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  static const String routeName = "/";
+  static const String routeName = "/welcome";
 
   const WelcomeScreen({super.key});
 

@@ -65,7 +65,7 @@ class AccountPage extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         FirebaseAuth.instance.signOut();
-                        Navigator.pushNamedAndRemoveUntil(context, "/", (r) => false);
+                        Navigator.pushNamedAndRemoveUntil(context, "/welcome", (r) => false);
                       },
                       child: const Row(
                         children: [

@@ -147,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             GestureDetector(
-                              onTap: () => Navigator.pushNamed(context, "/"),
+                              onTap: () => Navigator.pushNamed(context, "/welcome"),
                               child: const Text("Mot de passe oublié ?",
                                   style: kHintStyle),
                             ),

@@ -23,7 +23,7 @@ class FoodRestrictions extends StatelessWidget {
             ),
             GestureDetector(
                 onTap: () {
-                  Navigator.pushNamed(context, "/");
+                  Navigator.pushNamed(context, "/welcome");
                 },
                 child: const Icon(Icons.edit_note_rounded))
           ],
