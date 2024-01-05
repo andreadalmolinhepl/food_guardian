@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/widgets/arrow_back.dart';
 
@@ -5,30 +7,67 @@ import '../model/allergens_list.dart';
 import '../styles/font.dart';
 import '../styles/spacings.dart';
 
-class FoodRestrictionSettings extends StatelessWidget {
+class FoodRestrictionSettings extends StatefulWidget {
   static const String routeName = "/foodRestrictionsSettings";
   final String type;
 
-  const FoodRestrictionSettings({required this.type,super.key});
+  const FoodRestrictionSettings({required this.type, super.key});
+
+  @override
+  State<FoodRestrictionSettings> createState() => _FoodRestrictionSettingsState();
+}
+
+class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
+  Map<String, bool> allergenCheckState = {};
+
+
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserAllergens();
+  }
+
+  Future<void> _loadUserAllergens() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final querySnapshot = await FirebaseFirestore.instance
+          .collection("users")
+          .doc(user.uid)
+          .collection("personalAllergens")
+          .get();
+
+      // Update allergenCheckState based on the Firestore data
+      for (var allergen in AllergensList.values) {
+        final allergenName = allergen.stringValue;
+        final isAllergenChecked = querySnapshot.docs.any((doc) => doc.id == allergenName && doc.data()['isChecked'] == true);
+
+        setState(() {
+          allergenCheckState[allergenName] = isAllergenChecked;
+        });
+      }
+    } else {
+      // Handle the case where there is no user logged in
+    }
+  }
 
   List<Widget> generateAllergenWidgets() {
     return AllergensList.values.map((allergen) {
+      // Provide a default value (false) if the allergen isn't in the map yet
+      bool isChecked = allergenCheckState[allergen.stringValue] ?? false;
+
       return InkWell(
-        onTap: () {
-          // Handle onTap for each allergen
-        },
         child: Row(
           children: [
             Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Container(
-                color: Colors.yellow,
-                child: Checkbox(
-                  value: false,
-                  onChanged: (value) {
-                    // Handle checkbox onChanged for each allergen
-                  },
-                ),
+              child: Checkbox(
+                value: isChecked,
+                onChanged: (bool? value) {
+                  setState(() {
+                    allergenCheckState[allergen.stringValue] = value!;
+                  });
+                },
               ),
             ),
             Padding(
@@ -62,10 +101,9 @@ class FoodRestrictionSettings extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: kVerticalPadding, horizontal: kHorizontalPadding),
-                        child: Text(type, style: kTitleHome),
+                        child: Text(widget.type, style: kTitleHome),
                       ),
                       ...generateAllergenWidgets(),
-
                     ],
                   ),
                 ),
@@ -83,11 +121,29 @@ class FoodRestrictionSettings extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Container(
-                  color: Colors.blue,
-                  child: const Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: kHorizontalPaddingL, vertical: kVerticalPaddingL),
-                    child: const Text("data"),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
+                  child: InkWell(
+                    onTap: () {
+                      _saveSelectedAllergens();
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text("Preferences saved successfully"),
+                          duration: Duration(seconds: 3),
+                        ),
+                      );
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(25)
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(20.0),
+                        child: Icon(Icons.done),
+                      ),
+                    ),
                   ),
                 )
               ],
@@ -96,5 +152,27 @@ class FoodRestrictionSettings extends StatelessWidget {
         )
       ]),
     );
+  }
+
+  Future<void> _saveSelectedAllergens() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final firestoreInstance = FirebaseFirestore.instance;
+
+      allergenCheckState.forEach((allergen, isChecked) async {
+        if (isChecked) {
+          await firestoreInstance
+              .collection("users")
+              .doc(user.uid)
+              .collection("personalAllergens")
+              .doc(allergen) // Using the allergen name as the document ID
+              .set({'isChecked': true});
+        }
+      });
+
+      // Optionally show a confirmation message or navigate away
+    } else {
+      // Handle the case where there is no user logged in
+    }
   }
 }
