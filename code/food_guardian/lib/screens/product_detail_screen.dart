@@ -127,10 +127,13 @@ class _ProductDetailState extends State<ProductDetail> {
                           background: Stack(
                             fit: StackFit.expand,
                             children: <Widget>[
-                              Image.network(
-                                product.product.imageUrl,
-                                fit: BoxFit.cover,
-                              ),
+                              product.product.imageUrl == ""
+                                  ? const Image(image: AssetImage("assets/img/unknownFood.png"), fit: BoxFit.contain, width: 80,)
+                                  : Image.network(
+                                      product.product.imageUrl,
+                                      fit: BoxFit.cover,
+                                      width: 80,
+                                    ),
                               const DecoratedBox(
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(

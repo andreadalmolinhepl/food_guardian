@@ -125,6 +125,9 @@ class _HomePageState extends State<HomePage> {
                                 List<ProductSnippet> snippets = snapshot.data!.docs.map((doc) {
                                   return ProductSnippet.fromMap(doc.id, doc.data() as Map<String, dynamic>);
                                 }).toList();
+
+                                snippets = snippets.take(5).toList();
+
                                 return Column(
                                   children: snippets.map((snippet) {
                                     return HistorySimple(

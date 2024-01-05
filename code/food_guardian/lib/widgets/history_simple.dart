@@ -30,11 +30,13 @@ class HistorySimple extends StatelessWidget {
       },
       child: Card(
         child: ListTile(
-          leading: Image.network(
-            image,
-            fit: BoxFit.cover,
-            width: 80,
-          ),
+          leading: image == ""
+              ? const Image(image: AssetImage("assets/img/unknownFood.png"), fit: BoxFit.contain, width: 80,)
+              : Image.network(
+                  image,
+                  fit: BoxFit.cover,
+                  width: 80,
+                ),
           title: FittedBox(
               alignment: Alignment.centerLeft,
               fit: BoxFit.scaleDown,
