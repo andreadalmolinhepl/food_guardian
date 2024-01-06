@@ -12,8 +12,8 @@ class AllergenBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 60,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPaddingS),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
@@ -26,11 +26,10 @@ class AllergenBox extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
                 child: Image(
-                    image: AssetImage("assets/icons/gluten.png"), fit: BoxFit.cover),
+                    image: AssetImage("assets/icons/gluten.png"), fit: BoxFit.contain),
               ),
             ),
           ),
-          const SizedBox(height: kVerticalPaddingS,),
           Text(label,)
         ],
       ),

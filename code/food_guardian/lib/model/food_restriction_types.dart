@@ -8,11 +8,11 @@ extension FoodRestrictionTypesString on FoodRestrictionTypes {
   String get stringValue {
     switch (this) {
       case FoodRestrictionTypes.allergies:
-        return 'allergies';
+        return 'Allergies';
       case FoodRestrictionTypes.intolerances:
-        return 'intolerances';
+        return 'Intolerances';
       case FoodRestrictionTypes.sensitivities:
-        return 'sensitivities';
+        return 'Sensitivities';
       default:
         return '';
     }

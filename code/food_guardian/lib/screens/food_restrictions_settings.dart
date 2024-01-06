@@ -26,27 +26,13 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
     _loadUserAllergens();
   }
 
-  String getCollectionName() {
-    switch (widget.type) {
-      case 'allergies':
-        return 'personalAllergies';
-      case 'intolerances':
-        return 'personalIntolerances';
-      case 'sensitivities':
-        return 'personalSensitivities';
-      default:
-        // TODO improve UX
-        throw Exception('Invalid type');
-    }
-  }
-
   Future<void> _loadUserAllergens() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       final querySnapshot = await FirebaseFirestore.instance
           .collection("users")
           .doc(user.uid)
-          .collection(getCollectionName())
+          .collection("personal${widget.type}")
           .get();
 
       // Update allergenCheckState based on the Firestore data
@@ -70,7 +56,7 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
       final collectionRef = firestoreInstance
           .collection("users")
           .doc(user.uid)
-          .collection(getCollectionName());
+          .collection("personal${widget.type}");
 
       final currentAllergens = await collectionRef.get();
 
