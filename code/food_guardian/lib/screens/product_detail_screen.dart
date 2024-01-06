@@ -33,7 +33,6 @@ class ProductDetail extends StatefulWidget {
 
 
 class _ProductDetailState extends State<ProductDetail> {
-  bool _isFavorite = false;
   ValueNotifier<bool> favoriteNotifier = ValueNotifier(false);
 
   Future<Product> fetchProductFromAPI() async {
@@ -84,7 +83,6 @@ class _ProductDetailState extends State<ProductDetail> {
     var querySnapshot = await userFavoritesRef.where('id', isEqualTo: widget.barcode).get();
     if (querySnapshot.docs.isNotEmpty) {
       setState(() {
-        _isFavorite = true;
         favoriteNotifier.value = true;
       });
     }

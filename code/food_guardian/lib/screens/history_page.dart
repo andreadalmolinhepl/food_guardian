@@ -6,7 +6,6 @@ import 'package:food_guardian/widgets/history_element.dart';
 
 import '../model/product.dart';
 import '../styles/font.dart';
-import '../widgets/history_simple.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});

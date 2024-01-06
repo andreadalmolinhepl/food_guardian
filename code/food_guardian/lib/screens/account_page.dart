@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:food_guardian/model/food_restriction_types.dart';
 import 'package:food_guardian/styles/spacings.dart';
 import 'package:food_guardian/widgets/food_restrictions.dart';
-import 'package:food_guardian/widgets/line.dart';
 import 'package:food_guardian/widgets/separator.dart';
 
 import '../styles/font.dart';

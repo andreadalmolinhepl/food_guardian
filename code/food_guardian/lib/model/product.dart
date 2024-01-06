@@ -88,7 +88,7 @@ class ProductDetails {
           status = 'Yes';
         }
 
-        String modifiedTag = matchedEnum.stringValue ?? tag;
+        String modifiedTag = matchedEnum.stringValue;
 
         return NutritionalPreference(name: modifiedTag, status: status);
       }).toList();

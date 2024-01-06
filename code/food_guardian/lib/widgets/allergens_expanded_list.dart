@@ -81,8 +81,7 @@ class _AllergensExpandedListState extends State<AllergensExpandedList> {
                             ),
                             isExpanded: _isOpen[index],
                           );
-                        }).toList() ??
-                        [],
+                        }).toList(),
                     expansionCallback: (int index, bool isExpanded) {
                       setState(() {
                         _isOpen[index] = isExpanded;

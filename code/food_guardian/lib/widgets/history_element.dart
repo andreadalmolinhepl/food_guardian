@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_guardian/styles/colors.dart';
 import 'package:food_guardian/styles/spacings.dart';
 
 import '../screens/product_detail_screen.dart';
@@ -22,8 +21,6 @@ class HistoryElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final validGrades = ['a', 'b', 'c', 'd', 'e'];
-
     return GestureDetector(
       onTap: () {
         Navigator.push(
