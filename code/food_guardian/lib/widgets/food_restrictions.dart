@@ -20,7 +20,7 @@ class FoodRestrictions extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              label,
+              "Your $label",
               style: kTextTabItem,
             ),
             GestureDetector(

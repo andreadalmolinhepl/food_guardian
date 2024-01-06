@@ -20,12 +20,24 @@ class FoodRestrictionSettings extends StatefulWidget {
 class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
   Map<String, bool> allergenCheckState = {};
 
-
-
   @override
   void initState() {
     super.initState();
     _loadUserAllergens();
+  }
+
+  String getCollectionName() {
+    switch (widget.type) {
+      case 'allergies':
+        return 'personalAllergies';
+      case 'intolerances':
+        return 'personalIntolerances';
+      case 'sensitivities':
+        return 'personalSensitivities';
+      default:
+        // TODO improve UX
+        throw Exception('Invalid type');
+    }
   }
 
   Future<void> _loadUserAllergens() async {
@@ -34,7 +46,7 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
       final querySnapshot = await FirebaseFirestore.instance
           .collection("users")
           .doc(user.uid)
-          .collection("personalAllergens")
+          .collection(getCollectionName())
           .get();
 
       // Update allergenCheckState based on the Firestore data
@@ -48,6 +60,36 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
       }
     } else {
       // Handle the case where there is no user logged in
+    }
+  }
+
+  Future<void> _saveSelectedAllergens() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final firestoreInstance = FirebaseFirestore.instance;
+      final collectionRef = firestoreInstance
+          .collection("users")
+          .doc(user.uid)
+          .collection(getCollectionName());
+
+      final currentAllergens = await collectionRef.get();
+
+      WriteBatch batch = firestoreInstance.batch();
+      for (var doc in currentAllergens.docs) {
+        batch.delete(doc.reference);
+      }
+      await batch.commit();
+
+      allergenCheckState.forEach((allergen, isChecked) async {
+        if (isChecked) {
+          await collectionRef
+              .doc(allergen)
+              .set({'isChecked': true});
+        }
+      });
+
+    } else {
+
     }
   }
 
@@ -101,7 +143,7 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: kVerticalPadding, horizontal: kHorizontalPadding),
-                        child: Text(widget.type, style: kTitleHome),
+                        child: Text("Your ${widget.type}", style: kTitleHome),
                       ),
                       ...generateAllergenWidgets(),
                     ],
@@ -152,27 +194,5 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
         )
       ]),
     );
-  }
-
-  Future<void> _saveSelectedAllergens() async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      final firestoreInstance = FirebaseFirestore.instance;
-
-      allergenCheckState.forEach((allergen, isChecked) async {
-        if (isChecked) {
-          await firestoreInstance
-              .collection("users")
-              .doc(user.uid)
-              .collection("personalAllergens")
-              .doc(allergen) // Using the allergen name as the document ID
-              .set({'isChecked': true});
-        }
-      });
-
-      // Optionally show a confirmation message or navigate away
-    } else {
-      // Handle the case where there is no user logged in
-    }
   }
 }
