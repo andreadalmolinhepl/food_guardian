@@ -58,10 +58,12 @@ class HistoryElement extends StatelessWidget {
                   flex: 3,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Image.network(
-                        image,
-                        height: kProfileSize,
-                        fit: BoxFit.contain,
+                    child: image == ""
+                        ? const Image(image: AssetImage("assets/img/unknownFood.png"), fit: BoxFit.contain, width: 80,)
+                        : Image.network(
+                      image,
+                      fit: BoxFit.cover,
+                      width: 80,
                     ),
                   ),
                 ),
