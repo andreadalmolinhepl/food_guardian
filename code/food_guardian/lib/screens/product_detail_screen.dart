@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_guardian/model/allergen.dart';
 import 'package:food_guardian/screens/product_not_found.dart';
 import 'package:food_guardian/widgets/separator.dart';
 import 'package:http/http.dart' as http;
@@ -46,6 +47,78 @@ class _ProductDetailState extends State<ProductDetail> {
     return widget._product;
   }
 
+  Future<List<String>> fetchUserAllergens() async {
+    List<String> userAllergens = [];
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      const collectionName = 'personalAllergies';
+      final querySnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .collection(collectionName)
+          .get();
+
+      for (var doc in querySnapshot.docs) {
+        userAllergens.add(doc.id.toLowerCase());
+      }
+    }
+    return userAllergens;
+  }
+
+  Future<List<String>> fetchUserIntolerances() async {
+    List<String> userIntolerances = [];
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      const collectionName = 'personalIntolerances';
+      final querySnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .collection(collectionName)
+          .get();
+
+      for (var doc in querySnapshot.docs) {
+        userIntolerances.add(doc.id.toLowerCase());
+      }
+    }
+    return userIntolerances;
+  }
+
+  Future<List<String>> fetchUserSensitivities() async {
+    List<String> userSensitivities = [];
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      const collectionName = 'personalSensitivities';
+      final querySnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .collection(collectionName)
+          .get();
+
+      for (var doc in querySnapshot.docs) {
+        userSensitivities.add(doc.id.toLowerCase());
+      }
+    }
+    return userSensitivities;
+  }
+
+  Future<List<String>> fetchUserFoodRestrictions(String collectionName) async {
+    List<String> userRestrictions = [];
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      final querySnapshot = await FirebaseFirestore.instance
+          .collection('users')
+          .doc(user.uid)
+          .collection(collectionName)
+          .get();
+
+      for (var doc in querySnapshot.docs) {
+        userRestrictions.add(doc.id.toLowerCase());
+      }
+    }
+    return userRestrictions;
+  }
+
+
   Future<void> _addProduct() async {
     var productRef = FirebaseFirestore.instance.collection("users/${FirebaseAuth.instance.currentUser?.uid}/productsScanned");
 
@@ -64,7 +137,6 @@ class _ProductDetailState extends State<ProductDetail> {
     var userFavoritesRef = FirebaseFirestore.instance.collection("users/${FirebaseAuth.instance.currentUser?.uid}/favorites");
 
     if (isFavorite) {
-      // Add the favorite item
       Map<String, dynamic> userData = {
         'id': widget.barcode,
       };
@@ -88,6 +160,18 @@ class _ProductDetailState extends State<ProductDetail> {
     }
   }
 
+  int calculateSeverity(List<Allergen> matchedAllergens, List<Allergen> matchedIntolerances, List<Allergen> matchedSensitivities) {
+    if (matchedAllergens.isNotEmpty) {
+      return 3;
+    } else if (matchedIntolerances.isNotEmpty) {
+      return 2;
+    } else if (matchedSensitivities.isNotEmpty) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -100,8 +184,13 @@ class _ProductDetailState extends State<ProductDetail> {
       body: SafeArea(
         child: Stack(children: [
           FutureBuilder(
-              future: fetchProductFromAPI(),
-              builder: (BuildContext context, AsyncSnapshot<Product> snapshot) {
+              future: Future.wait([
+                fetchProductFromAPI(),
+                fetchUserFoodRestrictions('personalAllergies'),
+                fetchUserFoodRestrictions('personalIntolerances'),
+                fetchUserFoodRestrictions('personalSensitivities'),
+              ]),
+              builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
@@ -109,7 +198,28 @@ class _ProductDetailState extends State<ProductDetail> {
                 } else if (!snapshot.hasData) {
                   return const Center(child: Text('No data available'));
                 } else {
-                  Product product = snapshot.data!;
+                  Product product = snapshot.data![0];
+                  List<String> userAllergens = [
+                    ...snapshot.data![1],
+                  ];
+                  List<String> userIntolerances = [
+                    ...snapshot.data![2],
+                  ];
+                  List<String> userSensitivities = [
+                    ...snapshot.data![3],
+                  ];
+
+                  List<Allergen> matchedAllergens = product.product.allergens
+                      .where((allergen) => userAllergens.contains(allergen.name.toLowerCase()))
+                      .toList();
+                  List<Allergen> matchedIntolerances = product.product.allergens
+                      .where((allergen) => userIntolerances.contains(allergen.name.toLowerCase()))
+                      .toList();
+                  List<Allergen> matchedSensitivities = product.product.allergens
+                      .where((allergen) => userSensitivities.contains(allergen.name.toLowerCase()))
+                      .toList();
+
+                  int severity = calculateSeverity(matchedAllergens, matchedIntolerances, matchedSensitivities);
 
                   if (!widget.fromHistory) _addProduct();
 
@@ -188,13 +298,20 @@ class _ProductDetailState extends State<ProductDetail> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const SizedBox(height: kVerticalPadding,),
-                            const AllergenWarningBox(),
+                            AllergenWarningBox(severity: severity),
                             const Separator(),
-                            const AllergensExpandedList(
-                                allergenList: [], isUserSpecific: true),
-                            const Separator(),
+                            if (matchedAllergens.isNotEmpty)
+                              AllergensExpandedList(
+                                  allergens: matchedAllergens,
+                                  intolerances: matchedIntolerances,
+                                  sensitivities: matchedSensitivities,
+                                  isUserSpecific: true),
+                            if (matchedAllergens.isNotEmpty)
+                              const Separator(),
                             AllergensExpandedList(
-                                allergenList: product.product.allergens,
+                                allergens: product.product.allergens,
+                                intolerances: List.empty(),
+                                sensitivities: List.empty(),
                                 isUserSpecific: false),
                             const Separator(),
                             IngredientsExpansionList(
