@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_guardian/styles/font.dart';
 import 'package:food_guardian/widgets/main_button.dart';
 import '../../styles/spacings.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class WelcomeScreen extends StatelessWidget {
   static const String routeName = "/welcome";
@@ -29,9 +31,9 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Row(
+                  Row(
                     children: [
-                      Text("Food Guardian", style: kTitleBigStat,)
+                      Text(AppLocalizations.of(context)!.helloWorld, style: kTitleBigStat,)
                     ],
                   ),
                   const Row(

@@ -6,6 +6,10 @@ flutter
 3.0
 file:///C:/Flutter/flutter/packages/flutter/
 file:///C:/Flutter/flutter/packages/flutter/lib/
+flutter_localizations
+3.0
+file:///C:/Flutter/flutter/packages/flutter_localizations/
+file:///C:/Flutter/flutter/packages/flutter_localizations/lib/
 flutter_test
 3.0
 file:///C:/Flutter/flutter/packages/flutter_test/
@@ -130,6 +134,10 @@ http_parser
 2.12
 file:///C:/Users/andre/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2/
 file:///C:/Users/andre/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2/lib/
+intl
+2.12
+file:///C:/Users/andre/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.1/
+file:///C:/Users/andre/AppData/Local/Pub/Cache/hosted/pub.dev/intl-0.18.1/lib/
 js
 2.19
 file:///C:/Users/andre/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7/
