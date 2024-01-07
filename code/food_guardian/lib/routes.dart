@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:food_guardian/screens/food_restrictions_settings.dart';
 import 'package:food_guardian/screens/home_screen.dart';
 import 'package:food_guardian/screens/login_screen.dart';
+import 'package:food_guardian/screens/no_internet_screen.dart';
 import 'package:food_guardian/screens/nutriscore_information.dart';
 import 'package:food_guardian/screens/onboarding_screen.dart';
 import 'package:food_guardian/screens/register_screen.dart';
@@ -14,6 +15,7 @@ import 'package:food_guardian/screens/welcome_screen.dart';
 Map<String, WidgetBuilder> routes = {
   SplashScreen.routeName : (context) => const SplashScreen(),
   OnBoardingScreen.routeName : (context) => const OnBoardingScreen(),
+  NoInternetScreen.routeName : (context) => const NoInternetScreen(),
   WelcomeScreen.routeName : (context) => const WelcomeScreen(),
   LoginScreen.routeName : (context) => const LoginScreen(),
   RegisterScreen.routeName : (context) => const RegisterScreen(),
