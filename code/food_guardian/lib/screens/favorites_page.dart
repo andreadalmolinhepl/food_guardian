@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/widgets/favorite_element.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../model/product.dart';
 import '../styles/font.dart';
@@ -49,9 +50,9 @@ class FavoritesPage extends StatelessWidget {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return const Center(child: CircularProgressIndicator());
                       } else if (snapshot.hasError) {
-                        return const Center(child: Text('Error fetching favorites'));
+                        return Center(child: Text(AppLocalizations.of(context)!.errorFetchingFavorites));
                       } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                        return const Center(child: Text('No favorites found'));
+                        return Center(child: Text(AppLocalizations.of(context)!.noFavoritesFound));
                       } else {
                         List<String> favoriteIds = snapshot.data!.docs.map((doc) => doc['id'] as String).toList();
                         return SafeArea(
@@ -60,9 +61,9 @@ class FavoritesPage extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(vertical: kVerticalPadding),
-                                  child: Text("Favorites", style: kTitleHome),
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(vertical: kVerticalPadding),
+                                  child: Text(AppLocalizations.of(context)!.favorites, style: kTitleHome),
                                 ),
                                 FutureBuilder<List<ProductSnippet>>(
                                   future: _getMatchingProductSnippets(favoriteIds),
@@ -70,9 +71,9 @@ class FavoritesPage extends StatelessWidget {
                                     if (productsSnapshot.connectionState == ConnectionState.waiting) {
                                       return const Center(child: CircularProgressIndicator());
                                     } else if (productsSnapshot.hasError) {
-                                      return const Center(child: Text('Error fetching matching products'));
+                                      return Center(child: Text(AppLocalizations.of(context)!.errorFetchingMatchingProducts));
                                     } else if (!productsSnapshot.hasData || productsSnapshot.data!.isEmpty) {
-                                      return const Center(child: Text('No matching products'));
+                                      return Center(child: Text(AppLocalizations.of(context)!.noMatchingProducts));
                                     } else {
                                       List<ProductSnippet> snippets = productsSnapshot.data!;
                                       return Column(

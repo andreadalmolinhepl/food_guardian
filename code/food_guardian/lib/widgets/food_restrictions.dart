@@ -114,6 +114,7 @@ class FoodRestrictions extends StatelessWidget {
                       )),
                     );
             } else {
+              // TODO check translation
               return Text('No $label found');
             }
           },

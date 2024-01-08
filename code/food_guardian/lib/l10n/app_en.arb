@@ -4,5 +4,360 @@
   "helloWorld": "Hello World!",
   "@helloWorld": {
     "description": "The conventional newborn programmer greeting"
+  },
+
+  "settings": "Settings",
+  "@settings": {
+    "description": ""
+  },
+
+  "logout": "Logout",
+  "@logout": {
+    "description": ""
+  },
+
+  "favorites": "Favorites",
+  "@favorites": {
+    "description": ""
+  },
+
+  "errorFetchingFavorites": "Error fetching favorites",
+  "@errorFetchingFavorites": {
+    "description": ""
+  },
+
+  "noFavoritesFound": "No favorites found",
+  "@noFavoritesFound": {
+    "description": ""
+  },
+
+  "errorFetchingMatchingProducts": "Error fetching matching products",
+  "@errorFetchingMatchingProducts": {
+    "description": ""
+  },
+
+  "noMatchingProducts": "No matching products",
+  "@noMatchingProducts": {
+    "description": ""
+  },
+
+  "your": "Your",
+  "@your": {
+    "description": ""
+  },
+
+  "preferencesSavedSuccessfully": "Preferences saved successfully",
+  "@preferencesSavedSuccessfully": {
+    "description": ""
+  },
+
+  "error": "Error",
+  "@error": {
+    "description": ""
+  },
+
+  "noDataAvailable": "No data available",
+  "@noDataAvailable": {
+    "description": ""
+  },
+
+  "history": "History",
+  "@history": {
+    "description": ""
+  },
+
+  "hi": "Hi",
+  "@hi": {
+    "description": ""
+  },
+
+  "scanANewItem": "Scan a new item",
+  "@scanANewItem": {
+    "description": ""
+  },
+
+  "or": "or",
+  "@or": {
+    "description": ""
+  },
+
+  "yourLastScans": "Your last scans",
+  "@yourLastScans": {
+    "description": ""
+  },
+
+  "seeAll": "See all",
+  "@seeAll": {
+    "description": ""
+  },
+
+  "noUserFoundForThatEmail": "No user found for that email",
+  "@noUserFoundForThatEmail": {
+    "description": ""
+  },
+
+  "wrongPasswordProvidedForThatUser": "Wrong password provided for that user",
+  "@wrongPasswordProvidedForThatUser": {
+    "description": ""
+  },
+
+  "somethingTerribleHappened": "Something terrible happened, please try again later",
+  "@somethingTerribleHappened": {
+    "description": ""
+  },
+
+  "pleaseFillInAllRequiredFields": "Please fill in all required fields.",
+  "@pleaseFillInAllRequiredFields": {
+    "description": ""
+  },
+
+  "forgottenPassword": "Forgotten password?",
+  "@forgottenPassword": {
+    "description": ""
+  },
+
+  "login": "Login",
+  "@login": {
+    "description": ""
+  },
+
+  "iDontHaveAnAccountYet": "I don't have an account yet",
+  "@iDontHaveAnAccountYet": {
+    "description": ""
+  },
+
+  "createMyAccount": "Create my account",
+  "@createMyAccount": {
+    "description": ""
+  },
+
+  "oopsNoInternetConnection": "Oops! No Internet Connection",
+  "@oopsNoInternetConnection": {
+    "description": ""
+  },
+
+  "pleaseCheckYourInternetConnection": "Please check your internet connection and try again.",
+  "@pleaseCheckYourInternetConnection": {
+    "description": ""
+  },
+
+  "retry": "Retry",
+  "@retry": {
+    "description": ""
+  },
+
+  "nutriscore": "Nutriscore",
+  "@nutriscore": {
+    "description": ""
+  },
+
+  "whatIsNutriscore": "What is Nutriscore?",
+  "@whatIsNutriscore": {
+    "description": ""
+  },
+
+  "nutriscoreExplanation": "NutriScore is a front-of-pack labeling system developed to provide consumers with a quick, easy-to-understand overview of the nutritional quality of food products. It utilizes a color-coded scale accompanied by letters ranging from A (healthiest) to E (least healthy). This system considers various nutritional elements such as the amount of energy, sugars, saturated fats, sodium, protein, fiber, and the percentage of fruits, vegetables, legumes, nuts, and oils in a product. Based on these factors, a formula calculates a score, determining the letter and color code displayed on the packaging. NutriScore aims to assist consumers in making healthier food choices by highlighting the nutritional value of products at a glance, encouraging the selection of more balanced and healthier options. Its simplicity and clarity empower individuals to compare products quickly and make informed decisions about their dietary intake.",
+  "@nutriscoreExplanation": {
+    "description": ""
+  },
+
+  "welcomeToFoodGuardian": "Welcome to Food Guardian",
+  "@welcomeToFoodGuardian": {
+    "description": ""
+  },
+
+  "discoverNewWayToManage": "Discover a new way to manage your food intake.",
+  "@discoverNewWayToManage": {
+    "description": ""
+  },
+
+  "trackYourAllergies": "Track Your Allergies",
+  "@trackYourAllergies": {
+    "description": ""
+  },
+
+  "keepEyeOnHealth": "Keep an eye on what matters most for your health.",
+  "@keepEyeOnHealth": {
+    "description": ""
+  },
+
+  "stayHealthy": "Stay Healthy",
+  "@stayHealthy": {
+    "description": ""
+  },
+
+  "enjoyHealthierLifestyle": "Enjoy a healthier lifestyle with personalized food recommendations.",
+  "@enjoyHealthierLifestyle": {
+    "description": ""
+  },
+
+  "noDataAvailable": "No data available",
+  "@noDataAvailable": {
+    "description": ""
+  },
+
+  "productNotFound": "Sorry, the product was not found.",
+  "@productNotFound": {
+    "description": ""
+  },
+
+  "goBack": "Go back",
+  "@goBack": {
+    "description": ""
+  },
+
+  "userRegisteredSuccessfully": "User registered successfully!",
+  "@userRegisteredSuccessfully": {
+    "description": ""
+  },
+
+  "emailInUse": "This email is already in use",
+  "@emailInUse": {
+    "description": ""
+  },
+
+  "errorDuringRegistration": "An error occurred during registration. Please try again later",
+  "@errorDuringRegistration": {
+    "description": ""
+  },
+
+  "fillRequiredFields": "Please fill in all required fields.",
+  "@fillRequiredFields": {
+    "description": ""
+  },
+
+  "firstName": "First name",
+  "@firstName": {
+    "description": ""
+  },
+
+  "lastName": "Last name",
+  "@lastName": {
+    "description": ""
+  },
+
+  "emailAddress": "Email address",
+  "@emailAddress": {
+    "description": ""
+  },
+
+  "password": "Password",
+  "@password": {
+    "description": ""
+  },
+
+  "createAccount": "Create my account",
+  "@createAccount": {
+    "description": ""
+  },
+
+  "settingsPage": "Settings page",
+  "@settingsPage": {
+    "description": ""
+  },
+
+  "allIngredients": "All ingredients",
+  "@allIngredients": {
+    "description": ""
+  },
+
+  "allergenAssistant": "The allergen assistant you’ve been looking for",
+  "@allergenAssistant": {
+    "description": ""
+  },
+
+  "login": "Login",
+  "@login": {
+    "description": ""
+  },
+
+  "register": "Register",
+  "@register": {
+    "description": ""
+  },
+
+  "goodFitProduct": "This product seems like a good fit for you!",
+  "@goodFitProduct": {
+    "description": ""
+  },
+
+  "lowRiskIngredient": "Low risk ingredient for you",
+  "@lowRiskIngredient": {
+    "description": ""
+  },
+
+  "moderateRiskIngredient": "Moderate risk ingredient for you",
+  "@moderateRiskIngredient": {
+    "description": ""
+  },
+
+  "highRiskIngredient": "High risk ingredient for you",
+  "@highRiskIngredient": {
+    "description": ""
+  },
+
+  "unknownRiskIngredient": "Unknown risk ingredient for you",
+  "@unknownRiskIngredient": {
+    "description": ""
+  },
+
+  "payAttention": "Pay attention to these",
+  "@payAttention": {
+    "description": ""
+  },
+
+  "allergensFound": "Allergens found",
+  "@allergensFound": {
+    "description": ""
+  },
+
+  "noAllergensFound": "No allergens found",
+  "@noAllergensFound": {
+    "description": ""
+  },
+
+  "indicated": "You indicated ",
+  "@indicated": {
+    "description": ""
+  },
+
+  "asOneOfYour": " as one of your ",
+  "@asOneOfYour": {
+    "description": ""
+  },
+
+  "no": "No",
+  "@no": {
+    "description": ""
+  },
+
+  "found": "found",
+  "@found": {
+    "description": ""
+  },
+
+  "daysAgo": "Days ago",
+  "@daysAgo": {
+    "description": ""
+  },
+
+  "intoleranceFound": "intolerance found",
+  "@intoleranceFound": {
+    "description": ""
+  },
+
+  "noIngredientsFound": "No ingredients found for this product",
+  "@noIngredientsFound": {
+    "description": ""
+  },
+
+  "nutritionalPreferences": "Nutritional preferences",
+  "@nutritionalPreferences": {
+    "description": ""
+  },
+
+  "noNutritionalInfo": "No nutritional information found",
+  "@noNutritionalInfo": {
+    "description": ""
   }
 }

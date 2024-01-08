@@ -134,7 +134,7 @@ class HistoryElement extends StatelessWidget {
                           width: MediaQuery.of(context).size.width,
                           child: const Padding(
                             padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding),
-                            child: Text("⚠️ 1 intolerance encountered"),
+                            child: Text("⚠️ 1 intolerance found"),
                           ),
                         ),
                       ),

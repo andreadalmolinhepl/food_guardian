@@ -4,6 +4,8 @@ import 'package:food_guardian/model/food_restriction_types.dart';
 import 'package:food_guardian/styles/spacings.dart';
 import 'package:food_guardian/widgets/food_restrictions.dart';
 import 'package:food_guardian/widgets/separator.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 import '../styles/font.dart';
 
@@ -48,15 +50,15 @@ class AccountPage extends StatelessWidget {
 
                     InkWell(
                       onTap: () { Navigator.pushNamed(context, "/settings"); },
-                      child: const Row(
+                      child: Row(
                         children: [
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.all(10.0),
                             child: Icon(Icons.settings),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 20),
-                            child: Text("Settings"),
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Text(AppLocalizations.of(context)!.helloWorld),
                           )
                         ],
                       ),
@@ -66,15 +68,15 @@ class AccountPage extends StatelessWidget {
                         FirebaseAuth.instance.signOut();
                         Navigator.pushNamedAndRemoveUntil(context, "/welcome", (r) => false);
                       },
-                      child: const Row(
+                      child: Row(
                         children: [
-                          Padding(
+                          const Padding(
                             padding: EdgeInsets.all(10.0),
                             child: Icon(Icons.logout),
                           ),
                           Padding(
-                            padding: EdgeInsets.only(left: 20),
-                            child: Text("Logout"),
+                            padding: const EdgeInsets.only(left: 20),
+                            child: Text(AppLocalizations.of(context)!.logout),
                           )
                         ],
                       ),

@@ -1,8 +1,364 @@
 {
   "@@locale": "fr",
 
-  "helloWorld": "Hello World!",
+  "helloWorld": "Bonjour le monde!",
   "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
+    "description": "Le salut traditionnel des programmeurs débutants"
+  },
+
+  "settings": "Paramètres",
+  "@settings": {
+    "description": ""
+  },
+
+  "logout": "Se déconnecter",
+  "@logout": {
+    "description": ""
+  },
+
+  "favorites": "Favoris",
+  "@favorites": {
+    "description": ""
+  },
+
+  "errorFetchingFavorites": "Erreur lors de la récupération des favoris",
+  "@errorFetchingFavorites": {
+    "description": ""
+  },
+
+  "noFavoritesFound": "Aucun favori trouvé",
+  "@noFavoritesFound": {
+    "description": ""
+  },
+
+  "errorFetchingMatchingProducts": "Erreur lors de la récupération des produits correspondants",
+  "@errorFetchingMatchingProducts": {
+    "description": ""
+  },
+
+  "noMatchingProducts": "Aucun produit correspondant",
+  "@noMatchingProducts": {
+    "description": ""
+  },
+
+  "your": "Votre",
+  "@your": {
+    "description": ""
+  },
+
+  "preferencesSavedSuccessfully": "Préférences enregistrées avec succès",
+  "@preferencesSavedSuccessfully": {
+    "description": ""
+  },
+
+  "error": "Erreur",
+  "@error": {
+    "description": ""
+  },
+
+  "noDataAvailable": "Aucune donnée disponible",
+  "@noDataAvailable": {
+    "description": ""
+  },
+
+  "history": "Historique",
+  "@history": {
+    "description": ""
+  },
+
+  "hi": "Salut",
+  "@hi": {
+    "description": ""
+  },
+
+  "scanANewItem": "Scanner un nouvel article",
+  "@scanANewItem": {
+    "description": ""
+  },
+
+  "or": "ou",
+  "@or": {
+    "description": ""
+  },
+
+  "yourLastScans": "Vos derniers scans",
+  "@yourLastScans": {
+    "description": ""
+  },
+
+  "seeAll": "Voir tout",
+  "@seeAll": {
+    "description": ""
+  },
+
+  "noUserFoundForThatEmail": "Aucun utilisateur trouvé pour cet email",
+  "@noUserFoundForThatEmail": {
+    "description": ""
+  },
+
+  "wrongPasswordProvidedForThatUser": "Mauvais mot de passe fourni pour cet utilisateur",
+  "@wrongPasswordProvidedForThatUser": {
+    "description": ""
+  },
+
+  "somethingTerribleHappened": "Quelque chose de terrible s'est produit, veuillez réessayer plus tard",
+  "@somethingTerribleHappened": {
+    "description": ""
+  },
+
+  "pleaseFillInAllRequiredFields": "Veuillez remplir tous les champs requis.",
+  "@pleaseFillInAllRequiredFields": {
+    "description": ""
+  },
+
+  "forgottenPassword": "Mot de passe oublié ?",
+  "@forgottenPassword": {
+    "description": ""
+  },
+
+  "login": "Connexion",
+  "@login": {
+    "description": ""
+  },
+
+  "iDontHaveAnAccountYet": "Je n'ai pas encore de compte",
+  "@iDontHaveAnAccountYet": {
+    "description": ""
+  },
+
+  "createMyAccount": "Créer mon compte",
+  "@createMyAccount": {
+    "description": ""
+  },
+
+  "oopsNoInternetConnection": "Oups! Pas de connexion Internet",
+  "@oopsNoInternetConnection": {
+    "description": ""
+  },
+
+  "pleaseCheckYourInternetConnection": "Veuillez vérifier votre connexion internet et réessayer.",
+  "@pleaseCheckYourInternetConnection": {
+    "description": ""
+  },
+
+  "retry": "Réessayer",
+  "@retry": {
+    "description": ""
+  },
+
+  "nutriscore": "Nutriscore",
+  "@nutriscore": {
+    "description": ""
+  },
+
+  "whatIsNutriscore": "Qu'est-ce que le Nutriscore ?",
+  "@whatIsNutriscore": {
+    "description": ""
+  },
+
+  "nutriscoreExplanation": "Le NutriScore est un système d'étiquetage en face avant développé pour fournir aux consommateurs un aperçu rapide et facile à comprendre de la qualité nutritionnelle des produits alimentaires. Il utilise une échelle codée par couleur accompagnée de lettres allant de A (le plus sain) à E (le moins sain). Ce système prend en compte divers éléments nutritionnels tels que la quantité d'énergie, de sucres, de graisses saturées, de sodium, de protéines, de fibres et le pourcentage de fruits, légumes, légumineuses, noix et huiles dans un produit. Sur la base de ces facteurs, une formule calcule un score, déterminant la lettre et le code couleur affichés sur l'emballage. Le NutriScore vise à aider les consommateurs à faire des choix alimentaires plus sains en mettant en évidence la valeur nutritionnelle des produits en un coup d'œil, encourageant la sélection d'options plus équilibrées et plus saines. Sa simplicité et sa clarté permettent aux individus de comparer rapidement les produits et de prendre des décisions éclairées sur leur apport alimentaire.",
+  "@nutriscoreExplanation": {
+    "description": ""
+  },
+
+  "welcomeToFoodGuardian": "Bienvenue chez Food Guardian",
+  "@welcomeToFoodGuardian": {
+    "description": ""
+  },
+
+  "discoverNewWayToManage": "Découvrez une nouvelle façon de gérer votre alimentation.",
+  "@discoverNewWayToManage": {
+    "description": ""
+  },
+
+  "trackYourAllergies": "Suivez vos allergies",
+  "@trackYourAllergies": {
+    "description": ""
+  },
+
+  "keepEyeOnHealth": "Gardez un œil sur ce qui compte le plus pour votre santé.",
+  "@keepEyeOnHealth": {
+    "description": ""
+  },
+
+  "stayHealthy": "Restez en bonne santé",
+  "@stayHealthy": {
+    "description": ""
+  },
+
+  "enjoyHealthierLifestyle": "Profitez d'un mode de vie plus sain avec des recommandations alimentaires personnalisées.",
+  "@enjoyHealthierLifestyle": {
+    "description": ""
+  },
+
+  "noDataAvailable": "Aucune donnée disponible",
+  "@noDataAvailable": {
+    "description": ""
+  },
+
+  "productNotFound": "Désolé, le produit n'a pas été trouvé.",
+  "@productNotFound": {
+    "description": ""
+  },
+
+  "goBack": "Retour",
+  "@goBack": {
+    "description": ""
+  },
+
+  "userRegisteredSuccessfully": "Utilisateur enregistré avec succès !",
+  "@userRegisteredSuccessfully": {
+    "description": ""
+  },
+
+  "emailInUse": "Cet email est déjà utilisé",
+  "@emailInUse": {
+    "description": ""
+  },
+
+  "errorDuringRegistration": "Une erreur est survenue lors de l'inscription. Veuillez réessayer plus tard",
+  "@errorDuringRegistration": {
+    "description": ""
+  },
+
+  "fillRequiredFields": "Veuillez remplir tous les champs requis.",
+  "@fillRequiredFields": {
+    "description": ""
+  },
+
+  "firstName": "Prénom",
+  "@firstName": {
+    "description": ""
+  },
+
+  "lastName": "Nom de famille",
+  "@lastName": {
+    "description": ""
+  },
+
+  "emailAddress": "Adresse e-mail",
+  "@emailAddress": {
+    "description": ""
+  },
+
+  "password": "Mot de passe",
+  "@password": {
+    "description": ""
+  },
+
+  "createAccount": "Créer mon compte",
+  "@createAccount": {
+    "description": ""
+  },
+
+  "settingsPage": "Page des paramètres",
+  "@settingsPage": {
+    "description": ""
+  },
+
+  "allIngredients": "Tous les ingrédients",
+  "@allIngredients": {
+    "description": ""
+  },
+
+  "allergenAssistant": "L'assistant d'allergènes que vous cherchiez",
+  "@allergenAssistant": {
+    "description": ""
+  },
+
+  "login": "Connexion",
+  "@login": {
+    "description": ""
+  },
+
+  "register": "S'inscrire",
+  "@register": {
+    "description": ""
+  },
+
+  "goodFitProduct": "Ce produit semble bien vous convenir !",
+  "@goodFitProduct": {
+    "description": ""
+  },
+
+  "lowRiskIngredient": "Ingrédient à faible risque pour vous",
+  "@lowRiskIngredient": {
+    "description": ""
+  },
+
+  "moderateRiskIngredient": "Ingrédient à risque modéré pour vous",
+  "@moderateRiskIngredient": {
+    "description": ""
+  },
+
+  "highRiskIngredient": "Ingrédient à haut risque pour vous",
+  "@highRiskIngredient": {
+    "description": ""
+  },
+
+  "unknownRiskIngredient": "Ingrédient à risque inconnu pour vous",
+    "@unknownRiskIngredient": {
+    "description": ""
+  },
+
+  "payAttention": "Faites attention à ces",
+    "@payAttention": {
+    "description": ""
+  },
+
+  "allergensFound": "Allergènes trouvés",
+  "@allergensFound": {
+    "description": ""
+  },
+
+  "noAllergensFound": "Aucun allergène trouvé",
+  "@noAllergensFound": {
+    "description": ""
+  },
+
+  "indicated": "Vous avez indiqué ",
+  "@indicated": {
+    "description": ""
+  },
+
+  "asOneOfYour": " comme l'un de vos ",
+  "@asOneOfYour": {
+    "description": ""
+  },
+
+  "no": "Non",
+  "@no": {
+    "description": ""
+  },
+
+  "found": "trouvé",
+  "@found": {
+    "description": ""
+  },
+
+  "daysAgo": "Il y a des jours",
+  "@daysAgo": {
+    "description": ""
+  },
+
+  "intoleranceFound": "intolérance trouvée",
+  "@intoleranceFound": {
+    "description": ""
+  },
+
+  "noIngredientsFound": "Aucun ingrédient trouvé pour ce produit",
+  "@noIngredientsFound": {
+    "description": ""
+  },
+
+  "nutritionalPreferences": "Préférences nutritionnelles",
+  "@nutritionalPreferences": {
+    "description": ""
+  },
+
+  "noNutritionalInfo": "Aucune information nutritionnelle trouvée",
+  "@noNutritionalInfo": {
+    "description": ""
   }
+
 }
