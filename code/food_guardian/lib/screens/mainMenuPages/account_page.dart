@@ -63,7 +63,7 @@ class AccountPage extends StatelessWidget {
                     const Separator(),
 
                     MenuItem(label: AppLocalizations.of(context)!.settings, onTap: () { Navigator.pushNamed(context, "/settings"); }, icon: const Icon(Icons.settings)),
-                    MenuItem(label: AppLocalizations.of(context)!.logout, onTap: () { Navigator.pushNamedAndRemoveUntil(context, "/welcome", (r) => false); }, icon: const Icon(Icons.logout)),
+                    MenuItem(label: AppLocalizations.of(context)!.logout, onTap: () { FirebaseAuth.instance.signOut(); Navigator.pushNamedAndRemoveUntil(context, "/welcome", (r) => false); }, icon: const Icon(Icons.logout)),
 
                   ],
                 ) : Center(
