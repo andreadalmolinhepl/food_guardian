@@ -78,6 +78,8 @@ Yuka est une application mobile qui scanne les produits alimentaires pour obteni
   - Interface améliorable
   - Dépendant d'une base de données
 
+![Food Guardian Screenshot](code/food_guardian/assets/screenshots/yuka1.jpg)
+
 <div style="display: flex; justify-content: center;">
     <img src="code/food_guardian/assets/screenshots/yuka1.jpg" alt="Capture d'écran de l'application Yuka" height="500" style="margin-right: 10px;">
     <img src="code/food_guardian/assets/screenshots/yuka2.jpg" alt="Capture d'écran de l'application Yuka" height="500">
