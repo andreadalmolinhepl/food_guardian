@@ -99,7 +99,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       MainButton(
                           label: AppLocalizations.of(context)!.scanIngredients,
-                          onTap: () {}),
+                          onTap: () { Navigator.pushNamed(context, "/comingSoon"); }),
                     ],
                   ),
                   const SizedBox(

@@ -369,6 +369,26 @@
   "welcomeBack": "Welcome back",
   "@favorites": {
     "description": ""
+  },
+
+  "comingSoon": "Coming soon !",
+   "@favorites": {
+   "description": ""
+  },
+
+  "comingSoonText": "This functionality is not ready yet, but it's coming soon !",
+   "@favorites": {
+   "description": ""
+  },
+
+  "language": "Langue",
+   "@favorites": {
+   "description": ""
+  },
+
+  "tutorial": "Tutorial",
+   "@favorites": {
+   "description": ""
   }
 
 }

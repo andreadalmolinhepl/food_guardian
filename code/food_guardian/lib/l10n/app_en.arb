@@ -369,5 +369,25 @@
   "welcomeBack": "Welcome back",
   "@favorites": {
     "description": ""
+  },
+
+  "comingSoon": "Coming soon !",
+  "@favorites": {
+    "description": ""
+  },
+
+  "comingSoonText": "This functionality is not ready yet, but it's coming soon !",
+  "@favorites": {
+    "description": ""
+  },
+
+  "language": "Language",
+  "@favorites": {
+    "description": ""
+  },
+
+  "tutorial": "I need the tutorial again !",
+  "@favorites": {
+    "description": ""
   }
 }

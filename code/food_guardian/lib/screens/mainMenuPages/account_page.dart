@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/styles/spacings.dart';
 import 'package:food_guardian/widgets/food_restrictions.dart';
+import 'package:food_guardian/widgets/menu_item.dart';
 import 'package:food_guardian/widgets/separator.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -34,7 +35,7 @@ class AccountPage extends StatelessWidget {
                           child: Center(
                             child: Text(
                               FirebaseAuth.instance.currentUser!.displayName!,
-                              style: kTitleBigStat,
+                              style: kUsernameStyle,
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -43,7 +44,7 @@ class AccountPage extends StatelessWidget {
                           flex: 3,
                           child: ClipOval(
                             child: Image(
-                              image: AssetImage("assets/img/dog.png"),
+                              image: AssetImage("assets/img/avatar.png"),
                               height: kProfileSize,
                               fit: BoxFit.cover,
                             ),
@@ -61,39 +62,9 @@ class AccountPage extends StatelessWidget {
                     const SizedBox(height: kVerticalPadding,),
                     const Separator(),
 
-                    InkWell(
-                      onTap: () { Navigator.pushNamed(context, "/settings"); },
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.all(kMenuButtonIconPadding),
-                            child: Icon(Icons.settings),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: kHorizontalPadding),
-                            child: Text(AppLocalizations.of(context)!.settings),
-                          )
-                        ],
-                      ),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        FirebaseAuth.instance.signOut();
-                        Navigator.pushNamedAndRemoveUntil(context, "/welcome", (r) => false);
-                      },
-                      child: Row(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.all(kMenuButtonIconPadding),
-                            child: Icon(Icons.logout),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: kHorizontalPadding),
-                            child: Text(AppLocalizations.of(context)!.logout),
-                          )
-                        ],
-                      ),
-                    ),
+                    MenuItem(label: AppLocalizations.of(context)!.settings, onTap: () { Navigator.pushNamed(context, "/settings"); }, icon: const Icon(Icons.settings)),
+                    MenuItem(label: AppLocalizations.of(context)!.logout, onTap: () { Navigator.pushNamedAndRemoveUntil(context, "/welcome", (r) => false); }, icon: const Icon(Icons.logout)),
+
                   ],
                 ) : Center(
                     child: Column(
@@ -119,39 +90,10 @@ class AccountPage extends StatelessWidget {
                           },
                         ),
                         const Separator(),
-                        InkWell(
-                          onTap: () { Navigator.pushNamed(context, "/settings"); },
-                          child: Row(
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.all(kMenuButtonIconPadding),
-                                child: Icon(Icons.settings),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: kHorizontalPadding),
-                                child: Text(AppLocalizations.of(context)!.settings),
-                              )
-                            ],
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            FirebaseAuth.instance.signOut();
-                            Navigator.pushNamedAndRemoveUntil(context, "/welcome", (r) => false);
-                          },
-                          child: Row(
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.all(kMenuButtonIconPadding),
-                                child: Icon(Icons.logout),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: kHorizontalPadding),
-                                child: Text(AppLocalizations.of(context)!.logout),
-                              )
-                            ],
-                          ),
-                        ),
+
+                        MenuItem(label: AppLocalizations.of(context)!.settings, onTap: () { Navigator.pushNamed(context, "/settings"); }, icon: const Icon(Icons.settings)),
+                        MenuItem(label: AppLocalizations.of(context)!.logout, onTap: () { Navigator.pushNamedAndRemoveUntil(context, "/welcome", (r) => false); }, icon: const Icon(Icons.logout)),
+
                       ],
                     ))
               ),

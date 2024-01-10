@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:food_guardian/screens/coming_soon_screen.dart';
 import 'package:food_guardian/screens/food_restrictions_settings.dart';
 import 'package:food_guardian/screens/home_screen.dart';
 import 'package:food_guardian/screens/login_screen.dart';
@@ -26,4 +27,5 @@ Map<String, WidgetBuilder> routes = {
   TestPage.routeName : (context) => const TestPage(),
   NutriscoreInformation.routeName : (context) => const NutriscoreInformation(),
   FoodRestrictionSettings.routeName : (context) => const FoodRestrictionSettings(type: ""),
+  ComingSoonScreen.routeName : (context) => const ComingSoonScreen(),
 };

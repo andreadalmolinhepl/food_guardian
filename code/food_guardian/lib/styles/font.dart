@@ -94,3 +94,8 @@ const kPlusStyle = TextStyle(
   fontSize: 50,
   fontWeight: FontWeight.w500,
 );
+
+const kUsernameStyle = TextStyle(
+  fontSize: 35,
+  fontWeight: FontWeight.w500,
+);

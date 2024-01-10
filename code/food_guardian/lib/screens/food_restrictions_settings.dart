@@ -16,7 +16,8 @@ class FoodRestrictionSettings extends StatefulWidget {
   const FoodRestrictionSettings({required this.type, super.key});
 
   @override
-  State<FoodRestrictionSettings> createState() => _FoodRestrictionSettingsState();
+  State<FoodRestrictionSettings> createState() =>
+      _FoodRestrictionSettingsState();
 }
 
 class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
@@ -40,7 +41,8 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
       // Update allergenCheckState based on the Firestore data
       for (var allergen in AllergensList.values) {
         final allergenName = allergen.stringValue;
-        final isAllergenChecked = querySnapshot.docs.any((doc) => doc.id == allergenName && doc.data()['isChecked'] == true);
+        final isAllergenChecked = querySnapshot.docs.any(
+            (doc) => doc.id == allergenName && doc.data()['isChecked'] == true);
 
         setState(() {
           allergenCheckState[allergenName] = isAllergenChecked;
@@ -70,15 +72,10 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
 
       allergenCheckState.forEach((allergen, isChecked) async {
         if (isChecked) {
-          await collectionRef
-              .doc(allergen)
-              .set({'isChecked': true});
+          await collectionRef.doc(allergen).set({'isChecked': true});
         }
       });
-
-    } else {
-
-    }
+    } else {}
   }
 
   List<Widget> generateAllergenWidgets() {
@@ -125,13 +122,18 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
             child: IntrinsicHeight(
               child: SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: kVerticalPaddingL),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: kVerticalPaddingL),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(vertical: kVerticalPadding, horizontal: kHorizontalPadding),
-                        child: Text("${AppLocalizations.of(context)!.your} ${widget.type}", style: kTitleHome),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: kVerticalPadding,
+                            horizontal: kHorizontalPadding),
+                        child: Text(
+                            "${AppLocalizations.of(context)!.your} ${widget.type}",
+                            style: kTitleHome),
                       ),
                       ...generateAllergenWidgets(),
                     ],
@@ -142,7 +144,8 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
           ),
         ),
         const Padding(
-          padding: EdgeInsets.symmetric(vertical: kVerticalPadding, horizontal: kHorizontalPadding),
+          padding: EdgeInsets.symmetric(
+              vertical: kVerticalPadding, horizontal: kHorizontalPadding),
           child: ArrowBack(),
         ),
         Column(
@@ -152,13 +155,16 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: kHorizontalPadding,
+                      vertical: kVerticalPadding),
                   child: InkWell(
                     onTap: () {
                       _saveSelectedAllergens();
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
-                          content: Text(AppLocalizations.of(context)!.preferencesSavedSuccessfully),
+                          content: Text(AppLocalizations.of(context)!
+                              .preferencesSavedSuccessfully),
                           duration: const Duration(seconds: 3),
                         ),
                       );
@@ -166,9 +172,9 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Colors.green,
-                        borderRadius: BorderRadius.circular(kScanBorderRadius)
-                      ),
+                          color: Colors.green,
+                          borderRadius:
+                              BorderRadius.circular(kScanBorderRadius)),
                       child: const Padding(
                         padding: EdgeInsets.all(kHorizontalPadding),
                         child: Icon(Icons.done),
