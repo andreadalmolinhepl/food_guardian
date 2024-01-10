@@ -75,7 +75,7 @@ class _AllergensExpandedListState extends State<AllergensExpandedList> {
                     widget.intolerances.isEmpty &&
                     widget.sensitivities.isEmpty
                 ? const Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(kHorizontalPaddingS),
                     child: Center(
                         child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -86,7 +86,7 @@ class _AllergensExpandedListState extends State<AllergensExpandedList> {
                               horizontal: kHorizontalPadding),
                           child: Image(
                             image: AssetImage("assets/icons/smiley.png"),
-                            height: 30,
+                            height: kEmptyFillerSize,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -113,7 +113,7 @@ class _AllergensExpandedListState extends State<AllergensExpandedList> {
                                         ? "assets/icons/${allergenWithType.allergen.name}.png"
                                         : "assets/icons/unknown.png",
                                   ),
-                                  height: 25,
+                                  height: kProductDetailIcon,
                                 ),
                               ),
                               Text(allergenWithType.allergen.name),

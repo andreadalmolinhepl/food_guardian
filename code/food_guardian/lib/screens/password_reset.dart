@@ -53,7 +53,7 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                 child: SafeArea(
                   child: Column(
                     children: [
-                      const Padding(padding: EdgeInsets.all(8.0), child: ArrowBack()),
+                      const Padding(padding: EdgeInsets.all(kHorizontalPaddingS), child: ArrowBack()),
                       const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -80,7 +80,7 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                             labelText: AppLocalizations.of(context)!.emailAddress,
                             validator: validateEmail),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: kVerticalPadding),
                       MainButton(label: "Reset password", onTap: resetPassword),
                     ],
                   ),

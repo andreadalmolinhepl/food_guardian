@@ -99,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   children: <Widget>[
                     const Padding(
-                        padding: EdgeInsets.all(8.0), child: ArrowBack()),
+                        padding: EdgeInsets.all(kHorizontalPaddingS), child: ArrowBack()),
                     const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

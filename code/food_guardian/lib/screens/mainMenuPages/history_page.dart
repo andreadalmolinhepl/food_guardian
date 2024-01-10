@@ -91,7 +91,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                                 Image(
                                                   image: AssetImage(
                                                       "assets/img/history.png"),
-                                                  height: 50,
+                                                  height: kImageSizeM,
                                                 ),
                                                 Padding(
                                                   padding: EdgeInsets.symmetric(
@@ -126,7 +126,7 @@ class _HistoryPageState extends State<HistoryPage> {
                               children: [
                                 const Image(
                                   image: AssetImage("assets/img/history.png"),
-                                  height: 50,
+                                  height: kImageSizeM,
                                 ),
                                 const Padding(
                                   padding: EdgeInsets.symmetric(

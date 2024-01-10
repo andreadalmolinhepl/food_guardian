@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_guardian/styles/others.dart';
 import 'package:food_guardian/styles/spacings.dart';
 
 import '../screens/product_detail_screen.dart';
@@ -34,10 +35,10 @@ class HistoryElement extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: kVerticalPaddingXS),
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: 140,
+          height: kHistoryElementHeight,
           decoration: BoxDecoration(
             color: Colors.lightBlue.shade50,
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(kButtonBorderRadiusM),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.16),
@@ -48,19 +49,19 @@ class HistoryElement extends StatelessWidget {
             ],
           ),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(kHorizontalPaddingS),
             child: Row(
               children: [
                 Expanded(
                   flex: 3,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(kHorizontalPaddingS),
                     child: image == ""
                         ? const Image(image: AssetImage("assets/img/unknownFood.png"), fit: BoxFit.contain, width: 80,)
                         : Image.network(
                       image,
                       fit: BoxFit.cover,
-                      width: 80,
+                      width: kLargeIcon,
                     ),
                   ),
                 ),
@@ -88,8 +89,8 @@ class HistoryElement extends StatelessWidget {
                                           child: FittedBox(
                                               fit: BoxFit.scaleDown,
                                               child: Text(
-                                                name.length > 20
-                                                    ? ("${name.substring(0, 15)}...")
+                                                name.length > kMaxTextLength
+                                                    ? ("${name.substring(0, kShortenedTextLength)}...")
                                                     : name,
                                                 maxLines: 1,
                                                 style: kTextTabItem,
@@ -98,8 +99,8 @@ class HistoryElement extends StatelessWidget {
                                         FittedBox(
                                             fit: BoxFit.scaleDown,
                                             child: Text(
-                                              brand.length > 20
-                                                  ? ("${brand.substring(0, 15)}...")
+                                              brand.length > kMaxTextLength
+                                                  ? ("${brand.substring(0, kShortenedTextLength)}...")
                                                   : brand,
                                               maxLines: 1,
                                             )),
@@ -114,7 +115,7 @@ class HistoryElement extends StatelessWidget {
                                 child: SizedBox(
                                   height: MediaQuery.of(context).size.height,
                                   child: const Padding(
-                                    padding: EdgeInsets.all(8.0),
+                                    padding: EdgeInsets.all(kHorizontalPaddingS),
                                     child: Center(
                                         child: Image(
                                             image: AssetImage("assets/img/nutriscore_a.png"),

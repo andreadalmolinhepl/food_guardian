@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_guardian/styles/others.dart';
 
 import '../styles/spacings.dart';
 
@@ -40,7 +41,7 @@ class AllergenWarningBox extends StatelessWidget {
             border: Border.all(
               color: Colors.black,
             ),
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(kButtonBorderRadiusM),
             color: config['color'] as Color,
           ),
           child: Padding(

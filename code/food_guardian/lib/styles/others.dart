@@ -10,3 +10,11 @@ final kShadow = BoxShadow(
 const kButtonBorderRadius = 30.0;
 const kBorderWidth = 2.0;
 const kBorderDrawer = 200.0;
+
+const kButtonBorderRadiusM = 12.0;
+const kScanBorderRadius = 25.0;
+
+const kAnimatedContainerAnimationTime = 150;
+
+const kMaxTextLength = 20;
+const kShortenedTextLength = 15;

@@ -42,8 +42,8 @@ class AllergenBox extends StatelessWidget {
           ),
           Text(
             label,
-            overflow: TextOverflow.ellipsis,  // Add ellipsis if text overflows
-            maxLines: 1,  // Ensure the text is in a single line
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
           ),        ],
       ),
     );

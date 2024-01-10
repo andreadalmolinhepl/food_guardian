@@ -66,11 +66,11 @@ class AccountPage extends StatelessWidget {
                       child: Row(
                         children: [
                           const Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: EdgeInsets.all(kMenuButtonIconPadding),
                             child: Icon(Icons.settings),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 20),
+                            padding: const EdgeInsets.only(left: kHorizontalPadding),
                             child: Text(AppLocalizations.of(context)!.settings),
                           )
                         ],
@@ -84,11 +84,11 @@ class AccountPage extends StatelessWidget {
                       child: Row(
                         children: [
                           const Padding(
-                            padding: EdgeInsets.all(10.0),
+                            padding: EdgeInsets.all(kMenuButtonIconPadding),
                             child: Icon(Icons.logout),
                           ),
                           Padding(
-                            padding: const EdgeInsets.only(left: 20),
+                            padding: const EdgeInsets.only(left: kHorizontalPadding),
                             child: Text(AppLocalizations.of(context)!.logout),
                           )
                         ],
@@ -101,7 +101,7 @@ class AccountPage extends StatelessWidget {
                       children: [
                         const Image(
                           image: AssetImage("assets/img/anonymous.png"),
-                          height: 50,
+                          height: kImageSizeM,
                         ),
                         const Padding(
                           padding: EdgeInsets.symmetric(
@@ -124,11 +124,11 @@ class AccountPage extends StatelessWidget {
                           child: Row(
                             children: [
                               const Padding(
-                                padding: EdgeInsets.all(10.0),
+                                padding: EdgeInsets.all(kMenuButtonIconPadding),
                                 child: Icon(Icons.settings),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 20),
+                                padding: const EdgeInsets.only(left: kHorizontalPadding),
                                 child: Text(AppLocalizations.of(context)!.settings),
                               )
                             ],
@@ -142,11 +142,11 @@ class AccountPage extends StatelessWidget {
                           child: Row(
                             children: [
                               const Padding(
-                                padding: EdgeInsets.all(10.0),
+                                padding: EdgeInsets.all(kMenuButtonIconPadding),
                                 child: Icon(Icons.logout),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 20),
+                                padding: const EdgeInsets.only(left: kHorizontalPadding),
                                 child: Text(AppLocalizations.of(context)!.logout),
                               )
                             ],

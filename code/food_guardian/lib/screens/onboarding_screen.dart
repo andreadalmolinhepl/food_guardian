@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_guardian/styles/others.dart';
 import 'package:food_guardian/styles/spacings.dart';
 
 import '../styles/font.dart';
@@ -62,7 +63,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             child: Text(
               title,
               style: const TextStyle(
-                  fontSize: 24,
+                  fontSize: kLargeMessageFontsize,
                   fontWeight: FontWeight.bold
               ),
             ),
@@ -71,7 +72,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         Expanded(
           flex: 2,
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(kHorizontalPadding),
             child: Text(
                 text,
                 textAlign: TextAlign.center
@@ -80,7 +81,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         ),
         if (_currentPage == 2)
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 20.0),
+            padding: const EdgeInsets.symmetric(vertical: kHorizontalPadding),
             child: MainButton(
               label: "Let's go !",
               onTap: () => Navigator.pushNamed(context, "/welcome"),
@@ -102,13 +103,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   Widget _indicator(bool isActive) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 150),
-      margin: const EdgeInsets.symmetric(horizontal: 5.0),
-      height: 8.0,
-      width: isActive ? 24.0 : 16.0,
+      duration: const Duration(milliseconds: kAnimatedContainerAnimationTime),
+      margin: const EdgeInsets.symmetric(horizontal: kVerticalPaddingXS),
+      height: kAnimatedContainerHeight,
+      width: isActive ? kAnimatedContainerWidthActive : kAnimatedContainerWidthInactive,
       decoration: BoxDecoration(
         color: isActive ? Colors.blue : Colors.grey,
-        borderRadius: const BorderRadius.all(Radius.circular(12)),
+        borderRadius: const BorderRadius.all(Radius.circular(kButtonBorderRadiusM)),
       ),
     );
   }
@@ -117,7 +118,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(kHorizontalPaddingS),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

@@ -69,7 +69,7 @@ class _HomePageState extends State<HomePage> {
                                   const BoxDecoration(shape: BoxShape.circle),
                               child: const Icon(
                                 Icons.add_circle_rounded,
-                                size: 150,
+                                size: kNoInternetSize,
                                 color: Colors.grey,
                               ),
                             ),
@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                                         Image(
                                           image: AssetImage(
                                               "assets/img/magnifyingGlass.png"),
-                                          height: 40,
+                                          height: kImageMS,
                                         ),
                                         Padding(
                                           padding: EdgeInsets.symmetric(
@@ -202,7 +202,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   const Image(
                                     image: AssetImage("assets/img/warning.png"),
-                                    height: 40,
+                                    height: kImageMS,
                                   ),
                                   const Padding(
                                     padding: EdgeInsets.symmetric(

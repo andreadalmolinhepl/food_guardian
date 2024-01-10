@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_guardian/styles/others.dart';
+import 'package:food_guardian/styles/spacings.dart';
 
 import '../screens/product_detail_screen.dart';
 import '../styles/font.dart';
@@ -34,13 +36,13 @@ class FavoriteElement extends StatelessWidget {
             image,
             height: kProfileSize,
             fit: BoxFit.cover,
-            width: 80,
+            width: kLargeIcon,
           ),
           title: FittedBox(
               alignment: Alignment.centerLeft,
               fit: BoxFit.scaleDown,
               child: Text(
-                name.length > 20 ? ("${name.substring(0, 15)}...") : name,
+                name.length > kMaxTextLength ? ("${name.substring(0, kShortenedTextLength)}...") : name,
                 maxLines: 1,
                 style: kTextTabItem,
               )),

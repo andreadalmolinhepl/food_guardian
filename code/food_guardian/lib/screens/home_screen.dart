@@ -4,6 +4,7 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:food_guardian/screens/mainMenuPages/account_page.dart';
 import 'package:food_guardian/screens/mainMenuPages/home_page.dart';
 import 'package:food_guardian/screens/product_detail_screen.dart';
+import 'package:food_guardian/styles/others.dart';
 
 import '../styles/spacings.dart';
 import 'mainMenuPages/favorites_page.dart';
@@ -76,10 +77,10 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Favorites',
           ),
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(kHorizontalPaddingS),
             child: Container(
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
+                borderRadius: BorderRadius.circular(kScanBorderRadius),
               ),
               child: const NavigationDestination(
                 icon: Icon(Icons.qr_code_scanner),

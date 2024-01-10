@@ -190,7 +190,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               const Positioned(
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(kHorizontalPaddingS),
                   child: ArrowBack()
                 ),
               ),

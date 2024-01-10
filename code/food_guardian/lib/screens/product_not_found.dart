@@ -26,13 +26,13 @@ class ProductNotFound extends StatelessWidget {
                     const Icon(
                       Icons.error_outline,
                       color: Colors.red,
-                      size: 80.0,
+                      size: kLargeIcon,
                     ),
-                    const SizedBox(height: 20.0),
+                    const SizedBox(height: kVerticalPadding),
                     const Text(
                       'Sorry, the product was not found.',
                       style: TextStyle(
-                        fontSize: 18.0,
+                        fontSize: kStandartMessageFontsize,
                         fontWeight: FontWeight.bold,
                       ),
                       textAlign: TextAlign.center,

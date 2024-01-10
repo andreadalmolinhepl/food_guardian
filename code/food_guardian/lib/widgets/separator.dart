@@ -10,7 +10,7 @@ class Separator extends StatelessWidget {
       children: [
         const SizedBox(height: kVerticalPadding,),
         Container(
-          height: 3,
+          height: kSeparatorHeight,
           width: MediaQuery.of(context).size.width,
           color: Colors.grey.shade200,
         ),

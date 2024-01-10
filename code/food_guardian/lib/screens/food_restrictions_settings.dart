@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dto/allergens_list.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:food_guardian/styles/others.dart';
 import 'package:food_guardian/widgets/arrow_back.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -89,7 +90,7 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(kHorizontalPaddingS),
               child: Checkbox(
                 value: isChecked,
                 onChanged: (bool? value) {
@@ -166,10 +167,10 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
                     child: Container(
                       decoration: BoxDecoration(
                         color: Colors.green,
-                        borderRadius: BorderRadius.circular(25)
+                        borderRadius: BorderRadius.circular(kScanBorderRadius)
                       ),
                       child: const Padding(
-                        padding: EdgeInsets.all(20.0),
+                        padding: EdgeInsets.all(kHorizontalPadding),
                         child: Icon(Icons.done),
                       ),
                     ),

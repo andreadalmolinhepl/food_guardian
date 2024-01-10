@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/screens/food_restrictions_settings.dart';
 import 'package:food_guardian/styles/font.dart';
+import 'package:food_guardian/styles/others.dart';
 import 'package:food_guardian/styles/spacings.dart';
 import 'package:food_guardian/widgets/allergen_box.dart';
 
@@ -47,7 +48,7 @@ class FoodRestrictions extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
           color: Colors.grey.shade100,
-          borderRadius: BorderRadius.circular(10)
+          borderRadius: BorderRadius.circular(kButtonBorderRadiusM)
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
@@ -100,7 +101,7 @@ class FoodRestrictions extends StatelessWidget {
                           ),
                         )
                       : Padding(
-                          padding: const EdgeInsets.all(8.0),
+                          padding: const EdgeInsets.all(kHorizontalPaddingS),
                           child: Center(
                               child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
@@ -113,7 +114,7 @@ class FoodRestrictions extends StatelessWidget {
                                 ),
                                 child: Image(
                                   image: AssetImage("assets/icons/smiley.png"),
-                                  height: 30,
+                                  height: kEmptyFillerSize,
                                   fit: BoxFit.cover,
                                 ),
                               ),

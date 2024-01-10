@@ -31,7 +31,7 @@ class Nutriscore extends StatelessWidget {
                     ? Image(
                         image:
                             AssetImage("assets/img/nutriscore_$nutriscore.png"),
-                        height: 40,
+                        height: kImageMS,
                         fit: BoxFit.cover,
                       )
                     : const Row(

@@ -6,6 +6,7 @@ import 'package:dto/product.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/screens/product_not_found.dart';
+import 'package:food_guardian/styles/others.dart';
 import 'package:food_guardian/widgets/separator.dart';
 import 'package:http/http.dart' as http;
 
@@ -254,7 +255,7 @@ class _ProductDetailState extends State<ProductDetail> {
                     slivers: [
                       SliverAppBar(
                         pinned: true,
-                        expandedHeight: 200,
+                        expandedHeight: kExpandedHeight,
                         backgroundColor: Colors.orange,
                         flexibleSpace: FlexibleSpaceBar(
                           title: Text(product.product.productName),
@@ -267,7 +268,7 @@ class _ProductDetailState extends State<ProductDetail> {
                                   image:
                                   AssetImage("assets/img/unknownFood.png"),
                                   fit: BoxFit.contain,
-                                  width: 80,
+                                  width: kLargeIcon,
                                 )
                               else
                                 Image.network(
@@ -307,11 +308,11 @@ class _ProductDetailState extends State<ProductDetail> {
                                     decoration: BoxDecoration(
                                       color: Colors.white,
                                       borderRadius:
-                                      BorderRadius.circular(10),
+                                      BorderRadius.circular(kButtonBorderRadiusM),
                                     ),
                                     child: Padding(
                                       padding:
-                                      const EdgeInsets.all(8.0),
+                                      const EdgeInsets.all(kHorizontalPaddingS),
                                       child: isFavorite
                                           ? const Icon(
                                         Icons.favorite,

@@ -35,7 +35,7 @@ class NoInternetScreen extends StatelessWidget {
                     Text(
                       AppLocalizations.of(context)!.oopsNoInternetConnection,
                       style: const TextStyle(
-                        fontSize: 24,
+                        fontSize: kLargeMessageFontsize,
                         fontWeight: FontWeight.bold,
                         color: Colors.deepPurple,
                       ),
@@ -45,7 +45,7 @@ class NoInternetScreen extends StatelessWidget {
                     Text(
                       AppLocalizations.of(context)!.pleaseCheckYourInternetConnection,
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: kStandartMessageFontsize,
                         color: Colors.black54,
                       ),
                       textAlign: TextAlign.center,

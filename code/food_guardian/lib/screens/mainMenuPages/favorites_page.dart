@@ -82,7 +82,7 @@ class FavoritesPage extends StatelessWidget {
                                 children: [
                                   const Image(
                                     image: AssetImage("assets/img/heart.png"),
-                                    height: 50,
+                                    height: kImageSizeM,
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.symmetric(
@@ -100,7 +100,6 @@ class FavoritesPage extends StatelessWidget {
                             return SafeArea(
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: kHorizontalPadding,
                                     vertical: kVerticalPadding),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,7 +159,7 @@ class FavoritesPage extends StatelessWidget {
                           children: [
                             const Image(
                               image: AssetImage("assets/img/heart.png"),
-                              height: 50,
+                              height: kImageSizeM,
                             ),
                             const Padding(
                               padding: EdgeInsets.symmetric(

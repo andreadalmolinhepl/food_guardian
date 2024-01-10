@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../styles/colors.dart';
+import '../styles/spacings.dart';
 
 class Line extends StatelessWidget {
   const Line({
@@ -12,7 +13,7 @@ class Line extends StatelessWidget {
     return Flexible(
       flex: 1,
       child: Container(
-        height: 1,
+        height: kLineHeight,
         color: kMainColor,
       ),
     );
