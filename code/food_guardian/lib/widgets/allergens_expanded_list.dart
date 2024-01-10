@@ -1,4 +1,5 @@
 import 'package:dto/allergen.dart';
+import 'package:dto/allergens_list.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/styles/font.dart';
@@ -106,7 +107,14 @@ class _AllergensExpandedListState extends State<AllergensExpandedList> {
                               Padding(
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: kHorizontalPadding),
-                                child: Image(image: AssetImage("assets/icons/${allergenWithType.allergen.name}.png",), height: 25,),
+                                child: Image(
+                                  image: AssetImage(
+                                    AllergensListString.fromString(allergenWithType.allergen.name) != null
+                                        ? "assets/icons/${allergenWithType.allergen.name}.png"
+                                        : "assets/icons/unknown.png",
+                                  ),
+                                  height: 25,
+                                ),
                               ),
                               Text(allergenWithType.allergen.name),
                               if (widget.isUserSpecific)

@@ -17,6 +17,15 @@ enum AllergensList {
 }
 
 extension AllergensListString on AllergensList {
+  static AllergensList? fromString(String value) {
+    for (var allergen in AllergensList.values) {
+      if (allergen.toString().split('.').last == value.toLowerCase()) {
+        return allergen;
+      }
+    }
+    return null; // Returns null if no match is found
+  }
+
   String get stringValue {
     switch (this) {
       case AllergensList.milk:
