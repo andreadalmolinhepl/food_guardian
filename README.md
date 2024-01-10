@@ -204,12 +204,23 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 
 ### Utilisation en tant qu'anonyme :
 
+- [x] En tant que **Marc (utilisateur non identifié)**, je souhaite découvrir l'application sans un compte afin de ne pas devoir m'enregister pour voir ce qu'offre l'application.
+- 
 <div style="display: flex; justify-content: center;">
     <img src="maquettes/gif/Anonymous1.gif" alt="Capture d'écran de l'application Yuka" height="500">
+</div>
+
+- [x] En tant que **Marc (utilisateur non identifié)**, tester le scan de code barre, pour découvrir si le fonctionnement me convient
+
+<div style="display: flex; justify-content: center;">
     <img src="maquettes/gif/AnonymousScan.gif" alt="Capture d'écran de l'application Yuka" height="500">
 </div>
 
 ### Enregistrement et profils des utilisateurs :
+
+- [x] En tant que nouvel utilisateur, je souhaite créer un compte avec mon adresse électronique et mon mot de passe, afin de pouvoir personnaliser mes préférences en matière d'allergènes.
+- [x] En tant qu'utilisateur, je souhaite modifier mon profil pour préciser mes allergies, intolérances et préférences alimentaires.
+- [x] En tant qu'utilisateur, je souhaite réinitialiser mon mot de passe en cas d'oubli.
 
 <div style="display: flex; justify-content: center;">
     <img src="maquettes/gif/Register.gif" alt="Capture d'écran de l'application Yuka" height="500">
@@ -225,11 +236,12 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 
 ### Produits favoris et historique :
 
+- [x] En tant **Maria (utilisatrice identifié)**, je souhaite enregistrer mes produits favoris dans mon profil pour pouvoir m'y référer ultérieurement.
+- [x] En tant **Maria (utilisatrice identifié)**, je veux pouvoir accéder facilement à ma liste de produits favoris.
+
 <div style="display: flex; justify-content: center;">
     <img src="maquettes/gif/FavoritesAndHistory.gif" alt="Capture d'écran de l'application Yuka" height="500">
 </div>
-
-### Paramètres :
 
 
 ## ⚙️ Compilation de l'Application
