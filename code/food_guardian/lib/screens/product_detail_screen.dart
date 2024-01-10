@@ -67,16 +67,16 @@ class _ProductDetailState extends State<ProductDetail> {
     return userRestrictions;
   }
 
-  Future<void> _addProduct() async {
+  Future<void> _addProduct(Product product) async {
     var productRef = FirebaseFirestore.instance.collection(
         "users/${FirebaseAuth.instance.currentUser?.uid}/productsScanned");
 
     Map<String, dynamic> userData = {
       'id': widget.barcode,
-      'productName': widget.product!.product.productName,
-      'productBrand': widget.product!.product.brand,
-      'image': widget.product!.product.imageUrl,
-      'nutriscore': widget.product!.product.nutriscoreGrade,
+      'productName': product.product.productName,
+      'productBrand': product.product.brand,
+      'image': product.product.imageUrl,
+      'nutriscore': product.product.nutriscoreGrade,
     };
 
     await productRef.add(userData);
@@ -197,7 +197,8 @@ class _ProductDetailState extends State<ProductDetail> {
                     severity = calculateSeverity(matchedAllergens,
                         matchedIntolerances, matchedSensitivities);
 
-                    if (!widget.fromHistory) _addProduct();
+                    if (!widget.fromHistory) _addProduct(product);
+
                   }
 
                   return CustomScrollView(
