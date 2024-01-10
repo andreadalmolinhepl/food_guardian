@@ -114,26 +114,26 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 
 ### Enregistrement et profils des utilisateurs :
 
-- [ ] En tant que nouvel utilisateur, je souhaite créer un compte avec mon adresse électronique et mon mot de passe, afin de pouvoir personnaliser mes préférences en matière d'allergènes.
-- [ ] En tant qu'utilisateur, je souhaite modifier mon profil pour préciser mes allergies, intolérances et préférences alimentaires.
-- [ ] En tant qu'utilisateur, je souhaite réinitialiser mon mot de passe en cas d'oubli.
+- [x] En tant que nouvel utilisateur, je souhaite créer un compte avec mon adresse électronique et mon mot de passe, afin de pouvoir personnaliser mes préférences en matière d'allergènes.
+- [x] En tant qu'utilisateur, je souhaite modifier mon profil pour préciser mes allergies, intolérances et préférences alimentaires.
+- [x] En tant qu'utilisateur, je souhaite réinitialiser mon mot de passe en cas d'oubli.
 
 ### Lecteur de codes-barres :
 
-- [ ] En tant qu'utilisateur, je veux scanner le code-barres d'un produit alimentaire pour obtenir des informations détaillées.
-- [ ] En tant qu'utilisateur, je veux que le scanner fonctionne rapidement et avec précision, afin d'obtenir des résultats instantanés.
-- [ ] En tant qu'utilisateur, je veux que l'application reconnaisse et gère différents formats de codes-barres.
+- [x] En tant qu'utilisateur, je veux scanner le code-barres d'un produit alimentaire pour obtenir des informations détaillées.
+- [x] En tant qu'utilisateur, je veux que le scanner fonctionne rapidement et avec précision, afin d'obtenir des résultats instantanés.
+- [x] En tant qu'utilisateur, je veux que l'application reconnaisse et gère différents formats de codes-barres.
 
 ### Détection des allergènes :
 
-- [ ] En tant qu'utilisateur allergique aux arachides, je veux que l'application m'alerte lorsqu'un produit scanné contient des arachides ou des ingrédients dérivés des arachides.
-- [ ] En tant qu'utilisateur souffrant d'une intolérance au lactose, je veux que l'application m'informe de la présence d'ingrédients contenant du lactose dans les produits scannés.
-- [ ] En tant qu'utilisateur ayant des préférences alimentaires spécifiques, je souhaite que l'application me permette de personnaliser les ingrédients que je considère comme des allergènes.
+- [x] En tant qu'utilisateur allergique aux arachides, je veux que l'application m'alerte lorsqu'un produit scanné contient des arachides ou des ingrédients dérivés des arachides.
+- [x] En tant qu'utilisateur souffrant d'une intolérance au lactose, je veux que l'application m'informe de la présence d'ingrédients contenant du lactose dans les produits scannés.
+- [x] En tant qu'utilisateur ayant des préférences alimentaires spécifiques, je souhaite que l'application me permette de personnaliser les ingrédients que je considère comme des allergènes.
 
 ### Détails du produit :
 
-- [ ] En tant qu'utilisateur, je veux voir la liste complète des ingrédients d'un produit scanné.
-- [ ] En tant qu'utilisateur, je veux voir les valeurs nutritionnelles d'un produit scanné.
+- [x] En tant qu'utilisateur, je veux voir la liste complète des ingrédients d'un produit scanné.
+- [x] En tant qu'utilisateur, je veux voir les valeurs nutritionnelles d'un produit scanné.
 - [ ] En tant qu'utilisateur, je veux lire les commentaires et les évaluations des utilisateurs sur les produits afin de prendre des décisions éclairées.
 
 <!--
@@ -157,8 +157,8 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 -->
 ### Produits favoris :
 
-- [ ] En tant qu'utilisateur, je souhaite enregistrer mes produits favoris dans mon profil pour pouvoir m'y référer ultérieurement.
-- [ ] En tant qu'utilisateur, je veux pouvoir accéder facilement à ma liste de produits favoris.
+- [x] En tant qu'utilisateur, je souhaite enregistrer mes produits favoris dans mon profil pour pouvoir m'y référer ultérieurement.
+- [x] En tant qu'utilisateur, je veux pouvoir accéder facilement à ma liste de produits favoris.
 - [ ] En tant qu'utilisateur, je veux pouvoir supprimer des produits de ma liste lorsque je n'en ai plus besoin.
 
 ### Recommandations :
@@ -180,4 +180,18 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 
 ## ⚙️ Compilation de l'Application
 
-[WIP]
+L'application a été développer sous l'environnement suivant:
+
+- Dart SDK version: 3.1.4 (stable)
+- Flutter 3.13.8
+
+Par conséquent, il est fortement recommandé de se prémunir des mêmes version pour faire tourner l'application.
+
+Le code peut être téléchargé simplement en faisant un `git clone` de ce projet.
+
+Pour faire tourner le project, à l'ouverture de celui-ci, il faut se placer avec un terminal dans le sous-dossier `code/food_guardian` et lancer la commande `flutter pub get`
+pour importer le dépendences.
+
+Une fois ces étapes réalisé, vous avez deux choix:
+- Soit lancer l'application via un AVD pour faire tourner l'application sur un téléphone virtuel
+- Soit (recommandé) activer le mode debug sur votre téléphone (Android bien entendu) pour faire tourner FoodGuardian depuis votre téléphone.
