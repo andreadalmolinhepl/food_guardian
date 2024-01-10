@@ -149,7 +149,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             GestureDetector(
-                              onTap: () => Navigator.pushNamed(context, "/welcome"),
+                              onTap: () => Navigator.pushNamed(context, "/passwordReset"),
                               child: Text(AppLocalizations.of(context)!.forgottenPassword,
                                   style: kHintStyle),
                             ),
