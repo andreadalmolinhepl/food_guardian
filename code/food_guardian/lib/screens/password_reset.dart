@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:food_guardian/styles/spacings.dart';
+import 'package:food_guardian/widgets/main_button.dart';
 
 import '../styles/font.dart';
+import '../utils/validations.dart';
 import '../widgets/arrow_back.dart';
+import '../widgets/text_input.dart';
 
 class PasswordResetScreen extends StatefulWidget {
   static const String routeName = "/passwordReset";
@@ -59,20 +64,24 @@ class _PasswordResetScreenState extends State<PasswordResetScreen> {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: kVerticalPaddingL),
+                      Text(
+                        AppLocalizations.of(context)!.forgottenPassword,
+                        style: kSectionTitle,
+                      ),
+                      const SizedBox(height: kVerticalPaddingL),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: TextField(
-                          controller: _emailController,
-                          decoration: const InputDecoration(labelText: 'Email'),
-                          keyboardType: TextInputType.emailAddress,
-                        ),
+                        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                        child: TextInput(
+                            controller: _emailController,
+                            // Add this line
+                            prefixIcon: Icons.email_outlined,
+                            hintText: "andrea@gmail.com",
+                            labelText: AppLocalizations.of(context)!.emailAddress,
+                            validator: validateEmail),
                       ),
                       const SizedBox(height: 20),
-                      ElevatedButton(
-                        onPressed: resetPassword,
-                        child: const Text('Reset Password'),
-                      ),
+                      MainButton(label: "Reset password", onTap: resetPassword),
                     ],
                   ),
                 ),

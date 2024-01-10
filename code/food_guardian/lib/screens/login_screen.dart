@@ -110,11 +110,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ],
                     ),
-                    const SizedBox(height: kVerticalPaddingXL),
+                    const SizedBox(height: kVerticalPaddingL),
                     Text(
                       AppLocalizations.of(context)!.welcomeBack,
                       style: kSectionTitle,
                     ),
+                    const SizedBox(height: kVerticalPaddingL),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: kHorizontalPadding),
