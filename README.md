@@ -80,21 +80,21 @@ Yuka est une application mobile qui scanne les produits alimentaires pour obteni
   - Dépendant d'une base de données
 
 <div style="display: flex; justify-content: center;">
-    <img src="/assets/screenshots/yuka1.jpg" alt="Capture d'écran de l'application Yuka" height="500" style="margin-right: 10px;">
-    <img src="/assets/screenshots/yuka2.jpg" alt="Capture d'écran de l'application Yuka" height="500">
+    <img src="code/food_guardian/assets/screenshots/yuka1.jpg" alt="Capture d'écran de l'application Yuka" height="500" style="margin-right: 10px;">
+    <img src="code/food_guardian/assets/screenshots/yuka2.jpg" alt="Capture d'écran de l'application Yuka" height="500">
 </div>
 
 #### Ingredio
 - **Points Forts**:
-  - Focalisée sur les ingrédients
-  - Scan des ingrédients via OCR
+    - Focalisée sur les ingrédients
+    - Scan des ingrédients via OCR
 - **Points Faibles**:
-  - Interface améliorable
-  - Pauvre en fonctionnalités
+    - Interface améliorable
+    - Pauvre en fonctionnalités
 
 <div style="display: flex; justify-content: center;">
-    <img src="/assets/screenshots/ingredio1.jpg" alt="Capture d'écran de l'application Yuka" height="500" style="margin-right: 10px;">
-    <img src="/assets/screenshots/ingredio2.jpg" alt="Capture d'écran de l'application Yuka" height="500">
+    <img src="code/food_guardian/assets/screenshots/ingredio1.jpg" alt="Capture d'écran de l'application Yuka" height="500" style="margin-right: 10px;">
+    <img src="code/food_guardian/assets/screenshots/ingredio2.jpg" alt="Capture d'écran de l'application Yuka" height="500">
 </div>
 
 ## 🎯 Public Cible
