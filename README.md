@@ -31,20 +31,29 @@ Food Guardian révolutionne votre expérience d'achat alimentaire en scannant, s
 ~~~text
 food_guardian/
 │
-├── lib/
-│   ├── screens/
-│   ├── styles/
-│   ├── utils/
-│   ├── widgets/
+├── code/
 │   │
-│   └── main.dart
+│   ├── dto/
+│   │
+│   ├── food_guardian/
+│   │   │
+│   │   ├── lib/
+│   │   │   ├── screens/
+│   │   │   ├── styles/
+│   │   │   ├── utils/
+│   │   │   ├── widgets/
+│   │   │   │
+│   │   │   └── main.dart
+│   │   │
+│   │   ├── assets/
+│   │   │   ├── icons/
+│   │   │   ├── images/
+│   │   │   ├── ...
+│   │
+│   ├── android/
 │
-├── assets/
-│   ├── icons/
-│   ├── images/
-│   ├── ...
-│
-└── android/
+├── maquettes/
+
 ~~~
 
 <!-- - `/maquettes`: Contient les maquettes visuelles de l'application. -->
@@ -55,6 +64,7 @@ food_guardian/
   - `/widgets`: Contient les différents widgets utilisés à travers, la plupart du temps, dans plusieurs écrans de l'application
 - `/assets`: 
 - `/android`:
+- 'dto' : Contient la logique et les modèles de l'application
 
 ## 🚀 Présentation de l'Application
 
