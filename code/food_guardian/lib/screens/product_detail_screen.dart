@@ -20,11 +20,12 @@ import 'nutriscore.dart';
 @immutable
 class ProductDetail extends StatefulWidget {
   final String barcode;
-  late Product _product;
+  final Product? product;
   final bool fromHistory;
 
-  ProductDetail({
+  const ProductDetail({
     required this.barcode,
+    this.product,
     this.fromHistory = false,
     Key? key,
   }) : super(key: key);
@@ -37,68 +38,16 @@ class _ProductDetailState extends State<ProductDetail> {
   ValueNotifier<bool> favoriteNotifier = ValueNotifier(false);
 
   Future<Product> fetchProductFromAPI() async {
+    Product product;
+
     Uri uri = Uri.parse(
         'https://world.openfoodfacts.org/api/v0/product/${widget.barcode}?fields=product_name,nutriscore_grade,allergens,ingredients_text,traces,image_url,brands,ingredients_analysis_tags');
     var json =
         await http.get(uri).then((response) => jsonDecode(response.body));
 
-    widget._product = Product.fromJson(json);
+    product = Product.fromJson(json);
 
-    return widget._product;
-  }
-
-  Future<List<String>> fetchUserAllergens() async {
-    List<String> userAllergens = [];
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      const collectionName = 'personalAllergies';
-      final querySnapshot = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(user.uid)
-          .collection(collectionName)
-          .get();
-
-      for (var doc in querySnapshot.docs) {
-        userAllergens.add(doc.id.toLowerCase());
-      }
-    }
-    return userAllergens;
-  }
-
-  Future<List<String>> fetchUserIntolerances() async {
-    List<String> userIntolerances = [];
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      const collectionName = 'personalIntolerances';
-      final querySnapshot = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(user.uid)
-          .collection(collectionName)
-          .get();
-
-      for (var doc in querySnapshot.docs) {
-        userIntolerances.add(doc.id.toLowerCase());
-      }
-    }
-    return userIntolerances;
-  }
-
-  Future<List<String>> fetchUserSensitivities() async {
-    List<String> userSensitivities = [];
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      const collectionName = 'personalSensitivities';
-      final querySnapshot = await FirebaseFirestore.instance
-          .collection('users')
-          .doc(user.uid)
-          .collection(collectionName)
-          .get();
-
-      for (var doc in querySnapshot.docs) {
-        userSensitivities.add(doc.id.toLowerCase());
-      }
-    }
-    return userSensitivities;
+    return product;
   }
 
   Future<List<String>> fetchUserFoodRestrictions(String collectionName) async {
@@ -124,10 +73,10 @@ class _ProductDetailState extends State<ProductDetail> {
 
     Map<String, dynamic> userData = {
       'id': widget.barcode,
-      'productName': widget._product.product.productName,
-      'productBrand': widget._product.product.brand,
-      'image': widget._product.product.imageUrl,
-      'nutriscore': widget._product.product.nutriscoreGrade,
+      'productName': widget.product!.product.productName,
+      'productBrand': widget.product!.product.brand,
+      'image': widget.product!.product.imageUrl,
+      'nutriscore': widget.product!.product.nutriscoreGrade,
     };
 
     await productRef.add(userData);

@@ -47,7 +47,7 @@ class FoodRestrictions extends StatelessWidget {
 
     return Container(
       decoration: BoxDecoration(
-          color: Colors.grey.shade100,
+          color: Colors.grey.shade200,
           borderRadius: BorderRadius.circular(kButtonBorderRadiusM)
       ),
       child: Padding(

@@ -23,12 +23,18 @@ class SplashScreen extends StatelessWidget {
   Future<void> _checkConnectivity(BuildContext context, bool isUserLoggedIn) async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     if (connectivityResult == ConnectivityResult.none) {
-      Navigator.pushReplacementNamed(context, "/no_internet");
+      if(context.mounted) {
+        Navigator.pushReplacementNamed(context, "/no_internet");
+      }
     } else {
       if (isUserLoggedIn) {
-        Navigator.pushReplacementNamed(context, "/home");
+        if(context.mounted) {
+          Navigator.pushReplacementNamed(context, "/home");
+        }
       } else {
-        Navigator.pushReplacementNamed(context, "/welcome");
+        if(context.mounted) {
+          Navigator.pushReplacementNamed(context, "/welcome");
+        }
       }
     }
   }
