@@ -118,6 +118,40 @@ class AccountPage extends StatelessWidget {
                             Navigator.pushNamed(context, "/welcome");
                           },
                         ),
+                        const Separator(),
+                        InkWell(
+                          onTap: () { Navigator.pushNamed(context, "/settings"); },
+                          child: Row(
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Icon(Icons.settings),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: Text(AppLocalizations.of(context)!.settings),
+                              )
+                            ],
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            FirebaseAuth.instance.signOut();
+                            Navigator.pushNamedAndRemoveUntil(context, "/welcome", (r) => false);
+                          },
+                          child: Row(
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.all(10.0),
+                                child: Icon(Icons.logout),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: Text(AppLocalizations.of(context)!.logout),
+                              )
+                            ],
+                          ),
+                        ),
                       ],
                     ))
               ),
