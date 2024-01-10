@@ -118,11 +118,21 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 - [x] En tant qu'utilisateur, je souhaite modifier mon profil pour préciser mes allergies, intolérances et préférences alimentaires.
 - [x] En tant qu'utilisateur, je souhaite réinitialiser mon mot de passe en cas d'oubli.
 
+<div style="display: flex; justify-content: center;">
+    <img src="maquettes/Login.png" alt="Capture d'écran de l'application Yuka" height="500">
+    <img src="maquettes/Sign up.png" alt="Capture d'écran de l'application Yuka" height="500">
+    <img src="maquettes/Profile.png" alt="Capture d'écran de l'application Yuka" height="500" style="margin-right: 10px;">
+</div>
+
 ### Lecteur de codes-barres :
 
 - [x] En tant qu'utilisateur, je veux scanner le code-barres d'un produit alimentaire pour obtenir des informations détaillées.
 - [x] En tant qu'utilisateur, je veux que le scanner fonctionne rapidement et avec précision, afin d'obtenir des résultats instantanés.
 - [x] En tant qu'utilisateur, je veux que l'application reconnaisse et gère différents formats de codes-barres.
+
+<div style="display: flex; justify-content: center;">
+    <img src="maquettes/Home.png" alt="Capture d'écran de l'application Yuka" height="500">
+</div>
 
 ### Détection des allergènes :
 
@@ -130,11 +140,20 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 - [x] En tant qu'utilisateur souffrant d'une intolérance au lactose, je veux que l'application m'informe de la présence d'ingrédients contenant du lactose dans les produits scannés.
 - [x] En tant qu'utilisateur ayant des préférences alimentaires spécifiques, je souhaite que l'application me permette de personnaliser les ingrédients que je considère comme des allergènes.
 
+<div style="display: flex; justify-content: center;">
+    <img src="maquettes/Product Detail.png" alt="Capture d'écran de l'application Yuka" height="500">
+    <img src="maquettes/Profile.png" alt="Capture d'écran de l'application Yuka" height="500" style="margin-right: 10px;">
+</div>
+
 ### Détails du produit :
 
 - [x] En tant qu'utilisateur, je veux voir la liste complète des ingrédients d'un produit scanné.
 - [x] En tant qu'utilisateur, je veux voir les valeurs nutritionnelles d'un produit scanné.
 - [ ] En tant qu'utilisateur, je veux lire les commentaires et les évaluations des utilisateurs sur les produits afin de prendre des décisions éclairées.
+
+<div style="display: flex; justify-content: center;">
+    <img src="maquettes/Product Detail-1.png" alt="Capture d'écran de l'application Yuka" height="500">
+</div>
 
 <!--
 ### Alertes utilisateur :
@@ -155,11 +174,15 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 - [ ] En tant qu'utilisateur, je veux lire ce que d'autres ont dit sur les produits qui m'intéressent.
 - [ ] En tant qu'utilisateur, je veux avoir la possibilité de signaler les avis inappropriés ou inexacts. 
 -->
-### Produits favoris :
+### Produits favoris et historique :
 
 - [x] En tant qu'utilisateur, je souhaite enregistrer mes produits favoris dans mon profil pour pouvoir m'y référer ultérieurement.
 - [x] En tant qu'utilisateur, je veux pouvoir accéder facilement à ma liste de produits favoris.
 - [ ] En tant qu'utilisateur, je veux pouvoir supprimer des produits de ma liste lorsque je n'en ai plus besoin.
+
+<div style="display: flex; justify-content: center;">
+    <img src="maquettes/History.png" alt="Capture d'écran de l'application Yuka" height="500">
+</div>
 
 ### Recommandations :
 
@@ -176,7 +199,7 @@ Food Guardian s'adresse à tous les amateurs de nourriture soucieux de leur sant
 
 ## 📈 État d'Avancement
 
-[WIP]
+
 
 ## ⚙️ Compilation de l'Application
 
