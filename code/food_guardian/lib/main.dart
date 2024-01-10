@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:food_guardian/api/firebase_api.dart';
 import 'package:food_guardian/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,6 +22,7 @@ void main() async {
     await prefs.setBool('firstLaunch', false);
   }
 
+  await FirebaseApi().initNotifications();
   runApp(FoodGuardian(
     initialRoute: isFirstLaunch ? '/onboarding' : await getInitialRoute(),
   ));

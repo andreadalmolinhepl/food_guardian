@@ -33,23 +33,23 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Text(AppLocalizations.of(context)!.helloWorld, style: kTitleBigStat,)
+                      Text(AppLocalizations.of(context)!.welcomeToFoodGuardian, style: kTitleBigStat,)
                     ],
                   ),
-                  const Row(
+                  Row(
                     children: [
-                      Text("The allergen assistant you’ve been looking for")
+                      Text(AppLocalizations.of(context)!.allergenAssistant)
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       MainButton(
-                          label: "Je me connecte",
+                          label: AppLocalizations.of(context)!.login,
                           onTap: () { Navigator.pushNamed(context, "/login"); },
                           mainColor: false),
                       MainButton(
-                          label: "Créer un compte",
+                          label: AppLocalizations.of(context)!.createAccount,
                           onTap: () { Navigator.pushNamed(context, "/register"); },
                           mainColor: false)
                     ],
