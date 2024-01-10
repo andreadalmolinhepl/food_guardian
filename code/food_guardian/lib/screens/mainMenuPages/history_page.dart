@@ -83,7 +83,7 @@ class _HistoryPageState extends State<HistoryPage> {
                                       children: [
                                         Image(
                                           image: AssetImage(
-                                              "assets/img/heart.png"),
+                                              "assets/img/history.png"),
                                           height: 50,
                                         ),
                                         Padding(

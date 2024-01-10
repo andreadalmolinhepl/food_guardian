@@ -42,11 +42,11 @@ class _AllergensExpandedListState extends State<AllergensExpandedList> {
   Icon _getIconForType(String type) {
     switch (type) {
       case 'Allergen':
-        return const Icon(Icons.warning, color: Colors.red);
+        return const Icon(Icons.not_interested_rounded, color: Colors.red);
       case 'Intolerance':
-        return const Icon(Icons.info, color: Colors.orange);
+        return const Icon(Icons.warning, color: Colors.orange);
       case 'Sensitivity':
-        return const Icon(Icons.filter_vintage, color: Colors.green);
+        return const Icon(Icons.info, color: Colors.blue);
       default:
         return const Icon(Icons.help, color: Colors.grey);
     }
@@ -102,10 +102,10 @@ class _AllergensExpandedListState extends State<AllergensExpandedList> {
                         headerBuilder: (BuildContext context, bool isExpanded) {
                           return Row(
                             children: [
-                              const Padding(
-                                padding: EdgeInsets.symmetric(
+                              Padding(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: kHorizontalPadding),
-                                child: Icon(Icons.emoji_food_beverage),
+                                child: Image(image: AssetImage("assets/icons/${allergenWithType.allergen.name}.png",), height: 25,),
                               ),
                               Text(allergenWithType.allergen.name),
                               if (widget.isUserSpecific)

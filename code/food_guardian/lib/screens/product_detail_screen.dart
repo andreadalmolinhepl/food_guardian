@@ -300,7 +300,7 @@ class _ProductDetailState extends State<ProductDetail> {
                             const SizedBox(height: kVerticalPadding,),
                             AllergenWarningBox(severity: severity),
                             const Separator(),
-                            if (matchedAllergens.isNotEmpty)
+                            if (matchedAllergens.isNotEmpty || matchedIntolerances.isNotEmpty || matchedSensitivities.isNotEmpty)
                               AllergensExpandedList(
                                   allergens: matchedAllergens,
                                   intolerances: matchedIntolerances,

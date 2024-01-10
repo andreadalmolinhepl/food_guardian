@@ -44,82 +44,91 @@ class FoodRestrictions extends StatelessWidget {
       viewportFraction: 0.2,
     );
 
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Container(
+      decoration: BoxDecoration(
+          color: Colors.grey.shade100,
+          borderRadius: BorderRadius.circular(10)
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
+        child: Column(
           children: [
-            Text(
-              "Your ${_decapitalize(label)}",
-              style: kTextTabItem,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Your ${_decapitalize(label)}",
+                  style: kTextTabItem,
+                ),
+                GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              FoodRestrictionSettings(type: label),
+                        ),
+                      );
+                    },
+                    child: const Icon(Icons.edit_note_rounded)),
+              ],
             ),
-            GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          FoodRestrictionSettings(type: label),
-                    ),
-                  );
-                },
-                child: const Icon(Icons.edit_note_rounded)),
+            const SizedBox(height: kVerticalPadding),
+            StreamBuilder<List<String>>(
+              stream: getAllergensStream(collectionName),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+                if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                }
+                if (snapshot.hasData) {
+                  final allergens = snapshot.data!;
+                  return allergens.isNotEmpty
+                      ? SizedBox(
+                          height: MediaQuery.of(context).size.height/8,
+                          child: PageView.builder(
+                            padEnds: false,
+                            pageSnapping: false,
+                            controller: controller,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: allergens.length,
+                            itemBuilder: (context, index) {
+                              return AllergenBox(label: allergens[index]);
+                            },
+                          ),
+                        )
+                      : Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                              child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("No ${_decapitalize(label)} found"),
+                              const Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: kHorizontalPadding,
+                                    vertical: kVerticalPadding
+                                ),
+                                child: Image(
+                                  image: AssetImage("assets/icons/smiley.png"),
+                                  height: 30,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ],
+                          )),
+                        );
+                } else {
+                  // TODO check translation
+                  return Text('No $label found');
+                }
+              },
+            ),
           ],
         ),
-        const SizedBox(height: kVerticalPadding),
-        StreamBuilder<List<String>>(
-          stream: getAllergensStream(collectionName),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
-            }
-            if (snapshot.hasData) {
-              final allergens = snapshot.data!;
-              return allergens.isNotEmpty
-                  ? SizedBox(
-                      height: MediaQuery.of(context).size.height/8,
-                      child: PageView.builder(
-                        padEnds: false,
-                        pageSnapping: false,
-                        controller: controller,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: allergens.length,
-                        itemBuilder: (context, index) {
-                          return AllergenBox(label: allergens[index]);
-                        },
-                      ),
-                    )
-                  : Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Center(
-                          child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("No ${_decapitalize(label)} found"),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: kHorizontalPadding,
-                                vertical: kVerticalPadding
-                            ),
-                            child: Image(
-                              image: AssetImage("assets/icons/smiley.png"),
-                              height: 30,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ],
-                      )),
-                    );
-            } else {
-              // TODO check translation
-              return Text('No $label found');
-            }
-          },
-        ),
-      ],
+      ),
     );
   }
 }

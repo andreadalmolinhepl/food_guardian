@@ -17,21 +17,34 @@ class AllergenBox extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.grey.shade300,
-              borderRadius: BorderRadius.circular(10)
-            ),
-            child: const ClipOval(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
-                child: Image(
-                    image: AssetImage("assets/icons/gluten.png"), fit: BoxFit.contain),
+          InkWell(
+            onLongPress: () {
+              // You can perform any additional actions here if needed
+            },
+            child: Tooltip(
+              message: label,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(10)
+                ),
+                child: ClipOval(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: kHorizontalPaddingS, vertical: kVerticalPaddingS),
+                    child: Image(
+                      image: AssetImage("assets/icons/$label.png"),
+                      fit: BoxFit.contain,
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
-          Text(label,)
-        ],
+          Text(
+            label,
+            overflow: TextOverflow.ellipsis,  // Add ellipsis if text overflows
+            maxLines: 1,  // Ensure the text is in a single line
+          ),        ],
       ),
     );
   }
