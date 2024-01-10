@@ -1,5 +1,5 @@
+import 'package:dto/allergen.dart';
 import 'package:flutter/material.dart';
-import 'package:food_guardian/model/allergen.dart';
 import 'package:food_guardian/styles/font.dart';
 
 import '../styles/spacings.dart';

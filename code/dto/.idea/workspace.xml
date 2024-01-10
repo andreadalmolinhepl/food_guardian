@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ee61d22a-95a9-4699-8ca7-f0d4d961d826" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analysis_options.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/dto_example.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/dto.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/src/dto_base.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/dto_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food_guardian/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/../food_guardian/.dart_tool/package_config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food_guardian/.dart_tool/package_config_subset" beforeDir="false" afterPath="$PROJECT_DIR$/../food_guardian/.dart_tool/package_config_subset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food_guardian/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../food_guardian/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food_guardian/lib/model/allergen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/allergen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food_guardian/lib/model/allergens_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/allergens_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food_guardian/lib/model/food_restriction_types.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/food_restriction_types.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food_guardian/lib/model/nutritional_info_monitored.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/nutritional_info_monitored.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food_guardian/lib/model/nutritional_preference.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/nutritional_preference.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food_guardian/lib/model/product.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/product.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food_guardian/lib/widgets/allergens_expanded_list.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../food_guardian/lib/widgets/allergens_expanded_list.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food_guardian/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../food_guardian/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../food_guardian/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/../food_guardian/pubspec.yaml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/andre/Desktop/Mobile1/food_guardian/code/food_guardian",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\andre\Desktop\Mobile1\food_guardian\code\dto\lib" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Tests in dto" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <option name="filePath" value="$PROJECT_DIR$" />
+      <option name="scope" value="FOLDER" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ee61d22a-95a9-4699-8ca7-f0d4d961d826" name="Changes" comment="" />
+      <created>1704888589332</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704888589332</updated>
+      <workItem from="1704888590322" duration="93000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

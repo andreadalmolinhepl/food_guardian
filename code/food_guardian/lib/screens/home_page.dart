@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dto/product.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/styles/font.dart';
@@ -8,8 +9,6 @@ import 'package:food_guardian/widgets/line.dart';
 import 'package:food_guardian/widgets/main_button.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
-import '../model/product.dart';
 
 class HomePage extends StatefulWidget {
   final Function(int) onPageChanged;

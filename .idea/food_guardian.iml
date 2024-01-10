@@ -6,6 +6,9 @@
       <excludeFolder url="file://$MODULE_DIR$/code/food_guardian/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/code/food_guardian/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/code/food_guardian/build" />
+      <excludeFolder url="file://$MODULE_DIR$/code/dto/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/code/dto/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/code/dto/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

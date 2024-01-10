@@ -1,6 +1,6 @@
+import 'package:dto/nutritional_preference.dart';
 import 'package:flutter/material.dart';
 
-import '../model/nutritional_preference.dart';
 import '../styles/font.dart';
 import '../styles/spacings.dart';
 

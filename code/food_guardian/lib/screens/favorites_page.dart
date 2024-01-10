@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dto/product.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/widgets/favorite_element.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../model/product.dart';
 import '../styles/font.dart';
 import '../styles/spacings.dart';
 

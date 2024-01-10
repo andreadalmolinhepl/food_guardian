@@ -30,6 +30,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  dto:
+    path: ../dto
   shared_preferences: ^2.2.2
   http: ^0.13.3
   flutter_barcode_scanner: ^2.0.0

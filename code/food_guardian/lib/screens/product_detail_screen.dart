@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:dto/allergen.dart';
+import 'package:dto/product.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:food_guardian/model/allergen.dart';
 import 'package:food_guardian/screens/product_not_found.dart';
 import 'package:food_guardian/widgets/separator.dart';
 import 'package:http/http.dart' as http;
 
-import '../model/product.dart';
 import '../styles/spacings.dart';
 import '../widgets/allergen_warning_box.dart';
 import '../widgets/allergens_expanded_list.dart';

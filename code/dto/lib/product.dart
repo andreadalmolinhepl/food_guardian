@@ -1,4 +1,4 @@
-import 'package:food_guardian/model/allergen.dart';
+import 'package:dto/allergen.dart';
 
 import 'nutritional_info_monitored.dart';
 import 'nutritional_preference.dart';

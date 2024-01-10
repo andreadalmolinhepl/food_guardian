@@ -1,6 +1,6 @@
+import 'package:dto/food_restriction_types.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:food_guardian/model/food_restriction_types.dart';
 import 'package:food_guardian/styles/spacings.dart';
 import 'package:food_guardian/widgets/food_restrictions.dart';
 import 'package:food_guardian/widgets/separator.dart';
