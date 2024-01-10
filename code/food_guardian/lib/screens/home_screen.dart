@@ -4,7 +4,6 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:food_guardian/screens/mainMenuPages/account_page.dart';
 import 'package:food_guardian/screens/mainMenuPages/home_page.dart';
 import 'package:food_guardian/screens/product_detail_screen.dart';
-import 'package:food_guardian/styles/others.dart';
 
 import '../styles/spacings.dart';
 import 'mainMenuPages/favorites_page.dart';

@@ -1,4 +1,5 @@
 import 'package:dto/allergen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/styles/font.dart';
 
@@ -55,7 +56,7 @@ class _AllergensExpandedListState extends State<AllergensExpandedList> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -120,7 +121,9 @@ class _AllergensExpandedListState extends State<AllergensExpandedList> {
                         },
                         body: ListTile(
                           title: Text(
-                            'You indicated ${allergenWithType.allergen.name} as one of your ${allergenWithType.toString()}',
+                            FirebaseAuth.instance.currentUser != null
+                                ? 'You indicated ${allergenWithType.allergen.name} as one of your ${allergenWithType.toString()}'
+                                : 'This product possibly contains ${allergenWithType.allergen.name}',
                             style: kHintStyle,
                           ),
                         ),

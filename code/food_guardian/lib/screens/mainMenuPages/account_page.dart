@@ -7,6 +7,7 @@ import 'package:food_guardian/widgets/separator.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../styles/font.dart';
+import '../../widgets/main_button.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -24,7 +25,7 @@ class AccountPage extends StatelessWidget {
             child: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
-                child: Column(
+                child: FirebaseAuth.instance.currentUser != null ? Column(
                   children: [
                     Row(
                       children: [
@@ -94,7 +95,31 @@ class AccountPage extends StatelessWidget {
                       ),
                     ),
                   ],
-                ),
+                ) : Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Image(
+                          image: AssetImage("assets/img/anonymous.png"),
+                          height: 50,
+                        ),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(
+                              vertical: kVerticalPadding),
+                          child: Text(
+                              "Hmm, it lokks like you're not logged in !"),
+                        ),
+                        const SizedBox(
+                          height: kHorizontalPaddingS,
+                        ),
+                        MainButton(
+                          label: "Let's sign up",
+                          onTap: () {
+                            Navigator.pushNamed(context, "/welcome");
+                          },
+                        ),
+                      ],
+                    ))
               ),
             ),
           ),

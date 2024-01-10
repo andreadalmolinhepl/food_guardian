@@ -7,6 +7,7 @@ import 'package:food_guardian/widgets/history_element.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../styles/font.dart';
+import '../../widgets/main_button.dart';
 
 class HistoryPage extends StatefulWidget {
   const HistoryPage({super.key});
@@ -48,69 +49,105 @@ class _HistoryPageState extends State<HistoryPage> {
           child: Padding(
               padding: const EdgeInsets.symmetric(
                   horizontal: kHorizontalPadding, vertical: kVerticalPadding),
-              child: FutureBuilder(
-                  future: fetchProducts(),
-                  builder: (BuildContext context,
-                      AsyncSnapshot<List<ProductSnippet>> snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
-                    } else if (snapshot.hasError) {
-                      return Center(
-                          child: Text(
-                              '${AppLocalizations.of(context)!.error}: ${snapshot.error}'));
-                    } else if (!snapshot.hasData) {
-                      return Center(
-                          child: Text(
-                              AppLocalizations.of(context)!.noDataAvailable));
-                    } else {
-                      List<ProductSnippet> products = snapshot.data!;
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: kVerticalPadding),
+                    child: Text(AppLocalizations.of(context)!.history,
+                        style: kTitleHome),
+                  ),
+                  FirebaseAuth.instance.currentUser != null
+                      ? FutureBuilder(
+                          future: fetchProducts(),
+                          builder: (BuildContext context,
+                              AsyncSnapshot<List<ProductSnippet>> snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.waiting) {
+                              return const Center(
+                                  child: CircularProgressIndicator());
+                            } else if (snapshot.hasError) {
+                              return Center(
+                                  child: Text(
+                                      '${AppLocalizations.of(context)!.error}: ${snapshot.error}'));
+                            } else if (!snapshot.hasData) {
+                              return Center(
+                                  child: Text(AppLocalizations.of(context)!
+                                      .noDataAvailable));
+                            } else {
+                              List<ProductSnippet> products = snapshot.data!;
 
-                      return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: kVerticalPadding),
-                            child: Text(AppLocalizations.of(context)!.history,
-                                style: kTitleHome),
-                          ),
-                          products.isEmpty
-                              ? const Expanded(
-                                  child: Center(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Image(
-                                          image: AssetImage(
-                                              "assets/img/history.png"),
-                                          height: 50,
-                                        ),
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(
-                                              vertical: kVerticalPadding),
-                                          child: Text(
-                                              "Nothing has been scanned yet"),
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  products.isEmpty
+                                      ? const Expanded(
+                                          child: Center(
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Image(
+                                                  image: AssetImage(
+                                                      "assets/img/history.png"),
+                                                  height: 50,
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.symmetric(
+                                                      vertical:
+                                                          kVerticalPadding),
+                                                  child: Text(
+                                                      "Nothing has been scanned yet"),
+                                                )
+                                              ],
+                                            ),
+                                          ),
                                         )
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              : Column(
-                                  children: products.map((snippet) {
-                                    return HistoryElement(
-                                      name: snippet.productName,
-                                      brand: snippet.brand,
-                                      image: snippet.imageUrl,
-                                      barcode: snippet.id,
-                                      nutriscore: snippet.nutriscore,
-                                    );
-                                  }).toList(),
-                                )
-                        ],
-                      );
-                    }
-                  })),
+                                      : Column(
+                                          children: products.map((snippet) {
+                                            return HistoryElement(
+                                              name: snippet.productName,
+                                              brand: snippet.brand,
+                                              image: snippet.imageUrl,
+                                              barcode: snippet.id,
+                                              nutriscore: snippet.nutriscore,
+                                            );
+                                          }).toList(),
+                                        )
+                                ],
+                              );
+                            }
+                          })
+                      : Expanded(
+                          child: Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Image(
+                                  image: AssetImage("assets/img/history.png"),
+                                  height: 50,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: kVerticalPadding),
+                                  child: Text("History is only available for authenticated users"),
+                                ),
+                                const SizedBox(
+                                  height: kHorizontalPaddingS,
+                                ),
+                                MainButton(
+                                  label: "Let's sign up",
+                                  onTap: () {
+                                    Navigator.pushNamed(context, "/welcome");
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                ],
+              )),
         ),
       ),
     )));

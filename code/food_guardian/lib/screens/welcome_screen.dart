@@ -57,6 +57,11 @@ class WelcomeScreen extends StatelessWidget {
                           onTap: () { Navigator.pushNamed(context, "/register"); },
                           mainColor: false,
                         ),
+                        const SizedBox(height: kVerticalPadding),
+                        MainButton(
+                          label: "Continuer sans compte",
+                          onTap: () { Navigator.pushNamed(context, "/home"); },
+                        ),
                       ],
                     ),
                   ),

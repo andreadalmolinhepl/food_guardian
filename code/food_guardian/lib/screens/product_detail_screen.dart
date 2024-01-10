@@ -32,7 +32,6 @@ class ProductDetail extends StatefulWidget {
   State<ProductDetail> createState() => _ProductDetailState();
 }
 
-
 class _ProductDetailState extends State<ProductDetail> {
   ValueNotifier<bool> favoriteNotifier = ValueNotifier(false);
 
@@ -42,7 +41,7 @@ class _ProductDetailState extends State<ProductDetail> {
     var json =
         await http.get(uri).then((response) => jsonDecode(response.body));
 
-    widget._product =  Product.fromJson(json);
+    widget._product = Product.fromJson(json);
 
     return widget._product;
   }
@@ -118,9 +117,9 @@ class _ProductDetailState extends State<ProductDetail> {
     return userRestrictions;
   }
 
-
   Future<void> _addProduct() async {
-    var productRef = FirebaseFirestore.instance.collection("users/${FirebaseAuth.instance.currentUser?.uid}/productsScanned");
+    var productRef = FirebaseFirestore.instance.collection(
+        "users/${FirebaseAuth.instance.currentUser?.uid}/productsScanned");
 
     Map<String, dynamic> userData = {
       'id': widget.barcode,
@@ -134,7 +133,8 @@ class _ProductDetailState extends State<ProductDetail> {
   }
 
   Future<void> _changeFavorite(bool isFavorite) async {
-    var userFavoritesRef = FirebaseFirestore.instance.collection("users/${FirebaseAuth.instance.currentUser?.uid}/favorites");
+    var userFavoritesRef = FirebaseFirestore.instance.collection(
+        "users/${FirebaseAuth.instance.currentUser?.uid}/favorites");
 
     if (isFavorite) {
       Map<String, dynamic> userData = {
@@ -142,7 +142,8 @@ class _ProductDetailState extends State<ProductDetail> {
       };
       await userFavoritesRef.add(userData);
     } else {
-      var querySnapshot = await userFavoritesRef.where('id', isEqualTo: widget.barcode).get();
+      var querySnapshot =
+          await userFavoritesRef.where('id', isEqualTo: widget.barcode).get();
       for (var doc in querySnapshot.docs) {
         await doc.reference.delete();
       }
@@ -150,9 +151,11 @@ class _ProductDetailState extends State<ProductDetail> {
   }
 
   Future<void> _checkIfFavorite() async {
-    var userFavoritesRef = FirebaseFirestore.instance.collection("users/${FirebaseAuth.instance.currentUser?.uid}/favorites");
+    var userFavoritesRef = FirebaseFirestore.instance.collection(
+        "users/${FirebaseAuth.instance.currentUser?.uid}/favorites");
 
-    var querySnapshot = await userFavoritesRef.where('id', isEqualTo: widget.barcode).get();
+    var querySnapshot =
+        await userFavoritesRef.where('id', isEqualTo: widget.barcode).get();
     if (querySnapshot.docs.isNotEmpty) {
       setState(() {
         favoriteNotifier.value = true;
@@ -160,7 +163,8 @@ class _ProductDetailState extends State<ProductDetail> {
     }
   }
 
-  int calculateSeverity(List<Allergen> matchedAllergens, List<Allergen> matchedIntolerances, List<Allergen> matchedSensitivities) {
+  int calculateSeverity(List<Allergen> matchedAllergens,
+      List<Allergen> matchedIntolerances, List<Allergen> matchedSensitivities) {
     if (matchedAllergens.isNotEmpty) {
       return 3;
     } else if (matchedIntolerances.isNotEmpty) {
@@ -182,46 +186,69 @@ class _ProductDetailState extends State<ProductDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Stack(children: [
-          FutureBuilder(
+        child: Stack(
+          children: [
+            FutureBuilder(
               future: Future.wait([
-                fetchProductFromAPI(),
-                fetchUserFoodRestrictions('personalAllergies'),
-                fetchUserFoodRestrictions('personalIntolerances'),
-                fetchUserFoodRestrictions('personalSensitivities'),
+                fetchProductFromAPI(), // Change the type to Future<dynamic>
+                FirebaseAuth.instance.currentUser != null
+                    ? fetchUserFoodRestrictions('personalAllergies')
+                    : Future.value([]),
+                FirebaseAuth.instance.currentUser != null
+                    ? fetchUserFoodRestrictions('personalIntolerances')
+                    : Future.value([]),
+                FirebaseAuth.instance.currentUser != null
+                    ? fetchUserFoodRestrictions('personalSensitivities')
+                    : Future.value([]),
               ]),
               builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
                 } else if (snapshot.hasError) {
                   return const ProductNotFound();
-                } else if (!snapshot.hasData) {
+                } else if (!snapshot.hasData || snapshot.data == null) {
                   return const Center(child: Text('No data available'));
                 } else {
-                  Product product = snapshot.data![0];
-                  List<String> userAllergens = [
-                    ...snapshot.data![1],
-                  ];
-                  List<String> userIntolerances = [
-                    ...snapshot.data![2],
-                  ];
-                  List<String> userSensitivities = [
-                    ...snapshot.data![3],
-                  ];
+                  Product product;
+                  List<String> userAllergens = [];
+                  List<String> userIntolerances = [];
+                  List<String> userSensitivities = [];
+                  List<Allergen> matchedAllergens = [];
+                  List<Allergen> matchedIntolerances = [];
+                  List<Allergen> matchedSensitivities = [];
+                  int severity = 0;
+                  product = snapshot.data![0];
 
-                  List<Allergen> matchedAllergens = product.product.allergens
-                      .where((allergen) => userAllergens.contains(allergen.name.toLowerCase()))
-                      .toList();
-                  List<Allergen> matchedIntolerances = product.product.allergens
-                      .where((allergen) => userIntolerances.contains(allergen.name.toLowerCase()))
-                      .toList();
-                  List<Allergen> matchedSensitivities = product.product.allergens
-                      .where((allergen) => userSensitivities.contains(allergen.name.toLowerCase()))
-                      .toList();
+                  if (FirebaseAuth.instance.currentUser != null) {
+                    userAllergens = [
+                      ...snapshot.data![1],
+                    ];
+                    userIntolerances = [
+                      ...snapshot.data![2],
+                    ];
+                    userSensitivities = [
+                      ...snapshot.data![3],
+                    ];
 
-                  int severity = calculateSeverity(matchedAllergens, matchedIntolerances, matchedSensitivities);
+                    matchedAllergens = product.product.allergens
+                        .where((allergen) =>
+                        userAllergens.contains(allergen.name.toLowerCase()))
+                        .toList();
+                    matchedIntolerances = product.product.allergens
+                        .where((allergen) => userIntolerances
+                        .contains(allergen.name.toLowerCase()))
+                        .toList();
+                    matchedSensitivities = product
+                        .product.allergens
+                        .where((allergen) => userSensitivities
+                        .contains(allergen.name.toLowerCase()))
+                        .toList();
 
-                  if (!widget.fromHistory) _addProduct();
+                    severity = calculateSeverity(matchedAllergens,
+                        matchedIntolerances, matchedSensitivities);
+
+                    if (!widget.fromHistory) _addProduct();
+                  }
 
                   return CustomScrollView(
                     slivers: [
@@ -235,13 +262,19 @@ class _ProductDetailState extends State<ProductDetail> {
                           background: Stack(
                             fit: StackFit.expand,
                             children: <Widget>[
-                              product.product.imageUrl == ""
-                                  ? const Image(image: AssetImage("assets/img/unknownFood.png"), fit: BoxFit.contain, width: 80,)
-                                  : Image.network(
-                                      product.product.imageUrl,
-                                      fit: BoxFit.cover,
-                                      width: 80,
-                                    ),
+                              if (product.product.imageUrl == "")
+                                const Image(
+                                  image:
+                                  AssetImage("assets/img/unknownFood.png"),
+                                  fit: BoxFit.contain,
+                                  width: 80,
+                                )
+                              else
+                                Image.network(
+                                  product.product.imageUrl,
+                                  fit: BoxFit.cover,
+                                  width: 80,
+                                ),
                               const DecoratedBox(
                                 decoration: BoxDecoration(
                                   gradient: LinearGradient(
@@ -257,7 +290,8 @@ class _ProductDetailState extends State<ProductDetail> {
                             ],
                           ),
                         ),
-                        actions: [
+                        actions: FirebaseAuth.instance.currentUser != null
+                            ? [
                           ValueListenableBuilder<bool>(
                             valueListenable: favoriteNotifier,
                             builder: (context, isFavorite, child) {
@@ -267,14 +301,17 @@ class _ProductDetailState extends State<ProductDetail> {
                                   _changeFavorite(favoriteNotifier.value);
                                 },
                                 child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: kHorizontalPadding),
                                   child: Container(
                                     decoration: BoxDecoration(
                                       color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10),
+                                      borderRadius:
+                                      BorderRadius.circular(10),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
+                                      padding:
+                                      const EdgeInsets.all(8.0),
                                       child: isFavorite
                                           ? const Icon(
                                         Icons.favorite,
@@ -289,51 +326,65 @@ class _ProductDetailState extends State<ProductDetail> {
                                 ),
                               );
                             },
-                          )
-                        ],
+                          ),
+                        ]
+                            : null,
                       ),
                       SliverList(
-                          delegate: SliverChildListDelegate([
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(height: kVerticalPadding,),
-                            AllergenWarningBox(severity: severity),
-                            const Separator(),
-                            if (matchedAllergens.isNotEmpty || matchedIntolerances.isNotEmpty || matchedSensitivities.isNotEmpty)
-                              AllergensExpandedList(
+                        delegate: SliverChildListDelegate([
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              if (FirebaseAuth.instance.currentUser != null)
+                                const SizedBox(
+                                  height: kVerticalPadding,
+                                ),
+                              if (FirebaseAuth.instance.currentUser != null)
+                                AllergenWarningBox(severity: severity),
+                              if (FirebaseAuth.instance.currentUser != null)
+                                const SizedBox(height: kVerticalPadding),
+                              if (matchedAllergens.isNotEmpty ||
+                                  matchedIntolerances.isNotEmpty ||
+                                  matchedSensitivities.isNotEmpty)
+                                AllergensExpandedList(
                                   allergens: matchedAllergens,
                                   intolerances: matchedIntolerances,
                                   sensitivities: matchedSensitivities,
-                                  isUserSpecific: true),
-                            if (matchedAllergens.isNotEmpty)
-                              const Separator(),
-                            AllergensExpandedList(
+                                  isUserSpecific: true,
+                                ),
+                              // Rest of the code for AllergenWarningBox
+                              AllergensExpandedList(
                                 allergens: product.product.allergens,
                                 intolerances: List.empty(),
                                 sensitivities: List.empty(),
-                                isUserSpecific: false),
-                            const Separator(),
-                            IngredientsExpansionList(
-                                ingredientList:
-                                    product.product.ingredientsText),
-                            const Separator(),
-                            Nutriscore(
-                                nutriscore: product.product.nutriscoreGrade),
-                            const Separator(),
-                            NutritionalPreferences(
-                              nutritionalList:
-                                  product.product.nutritionalPreferences,
-                            ),
-                          ],
-                        )
-                      ]))
+                                isUserSpecific: false,
+                              ),
+                              const Separator(),
+                              IngredientsExpansionList(
+                                ingredientList: product.product.ingredientsText,
+                              ),
+                              const Separator(),
+                              Nutriscore(
+                                nutriscore: product.product.nutriscoreGrade,
+                              ),
+                              const Separator(),
+                              NutritionalPreferences(
+                                nutritionalList:
+                                product.product.nutritionalPreferences,
+                              ),
+                            ],
+                          )
+                        ]),
+                      ),
                     ],
                   );
                 }
-              }),
-        ]),
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
+
 }
