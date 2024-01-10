@@ -121,7 +121,18 @@ class _HomePageState extends State<HomePage> {
                               } else if (snapshot.hasError) {
                                 return Text('Error: ${snapshot.error}'); //TODO
                               } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
-                                return const Text('No data available');
+                                return const Padding(
+                                  padding: EdgeInsets.only(top: kVerticalPaddingXL),
+                                  child: Column(
+                                    children: [
+                                      Image(image: AssetImage("assets/img/magnifyingGlass.png"), height: 40,),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
+                                        child: Text("Once you scan something, your most recent scans will appear here", textAlign: TextAlign.center),
+                                      ),
+                                    ],
+                                  ),
+                                );
                               } else {
                                 List<ProductSnippet> snippets = snapshot.data!.docs.map((doc) {
                                   return ProductSnippet.fromMap(doc.id, doc.data() as Map<String, dynamic>);

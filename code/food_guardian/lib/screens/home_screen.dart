@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:food_guardian/screens/account_page.dart';
-import 'package:food_guardian/screens/home_page.dart';
+import 'package:food_guardian/screens/mainMenuPages/account_page.dart';
+import 'package:food_guardian/screens/mainMenuPages/home_page.dart';
 import 'package:food_guardian/screens/product_detail_screen.dart';
 import 'package:food_guardian/styles/others.dart';
 
 import '../styles/spacings.dart';
-import 'favorites_page.dart';
-import 'history_page.dart';
+import 'mainMenuPages/favorites_page.dart';
+import 'mainMenuPages/history_page.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "/home";
@@ -80,9 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.all(8.0),
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.lightBlue.shade100,
                 borderRadius: BorderRadius.circular(25),
-                boxShadow: [kShadow]
               ),
               child: const NavigationDestination(
                 icon: Icon(Icons.qr_code_scanner),

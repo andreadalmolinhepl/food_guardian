@@ -6,7 +6,7 @@ import 'package:food_guardian/widgets/food_restrictions.dart';
 import 'package:food_guardian/widgets/separator.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../styles/font.dart';
+import '../../styles/font.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});
@@ -27,17 +27,30 @@ class AccountPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(FirebaseAuth.instance.currentUser!.displayName!, style: kTitleBigStat,),
-                        const ClipOval(
-                          child: Image(
+                        Expanded(
+                          flex: 7,
+                          child: Center(
+                            child: Text(
+                              FirebaseAuth.instance.currentUser!.displayName!,
+                              style: kTitleBigStat,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                        const Expanded(
+                          flex: 3,
+                          child: ClipOval(
+                            child: Image(
                               image: AssetImage("assets/img/dog.png"),
                               height: kProfileSize,
-                              fit: BoxFit.cover),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                       ],
                     ),
+
                     const Separator(),
                     FoodRestrictions(label: FoodRestrictionTypes.allergies.stringValue,),
                     const SizedBox(height: kVerticalPaddingS,),
