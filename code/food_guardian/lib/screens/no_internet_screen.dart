@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_guardian/widgets/main_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../styles/font.dart';
 import '../styles/spacings.dart';
 
@@ -30,9 +32,9 @@ class NoInternetScreen extends StatelessWidget {
                       fit: BoxFit.contain,
                     ),
                     const SizedBox(height: kVerticalPaddingL),
-                    const Text(
-                      "Oops! No Internet Connection",
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.oopsNoInternetConnection,
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                         color: Colors.deepPurple,
@@ -40,9 +42,9 @@ class NoInternetScreen extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: kVerticalPadding),
-                    const Text(
-                      "Please check your internet connection and try again.",
-                      style: TextStyle(
+                    Text(
+                      AppLocalizations.of(context)!.pleaseCheckYourInternetConnection,
+                      style: const TextStyle(
                         fontSize: 18,
                         color: Colors.black54,
                       ),
@@ -52,7 +54,7 @@ class NoInternetScreen extends StatelessWidget {
                     MainButton(
                       onTap: () => Navigator.of(context).pushNamed("/splash"),
                       mainColor: false,
-                      label: "Retry",
+                      label: AppLocalizations.of(context)!.retry,
                     ),
                     const SizedBox(height: kVerticalPaddingL),
                   ],

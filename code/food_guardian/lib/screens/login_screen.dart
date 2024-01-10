@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/widgets/arrow_back.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 import '../styles/font.dart';
 import '../styles/spacings.dart';
@@ -75,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  void _showSnackBar(String message) {
+  void _showSnackBar(String message) { //TODO
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
@@ -109,8 +111,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     const SizedBox(height: kVerticalPaddingXL),
-                    const Text(
-                      "Welcome back",
+                    Text(
+                      AppLocalizations.of(context)!.welcomeBack,
                       style: kSectionTitle,
                     ),
                     Padding(
@@ -125,14 +127,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                 // Add this line
                                 prefixIcon: Icons.email_outlined,
                                 hintText: "andrea@gmail.com",
-                                labelText: "Adresse mail",
+                                labelText: AppLocalizations.of(context)!.emailAddress,
                                 validator: validateEmail),
                             TextInput(
                               controller: _passwordController,
                               // Add this line
                               prefixIcon: Icons.password,
                               hintText: "*********",
-                              labelText: "Mot de passe",
+                              labelText: AppLocalizations.of(context)!.password,
                               validator: validatePassword,
                               obscureText: !_isPasswordVisible,
                               suffixIcon: GestureDetector(
@@ -148,14 +150,14 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             GestureDetector(
                               onTap: () => Navigator.pushNamed(context, "/welcome"),
-                              child: const Text("Mot de passe oublié ?",
+                              child: Text(AppLocalizations.of(context)!.forgottenPassword,
                                   style: kHintStyle),
                             ),
                             const SizedBox(height: kVerticalPadding),
                             Align(
                                 alignment: Alignment.centerRight,
                                 child: MainButton(
-                                    label: "Je me connecte", onTap: _submit)),
+                                    label: AppLocalizations.of(context)!.login, onTap: _submit)),
                           ],
                         ),
                       ),
@@ -166,8 +168,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     Center(
                       child: Column(
                         children: [
-                          const Text(
-                            "Je n'ai pas encore de compte.",
+                          Text(
+                            AppLocalizations.of(context)!.createMyAccount,
                             style: kItalicText,
                           ),
                           const SizedBox(
@@ -176,8 +178,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           GestureDetector(
                             onTap: () =>
                                 Navigator.pushNamed(context, "/register"),
-                            child: const Text(
-                              "Créer mon compte !",
+                            child: Text(
+                              AppLocalizations.of(context)!.createMyAccount,
                               style: kButtonTextStyle,
                             ),
                           )

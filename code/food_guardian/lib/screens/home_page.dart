@@ -6,6 +6,8 @@ import 'package:food_guardian/styles/spacings.dart';
 import 'package:food_guardian/widgets/history_simple.dart';
 import 'package:food_guardian/widgets/line.dart';
 import 'package:food_guardian/widgets/main_button.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 import '../model/product.dart';
 
@@ -39,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: kVerticalPadding),
-                            child: Text("Hi ${FirebaseAuth.instance.currentUser!.displayName}", style: kTitleHome),
+                            child: Text("${AppLocalizations.of(context)!.hi} ${FirebaseAuth.instance.currentUser!.displayName}", style: kTitleHome),
                           ),
                         ],
                       ),
@@ -62,26 +64,26 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ],
                           ),
-                          const Row(
+                          Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Scan a new item")
+                              Text(AppLocalizations.of(context)!.scanANewItem)
                             ],
                           ),
-                          const Padding(
-                            padding: EdgeInsets.symmetric(vertical: kVerticalPadding),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: kVerticalPadding),
                             child: Row(
                               children: [
-                                Line(),
+                                const Line(),
                                 Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingL),
-                                  child: Text("or"),
+                                  padding: const EdgeInsets.symmetric(horizontal: kHorizontalPaddingL),
+                                  child: Text(AppLocalizations.of(context)!.or),
                                 ),
-                                Line()
+                                const Line()
                               ],
                             ),
                           ),
-                          MainButton(label: "Scan ingredients", onTap: () {}),
+                          MainButton(label: AppLocalizations.of(context)!.scanIngredients, onTap: () {}),
                         ],
                       ),
                       const SizedBox(height: kVerticalPaddingL,),
@@ -92,16 +94,16 @@ class _HomePageState extends State<HomePage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text("Your last scans", style: kTextTabItem),
+                                Text(AppLocalizations.of(context)!.yourLastScans, style: kTextTabItem),
                                 GestureDetector(
                                   onTap: () { widget.onPageChanged(3); },
-                                  child: const Row(
+                                  child: Row(
                                     children: [
                                       Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: kHorizontalPaddingS),
-                                        child: Text("See all", style: kTextTabItem),
+                                        padding: const EdgeInsets.symmetric(horizontal: kHorizontalPaddingS),
+                                        child: Text(AppLocalizations.of(context)!.seeAll, style: kTextTabItem),
                                       ),
-                                      Icon(Icons.arrow_forward_rounded)
+                                      const Icon(Icons.arrow_forward_rounded)
                                     ],
                                   ),
                                 ),
@@ -118,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                               if (snapshot.connectionState == ConnectionState.waiting) {
                                 return const CircularProgressIndicator();
                               } else if (snapshot.hasError) {
-                                return Text('Error: ${snapshot.error}');
+                                return Text('Error: ${snapshot.error}'); //TODO
                               } else if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
                                 return const Text('No data available');
                               } else {

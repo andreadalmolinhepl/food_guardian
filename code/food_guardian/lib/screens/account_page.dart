@@ -6,7 +6,6 @@ import 'package:food_guardian/widgets/food_restrictions.dart';
 import 'package:food_guardian/widgets/separator.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 import '../styles/font.dart';
 
 class AccountPage extends StatelessWidget {
@@ -27,11 +26,11 @@ class AccountPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: kHorizontalPadding, vertical: kVerticalPadding),
                 child: Column(
                   children: [
-                    const Row(
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Andrea Dal Molin", style: kTitleBigStat,),
-                        ClipOval(
+                        Text(FirebaseAuth.instance.currentUser!.displayName!, style: kTitleBigStat,),
+                        const ClipOval(
                           child: Image(
                               image: AssetImage("assets/img/dog.png"),
                               height: kProfileSize,
@@ -58,7 +57,7 @@ class AccountPage extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 20),
-                            child: Text(AppLocalizations.of(context)!.helloWorld),
+                            child: Text(AppLocalizations.of(context)!.settings),
                           )
                         ],
                       ),

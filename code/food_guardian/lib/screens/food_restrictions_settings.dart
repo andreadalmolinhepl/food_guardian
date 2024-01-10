@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/widgets/arrow_back.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../model/allergens_list.dart';
 import '../styles/font.dart';
@@ -129,7 +130,7 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: kVerticalPadding, horizontal: kHorizontalPadding),
-                        child: Text("Your ${widget.type}", style: kTitleHome),
+                        child: Text("${AppLocalizations.of(context)!.your} ${widget.type}", style: kTitleHome),
                       ),
                       ...generateAllergenWidgets(),
                     ],
@@ -155,9 +156,9 @@ class _FoodRestrictionSettingsState extends State<FoodRestrictionSettings> {
                     onTap: () {
                       _saveSelectedAllergens();
                       ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text("Preferences saved successfully"),
-                          duration: Duration(seconds: 3),
+                        SnackBar(
+                          content: Text(AppLocalizations.of(context)!.preferencesSavedSuccessfully),
+                          duration: const Duration(seconds: 3),
                         ),
                       );
                       Navigator.pop(context);

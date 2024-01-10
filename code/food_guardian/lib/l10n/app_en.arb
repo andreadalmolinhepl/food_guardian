@@ -76,6 +76,11 @@
     "description": ""
   },
 
+  "scanIngredients": "Scan ingredients",
+  "@scanANewItem": {
+    "description": ""
+  },
+
   "or": "or",
   "@or": {
     "description": ""
@@ -358,6 +363,11 @@
 
   "noNutritionalInfo": "No nutritional information found",
   "@noNutritionalInfo": {
+    "description": ""
+  },
+
+  "welcomeBack": "Welcome back",
+  "@favorites": {
     "description": ""
   }
 }

@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_guardian/styles/spacings.dart';
 import 'package:food_guardian/widgets/history_element.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 import '../model/product.dart';
 import '../styles/font.dart';
@@ -52,18 +54,18 @@ class _HistoryPageState extends State<HistoryPage> {
                             if (snapshot.connectionState == ConnectionState.waiting) {
                               return const Center(child: CircularProgressIndicator());
                             } else if (snapshot.hasError) {
-                              return Center(child: Text('Error: ${snapshot.error}'));
+                              return Center(child: Text('${AppLocalizations.of(context)!.error}: ${snapshot.error}'));
                             } else if (!snapshot.hasData) {
-                              return const Center(child: Text('No data available'));
+                              return Center(child: Text(AppLocalizations.of(context)!.noDataAvailable));
                             } else {
                               List<ProductSnippet> products = snapshot.data!;
 
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  const Padding(
-                                    padding: EdgeInsets.symmetric(vertical: kVerticalPadding),
-                                    child: Text("History", style: kTitleHome),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(vertical: kVerticalPadding),
+                                    child: Text(AppLocalizations.of(context)!.history, style: kTitleHome),
                                   ),
 
                                   products.isEmpty ? const Placeholder() :
